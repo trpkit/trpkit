@@ -1,12 +1,16 @@
 {
   "name": "@trpkit/root",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
+    "bump:version": "node ./scripts/bump-version.js",
+    "bump:dependencies": "npx npm-check-updates --deep -u",
     "dev": "turbo run dev",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,mdx}\""
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.2.0",
+    "glob": "^10.3.3",
     "prettier": "^3.0.1",
     "turbo": "^1.10.12"
   }
