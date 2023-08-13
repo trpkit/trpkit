@@ -1,0 +1,15 @@
+{
+  "name": "@trpkit/kms",
+  "private": true,
+  "scripts": {
+    "dev": "tsc -w"
+  },
+  "dependencies": {
+    "@noble/ciphers": "^0.2.0",
+    "@scure/base": "^1.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.4.10",
+    "typescript": "^5.1.6"
+  }
+}
