@@ -1,10 +1,7 @@
 import { bytesToUtf8, utf8ToBytes } from "@noble/ciphers/utils";
 import { createCipheriv, createDecipheriv, randomBytes } from "crypto";
 
-type AesGcmCipher = {
-  nonce: Uint8Array;
-  text: Uint8Array;
-};
+import { CipherEncryptionResult } from "../../types";
 
 /**
  * Encrypts a message using AES-GCM algorithm.
@@ -12,7 +9,10 @@ type AesGcmCipher = {
  * @param key The key to use for encryption.
  * @param message The message to encrypt.
  */
-async function encryptAesGcm(key: CryptoKey | Uint8Array, message: string): Promise<AesGcmCipher> {
+export async function encryptAesGcm(
+  key: CryptoKey | Uint8Array,
+  message: string
+): Promise<CipherEncryptionResult> {
   if (typeof window !== "undefined") {
     const nonce = window.crypto.getRandomValues(new Uint8Array(12));
     const instance = await window.crypto.subtle.encrypt(
@@ -48,7 +48,10 @@ async function encryptAesGcm(key: CryptoKey | Uint8Array, message: string): Prom
  * @param key The key to use for decryption.
  * @param cipher The cipher to decrypt.
  */
-async function decryptAesGcm(key: CryptoKey | Uint8Array, cipher: AesGcmCipher): Promise<string> {
+export async function decryptAesGcm(
+  key: CryptoKey | Uint8Array,
+  cipher: CipherEncryptionResult
+): Promise<string> {
   if (typeof window !== "undefined") {
     const instance = await window.crypto.subtle.decrypt(
       {
@@ -69,6 +72,3 @@ async function decryptAesGcm(key: CryptoKey | Uint8Array, cipher: AesGcmCipher):
     return instance.update(encryptedText, undefined, "utf8") + instance.final("utf8");
   }
 }
-
-export { encryptAesGcm, decryptAesGcm };
-export type { AesGcmCipher };
