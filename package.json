@@ -7,12 +7,21 @@
     "bump:version": "node ./scripts/bump-version.js",
     "bump:dependencies": "npx npm-check-updates --deep -u",
     "dev": "turbo run dev",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,mdx}\""
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,mdx}\"",
+    "lint-staged": "lint-staged",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.2.0",
     "glob": "^10.3.3",
+    "husky": "^8.0.0",
+    "lint-staged": "^14.0.0",
     "prettier": "^3.0.1",
     "turbo": "^1.10.12"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx,mdx}": [
+      "prettier --write"
+    ]
   }
 }

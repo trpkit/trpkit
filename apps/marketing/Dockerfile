@@ -1,4 +1,6 @@
 FROM node:18-alpine AS base
+# Disable husky from running
+ENV HUSKY 0
 
 FROM base AS builder
 RUN apk add --no-cache libc6-compat
