@@ -1,0 +1,2 @@
+'type: ci':
+  - '.github/workflows/**'
