@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  marketing:
+    build:
+      context: .
+      dockerfile: apps/marketing/Dockerfile
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
