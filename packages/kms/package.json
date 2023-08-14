@@ -1,7 +1,9 @@
 {
   "name": "@trpkit/kms",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
+    "build": "tsc",
     "dev": "tsc -w"
   },
   "dependencies": {
