@@ -23,5 +23,6 @@
     "**/*.{js,jsx,ts,tsx,mdx}": [
       "prettier --write"
     ]
-  }
+  },
+  "packageManager": "pnpm@8.6.12"
 }
