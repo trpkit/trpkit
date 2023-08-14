@@ -1,5 +1,6 @@
 "type: ci":
   - .github/workflows/**
+  - .husky/**
 
 "type: docker":
   - "**/Dockerfile"
