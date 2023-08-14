@@ -1,0 +1,4 @@
+Contact: mailto:security@trpkit.com
+Expires: 2024-12-31T06:00:00.000Z
+Preferred-Languages: en
+Canonical: https://trpkit.com/.well-known/security.txt

@@ -1,0 +1,10 @@
+"type: ci":
+  - .github/workflows/**
+  - .husky/**
+
+"type: docker":
+  - "**/Dockerfile"
+  - "docker-compose.yml"
+
+"app: marketing":
+  - apps/marketing/**
