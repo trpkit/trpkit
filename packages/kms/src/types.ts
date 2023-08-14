@@ -20,4 +20,4 @@ export type ParsedKMSKey = {
 export type KMSKeyUsage = "encrypt" | "decrypt";
 
 // The algorithms supported by the KMS
-export type KMSAlgorithms = "aesgcm256" | "xchacha20poly1305";
+export type KMSAlgorithm = "aesgcm256" | "xchacha20poly1305";
