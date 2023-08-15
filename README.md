@@ -9,11 +9,11 @@
     <a href="https://trpkit.com">Learn more</a>
 </p>
 
+<img width="100%" alt="webapp" src="https://trpkit.com/features/webapp.png">
+
 ## About Trpkit
 
 [Trpkit](https://trpkit.com) is an open-source, privacy-first web analytics solution that's cookie-free and end-to-end encrypted. We're on a mission to tighten security, facilitate compliance in data handling, and enhance collaboration, all while ensuring you remain in complete control of your data.
-
-<img width="100%" alt="webapp" src="https://trpkit.com/features/webapp.png">
 
 ## Contributing
 
