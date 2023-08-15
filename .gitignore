@@ -4,3 +4,4 @@ dist
 .turbo
 .idea
 *.iml
+.contentlayer
