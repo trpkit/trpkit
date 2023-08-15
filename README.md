@@ -13,14 +13,22 @@
 
 [Trpkit](https://trpkit.com) is an open-source, privacy-first web analytics tool that's cookie-free and end-to-end encrypted. We're on a mission to tighten security, facilitate compliance in data handling, and enhance collaboration, all while ensuring you remain in complete control of your data.
 
-### Monorepo Structure
+## Contributing
 
-| Label        | Location      | Description                                                                                                                                         |
-|--------------|---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
-| Applications | `apps/`       | Official applications developed and supported by Trpkit LLC.                                                                                        |
-| Packages     | `packages/`   | Official packages developed and supported by Trpkit LLC.                                                                                            |
-| Incubators   | `incubators/` | Official applications and packages that are experimental, not mature enough, or lacking in some manner or release quality. They are provided as is. |
+Please see our [contributing guide](.github/CONTRIBUTING.md).
 
-### License
+### Good First Issues
+
+We have a list of [help wanted](https://github.com/trpkit/trpkit/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22) issues that contain small features and bugs which have a relatively limited scope. This is a great place to get started, gain experience, and get familiar with our contributions process.
+
+## Getting Started
+
+Before diving into the code, make sure you have the following prerequisites installed:
+
+1. Node.js: Trpkit requires Node.js version 18 or newer. You can download it from [Node.js official website](https://nodejs.org/).
+2. MongoDB: Ensure MongoDB is up and running. If you need to install it, refer to the [official MongoDB documentation](https://docs.mongodb.com/manual/installation/).
+3. pnpm: Trpkit uses pnpm for package management. If you need to install it, refer to the [official pnpm documentation](https://pnpm.io/installation).
+
+## License
 
 Trpkit is an open source software licensed under the [AGPL 3.0 license](LICENSE).
