@@ -8,3 +8,12 @@
 
 "app: marketing":
   - apps/marketing/**
+
+"app: web-client":
+  - apps/web-client/**
+
+"package: kms":
+  - packages/kms/**
+
+"package: storage":
+  - packages/storage/**
