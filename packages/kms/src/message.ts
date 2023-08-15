@@ -12,6 +12,14 @@ import {
   ParsedKMSKey,
 } from "./types";
 
+/**
+ * Formats a message
+ *
+ * @param algorithm The algorithm for the message
+ * @param fingerprint The fingerprint for the message
+ * @param nonce The nonce for the message
+ * @param cipher The cipher for the message
+ */
 export function formatMessage(
   algorithm: KMSAlgorithm,
   fingerprint: string,
@@ -21,6 +29,12 @@ export function formatMessage(
   return `kms/${algorithm}/${fingerprint}/${base64url.encode(nonce)}/${base64url.encode(cipher)}`;
 }
 
+/**
+ * Encrypts a message
+ *
+ * @param message The message to encrypt
+ * @param key The key to encrypt the message with
+ */
 export async function encryptMessage(
   message: string,
   key: KMSKey | ParsedKMSKey
@@ -38,6 +52,12 @@ export async function encryptMessage(
   }
 }
 
+/**
+ * Decrypts a message
+ *
+ * @param message The message to decrypt
+ * @param key The key to decrypt the message with
+ */
 export async function decryptMessage(
   message: KMSMessage,
   key: KMSKey | ParsedKMSKey
@@ -61,6 +81,11 @@ export async function decryptMessage(
     : decryptXChaCha20Poly1305(key.raw, { nonce, text: cipher });
 }
 
+/**
+ * Gets the fingerprint for a message
+ *
+ * @param message The message to get the fingerprint for
+ */
 export function getMessageFingerprint(message: KMSMessage): string {
   const match1 = message.match(KMSAesGcm256Message);
 
