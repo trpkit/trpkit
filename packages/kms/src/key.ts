@@ -70,7 +70,7 @@ export async function importKey(
     throw new Error("The key does not match the expected format");
   }
 
-  const raw = base64url.decode(match.groups.key);
+  const raw = base64url.decode(match.groups!.key);
 
   if (typeof window !== "undefined" && algorithm !== "xchacha20poly1305") {
     return await window.crypto.subtle.importKey(
