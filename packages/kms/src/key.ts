@@ -27,13 +27,12 @@ export function formatKey(raw: Uint8Array, algorithm: KMSAlgorithm): string {
  * @param algorithm The algorithm for the key
  * @param usage The usage for the key
  */
-export async function parseKey(
-  key: KMSKey,
-  algorithm: KMSAlgorithm,
-  usage?: KMSKeyUsage
-): Promise<ParsedKMSKey> {
+export async function parseKey(key: KMSKey, usage?: KMSKeyUsage): Promise<ParsedKMSKey> {
+  const algorithm = key.match(KMSAesGcm256Key) ? "aesgcm256" : "xchacha20poly1305";
+
   return {
     raw: await importKey(key, algorithm, usage),
+    algorithm: algorithm,
     fingerprint: await getKeyFingerprint(key),
   };
 }
