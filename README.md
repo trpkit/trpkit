@@ -25,9 +25,9 @@ We have a list of [help wanted](https://github.com/trpkit/trpkit/issues?q=is%3Ao
 
 Before diving into the code, make sure you have the following prerequisites installed:
 
-1. Node.js: Trpkit requires Node.js version 18 or newer. You can download it from [Node.js official website](https://nodejs.org/).
-2. MongoDB: Ensure MongoDB is up and running. If you need to install it, refer to the [official MongoDB documentation](https://docs.mongodb.com/manual/installation/).
-3. pnpm: Trpkit uses pnpm for package management. If you need to install it, refer to the [official pnpm documentation](https://pnpm.io/installation).
+1. **Node.js**: Trpkit requires Node.js version 18 or newer. You can download it from [Node.js official website](https://nodejs.org/).
+2. **MongoDB**: Ensure MongoDB is up and running. If you need to install it, refer to the [official MongoDB documentation](https://docs.mongodb.com/manual/installation/).
+3. **pnpm**: Trpkit uses pnpm for package management. If you need to install it, refer to the [official pnpm documentation](https://pnpm.io/installation).
 
 ## License
 
