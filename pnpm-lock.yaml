@@ -101,6 +101,24 @@ importers:
         specifier: ^5.1.6
         version: 5.1.6
 
+  packages/tracker-crypto:
+    dependencies:
+      '@scure/base':
+        specifier: ^1.1.1
+        version: 1.1.1
+      tweetnacl:
+        specifier: ^1.0.3
+        version: 1.0.3
+    devDependencies:
+      '@types/node':
+        specifier: ^20.4.10
+        version: 20.4.10
+      typescript:
+        specifier: ^5.1.6
+        version: 5.1.6
+
+  packages/tracker-script: {}
+
 packages:
 
   /@alloc/quick-lru@5.2.0:
@@ -1668,6 +1686,10 @@ packages:
 
   /@protobufjs/utf8@1.1.0:
     resolution: {integrity: sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==}
+    dev: false
+
+  /@scure/base@1.1.1:
+    resolution: {integrity: sha512-ZxOhsSyxYwLJj3pLZCefNitxsj093tb2vq90mp2txoYeBqbcjDjqFhyM8eUjq/uFm6zJ+mUuqxlS2FkuSY1MTA==}
     dev: false
 
   /@smithy/abort-controller@2.0.3:
@@ -5489,6 +5511,10 @@ packages:
       turbo-windows-64: 1.10.12
       turbo-windows-arm64: 1.10.12
     dev: true
+
+  /tweetnacl@1.0.3:
+    resolution: {integrity: sha512-6rt+RN7aOi1nGMyC4Xa5DdYiukl2UWCbcJft7YhxReBGQD7OAM8Pbxw6YMo4r2diNEA8FEmu32YOn9rhaiE5yw==}
+    dev: false
 
   /typanion@3.14.0:
     resolution: {integrity: sha512-ZW/lVMRabETuYCd9O9ZvMhAh8GslSqaUjxmK/JLPCh6l73CvLBiuXswj/+7LdnWOgYsQ130FqLzFz5aGT4I3Ug==}
