@@ -17,3 +17,7 @@
 
 "package: storage":
   - packages/storage/**
+
+"package: tracker":
+  - packages/tracker-crypto/**
+  - packages/tracker-script/**
