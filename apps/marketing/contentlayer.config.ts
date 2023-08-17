@@ -12,4 +12,20 @@ export const LegalDocument = defineDocumentType(() => ({
   },
 }));
 
-export default makeSource({ contentDirPath: "src/content", documentTypes: [LegalDocument] });
+export const BlogDocument = defineDocumentType(() => ({
+  name: "BlogDocument",
+  filePathPattern: `blog/**/*.mdx`,
+  contentType: "mdx",
+  fields: {
+    title: { type: "string", required: true },
+    date: { type: "date", required: true },
+  },
+  computedFields: {
+    href: { type: "string", resolve: (doc) => `/${doc._raw.flattenedPath}` },
+  },
+}));
+
+export default makeSource({
+  contentDirPath: "src/content",
+  documentTypes: [LegalDocument, BlogDocument],
+});
