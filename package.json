@@ -5,7 +5,7 @@
   "scripts": {
     "build": "turbo run build",
     "bump:version": "node ./scripts/bump-version.js",
-    "bump:dependencies": "npx npm-check-updates --deep -u",
+    "bump:dependencies": "npx npm-check-updates --deep -u && pnpm i",
     "dev": "turbo run dev",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,mdx}\"",
     "lint-staged": "lint-staged",
