@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import { Inter } from "next/font/google";
 import React from "react";
 
+import Footer from "../components/Footer";
+import Header from "../components/Header";
 import "../styles/globals.css";
 
 const inter = Inter({
@@ -29,7 +31,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={inter.variable}>
-      <body className="bg-slate-900">{children}</body>
+      <body className="bg-slate-900">
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
