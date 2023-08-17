@@ -1,8 +1,7 @@
 "use client";
 
+import useSmoothScrollTo from "@hooks/useSmoothScrollTo";
 import React, { useState } from "react";
-
-import useSmoothScrollTo from "../hooks/useSmoothScrollTo";
 
 export default function Waitlist() {
   const [submitted, setSubmitted] = useState<boolean>(false);
