@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Footer() {
   return (
     <footer>
@@ -19,6 +21,22 @@ export default function Footer() {
               </div>
               <div className="mt-10 md:mt-0">
                 <h3 className="text-sm font-semibold leading-6 text-white">Legal</h3>
+                <ul role="list" className="mt-6 space-y-4">
+                  <li>
+                    <Link
+                      href="/legal/terms"
+                      className="text-sm leading-6 text-gray-300 hover:text-white">
+                      Terms of Service
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/legal/privacy"
+                      className="text-sm leading-6 text-gray-300 hover:text-white">
+                      Privacy Policy
+                    </Link>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
