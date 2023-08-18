@@ -7,7 +7,7 @@ services:
       context: .
       dockerfile: apps/marketing/Dockerfile
     ports:
-      - "3000:3000"
+      - "3002:3000"
     profiles:
       - fullstack
       - production
