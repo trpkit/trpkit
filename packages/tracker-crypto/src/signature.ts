@@ -1,7 +1,7 @@
-import { base64url } from "@scure/base";
+import { base64url, utf8 } from "@scure/base";
 import { sign } from "tweetnacl";
 
-import { NaclSignatureKey, parse, utf8Decode, utf8Encode } from "./common";
+import { NaclSignatureKey, parse } from "./common";
 
 /**
  * Formatted key with the public base64 encoded from the key pair.
@@ -62,7 +62,7 @@ export function importSignatureKeyPair(secretKey: string): NaclSignatureKey {
  * @param secretKey - The secret key to use.
  */
 export function makeSignature(input: string, secretKey: Uint8Array): string {
-  const signature = sign(utf8Encode(input), secretKey);
+  const signature = sign(utf8.decode(input), secretKey);
   return `trpkit.naclsignature.${base64url.encode(signature)}`;
 }
 
@@ -85,5 +85,5 @@ export function verifySignature(input: string, publicKey: Uint8Array): string {
     throw new Error("invalid input");
   }
 
-  return utf8Decode(signature);
+  return utf8.encode(signature);
 }

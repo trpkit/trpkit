@@ -1,7 +1,7 @@
-import { base64url } from "@scure/base";
+import { base64url, utf8 } from "@scure/base";
 import { box, randomBytes } from "tweetnacl";
 
-import { NaclBoxKey, parse, utf8Decode, utf8Encode } from "./common";
+import { NaclBoxKey, parse } from "./common";
 
 /**
  * Formatted key with the public base64 encoded from the key pair.
@@ -65,7 +65,7 @@ export function importBoxKeyPair(secretKey: string): NaclBoxKey {
 export function boxEncrypt(input: string, publicKey: Uint8Array): string {
   const nonce = randomBytes(box.nonceLength);
   const keyPair = box.keyPair();
-  const ciphertext = box(utf8Encode(input), nonce, publicKey, keyPair.secretKey);
+  const ciphertext = box(utf8.decode(input), nonce, publicKey, keyPair.secretKey);
 
   return `trpkit.naclbox.${base64url.encode(publicKey)}.${base64url.encode(
     nonce
@@ -96,5 +96,5 @@ export function boxDecrypt(input: string, secretKey: Uint8Array): string {
     throw new Error("invalid input");
   }
 
-  return utf8Decode(message);
+  return utf8.encode(message);
 }
