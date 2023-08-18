@@ -29,6 +29,15 @@ importers:
 
   apps/api:
     dependencies:
+      '@aws-sdk/client-s3':
+        specifier: ^3.391.0
+        version: 3.391.0
+      '@trpkit/storage':
+        specifier: workspace:*
+        version: link:../../packages/storage
+      mongodb:
+        specifier: ^5.7.0
+        version: 5.7.0
       next:
         specifier: ^13.4.16
         version: 13.4.16(@opentelemetry/api@1.4.1)(react-dom@18.2.0)(react@18.2.0)
