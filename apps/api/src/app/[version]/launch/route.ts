@@ -1,11 +1,12 @@
+import { base64url, utf8 } from "@scure/base";
 import { NextRequest, NextResponse } from "next/server";
 
 import { mongo } from "@trpkit/storage";
 
 // Specifying a version in this route is not necessary since its temporary and will be removed at launch
 export async function POST(request: NextRequest) {
-  // Get email address from search parameter (e.g. ?email=john.doe@example.com)
-  const email = request.nextUrl.searchParams.get("email");
+  // Get email address from search parameter and decode it from base64url (e.g. ?email=am9obi5kb2VAZXhhbXBsZS5jb20= -> john.doe@example.com)
+  const email = utf8.encode(base64url.decode(request.nextUrl.searchParams.get("email")));
 
   // Error response from no email address
   if (!email) {
