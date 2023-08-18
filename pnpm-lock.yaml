@@ -38,6 +38,9 @@ importers:
       '@trpkit/storage':
         specifier: workspace:*
         version: link:../../packages/storage
+      '@trpkit/tracker-crypto':
+        specifier: workspace:*
+        version: link:../../packages/tracker-crypto
       mongodb:
         specifier: ^5.7.0
         version: 5.7.0

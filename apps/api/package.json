@@ -11,6 +11,7 @@
     "@aws-sdk/client-s3": "^3.391.0",
     "@scure/base": "^1.1.1",
     "@trpkit/storage": "workspace:*",
+    "@trpkit/tracker-crypto": "workspace:*",
     "mongodb": "^5.7.0",
     "next": "^13.4.16",
     "react": "^18.2.0",
