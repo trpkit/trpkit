@@ -1,10 +1,35 @@
 version: '3.8'
 
 services:
+  # Trpkit applications (mainly used for qa and production)
   marketing:
     build:
       context: .
       dockerfile: apps/marketing/Dockerfile
-    restart: unless-stopped
     ports:
       - "3000:3000"
+    profiles:
+      - fullstack
+      - production
+
+  # Third-party applications (mainly used for dev)
+  mongodb:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: trpkit
+      MONGO_INITDB_ROOT_PASSWORD: password
+    ports:
+      - "27017:27017"
+    profiles:
+      - dev
+      - fullstack
+
+  inbucket:
+    image: inbucket/inbucket:latest
+    ports:
+      - "9000:9000"
+      - "2500:2500"
+      - "1100:1100"
+    profiles:
+      - dev
+      - fullstack
