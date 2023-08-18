@@ -33,5 +33,7 @@ export async function POST(request: NextRequest) {
     );
 
   // Return a created status code
-  return NextResponse.next({ status: 201 });
+  return new Response(null, {
+    status: 201,
+  });
 }
