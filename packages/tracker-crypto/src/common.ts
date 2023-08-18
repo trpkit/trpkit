@@ -1,9 +1,6 @@
 import { base64url } from "@scure/base";
 import { BoxKeyPair, SignKeyPair } from "tweetnacl";
 
-const encoder = new TextEncoder();
-const decoder = new TextDecoder();
-
 /**
  * @param public - Formatted key with the public base64 encoded from the key pair.
  * @param secret - Formatted key with the secret base64 encoded from the key pair.
@@ -38,18 +35,4 @@ export function parse(input: string, regex: RegExp): Uint8Array {
   }
 
   return base64url.decode(input);
-}
-
-/**
- * @param input - The input string to encode.
- */
-export function utf8Encode(input: string): Uint8Array {
-  return encoder.encode(input);
-}
-
-/**
- * @param input - The input buffer to decode.
- */
-export function utf8Decode(input: Uint8Array): string {
-  return decoder.decode(input);
 }
