@@ -22,6 +22,16 @@ services:
       - fullstack
       - production
 
+  urlshortener:
+    build:
+      context: .
+      dockerfile: apps/trpk.it/Dockerfile
+    ports:
+      - "8888:8888"
+    profiles:
+      - fullstack
+      - production
+
   # Third-party applications (mainly used for dev)
   mongodb:
     image: mongo:latest

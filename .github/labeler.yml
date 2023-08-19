@@ -15,6 +15,9 @@
 "app: web-client":
   - apps/web-client/**
 
+"app: url-shortener":
+  - apps/trpk.it/**
+
 "package: kms":
   - packages/kms/**
 
