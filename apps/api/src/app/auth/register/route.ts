@@ -63,7 +63,22 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  // TODO: Insert into database
+  // Insert into database
+  await db.collection("users").insertOne({
+    firstName: body.firstName,
+    lastName: body.lastName,
+    email: body.email,
+    credentials: [...body.credentials],
+    kms: {
+      salt: body.kms.salt,
+      recovery: body.kms.recovery,
+      keychain: body.kms.keychain,
+    },
+    keychain: {
+      signature: body.keychain.signature,
+      sharing: body.keychain.sharing,
+    },
+  });
 
   // TODO: Send welcome email
   //  We could probably personalize this and use Nick or Tyler's email to send it from instead of a generic noreply or
