@@ -34,6 +34,7 @@ export async function POST(request: NextRequest) {
   }
 
   // Grab user document
+  // TODO: Create a type for this document (preferably with zod)
   const user = await db.collection("users").findOne({ email: body.email });
 
   // Find srp credentials
