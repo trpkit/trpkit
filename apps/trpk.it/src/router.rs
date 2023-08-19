@@ -55,7 +55,7 @@ pub async fn shorten(
     let id = loop {
         let id: String = rand::thread_rng()
             .sample_iter(&rand::distributions::Alphanumeric)
-            .take(3)
+            .take(6)
             .map(char::from)
             .collect();
 
