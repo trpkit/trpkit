@@ -36,7 +36,19 @@ interface KeychainObject {
 export async function POST(request: NextRequest) {
   const body = (await request.json()) as IncomingBodyRequest;
 
-  // Handle registration
+  // TODO: Validate email address
+
+  // TODO: Validate all necessary fields (credentials, kms, keychain)
+  // We're not worried about the first and last name at the moment. The onboarding flow beta will be slightly different
+  // from our first release.
+
+  // TODO: Insert into database
+
+  // TODO: Send welcome email
+
+  // TODO: Create JWT token and send back to user
+  // You will automatically be logged in after registration instead of having to go and sign in after registration. Lets
+  // provide a seamless flow.
 
   return new Response(null, {
     status: 201,
