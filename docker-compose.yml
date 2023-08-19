@@ -2,6 +2,16 @@ version: '3.8'
 
 services:
   # Trpkit applications (mainly used for qa and production)
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    ports:
+      - "3001:3000"
+    profiles:
+      - fullstack
+      - production
+
   marketing:
     build:
       context: .
