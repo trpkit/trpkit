@@ -1,5 +1,6 @@
 import { NextRequest } from "next/server";
 
+// TODO: Probably should look into using zod for types
 interface IncomingBodyRequest {
   firstName: string;
   lastName: string;
@@ -10,8 +11,11 @@ interface IncomingBodyRequest {
 }
 
 interface IncomingBodyCredentialsRequest {
+  type: CredentialsType;
   [key: string]: string;
 }
+
+type CredentialsType = "SRP";
 
 interface IncomingBodyKMSRequest {
   salt: string;
@@ -20,11 +24,11 @@ interface IncomingBodyKMSRequest {
 }
 
 interface IncomingBodyKeychainRequest {
-  signature: IncomingBodyKeychainObject;
-  sharing: IncomingBodyKeychainObject;
+  signature: KeychainObject;
+  sharing: KeychainObject;
 }
 
-interface IncomingBodyKeychainObject {
+interface KeychainObject {
   secret: string;
   public: string;
 }
