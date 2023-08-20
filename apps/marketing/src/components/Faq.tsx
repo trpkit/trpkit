@@ -12,7 +12,7 @@ const faqs = [
   {
     question: "Will Trpkit be open source?",
     answer:
-      "Yes, to an extent! We will be releasing our analytics tracker, web client and related components to our GitHub soon. Additionally, we will be publishing Trpkit's design and security processes in a whitepaper.",
+      "Yes, Trpkit is completely open source and can be found on <a href='https://github.com/trpkit/trpkit' target='_blank' class='text-blue-500 hover:text-blue-400'>GitHub</a>! Additionally, we will be publishing Trpkit's design and security processes in a whitepaper.",
   },
   {
     question: "How much will Trpkit cost at open beta/market release?",
@@ -62,7 +62,10 @@ export default function Faq() {
                       </Disclosure.Button>
                     </dt>
                     <Disclosure.Panel as="dd" className="mt-2 pr-12">
-                      <p className="text-base leading-7 text-gray-300">{faq.answer}</p>
+                      <p
+                        className="text-base leading-7 text-gray-300"
+                        dangerouslySetInnerHTML={{ __html: faq.answer }}
+                      />
                     </Disclosure.Panel>
                   </>
                 )}
