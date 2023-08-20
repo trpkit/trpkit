@@ -106,6 +106,9 @@ importers:
       '@tailwindcss/typography':
         specifier: ^0.5.9
         version: 0.5.9(tailwindcss@3.3.3)
+      '@trpkit/config':
+        specifier: workspace:*
+        version: link:../../packages/config
       '@types/node':
         specifier: ^20.5.0
         version: 20.5.0
@@ -130,6 +133,18 @@ importers:
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
+
+  packages/config:
+    devDependencies:
+      '@tailwindcss/forms':
+        specifier: ^0.5.4
+        version: 0.5.4(tailwindcss@3.3.3)
+      '@tailwindcss/typography':
+        specifier: ^0.5.9
+        version: 0.5.9(tailwindcss@3.3.3)
+      tailwindcss:
+        specifier: ^3.3.3
+        version: 3.3.3
 
   packages/storage:
     dependencies:
