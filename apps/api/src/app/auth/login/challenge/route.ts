@@ -42,15 +42,25 @@ export async function POST(request: NextRequest) {
   const srpCredentials = user.credentials.find((c: any) => c.type === "srp");
 
   // Generate server ephemeral
-  const serverEphemeral = generateEphemeral(body.clientEphemeral);
+  const serverEphemeral = generateEphemeral(srpCredentials.verifier);
 
-  // Store server ephemeral secret in database for later use
+  // Store server ephemeral secret and public in database for later use
   // This collection has an TTL index to automatically delete sessions after 7d
   await db.collection("user_sessions").insertOne({
     email: body.email,
-    ephemeral: {
-      secret: serverEphemeral.secret,
-      public: serverEphemeral.public,
+    client: {
+      ephemeral: body.clientEphemeral,
+      session: null,
+    },
+    server: {
+      ephemeral: {
+        secret: serverEphemeral.secret,
+        public: serverEphemeral.public,
+      },
+      session: {
+        key: null,
+        proof: null,
+      },
     },
     createdAt: new Date(),
     updatedAt: null,
