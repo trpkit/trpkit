@@ -18,6 +18,10 @@
 "app: url-shortener":
   - apps/trpk.it/**
 
+"package: config":
+  - packages/config/**
+  - packages/ts-config/**
+
 "package: kms":
   - packages/kms/**
 
