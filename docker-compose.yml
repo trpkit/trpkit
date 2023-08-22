@@ -22,6 +22,16 @@ services:
       - fullstack
       - production
 
+  webclient:
+    build:
+      context: .
+      dockerfile: apps/web-client/Dockerfile
+    ports:
+      - "3000:3000"
+    profiles:
+      - fullstack
+      - production
+
   urlshortener:
     build:
       context: .

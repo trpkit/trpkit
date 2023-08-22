@@ -11,12 +11,14 @@
     "@headlessui/react": "^1.7.16",
     "@heroicons/react": "^2.0.18",
     "next": "^13.4.16",
+    "next-themes": "^0.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.4",
     "@tailwindcss/typography": "^0.5.9",
+    "@trpkit/config": "workspace:*",
     "@types/node": "^20.5.0",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
