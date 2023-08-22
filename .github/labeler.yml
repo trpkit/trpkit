@@ -6,11 +6,21 @@
   - "**/Dockerfile"
   - "docker-compose.yml"
 
+"app: api":
+  - apps/api/**
+
 "app: marketing":
   - apps/marketing/**
 
 "app: web-client":
   - apps/web-client/**
+
+"app: url-shortener":
+  - apps/trpk.it/**
+
+"package: config":
+  - packages/config/**
+  - packages/ts-config/**
 
 "package: kms":
   - packages/kms/**

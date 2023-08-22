@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "dev": "next",
+    "dev": "next -p 3002",
     "start": "next start"
   },
   "dependencies": {
@@ -13,6 +13,7 @@
     "contentlayer": "^0.3.4",
     "next": "^13.4.16",
     "next-contentlayer": "^0.3.4",
+    "next-themes": "^0.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sharp": "^0.32.5"
@@ -20,6 +21,7 @@
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.4",
     "@tailwindcss/typography": "^0.5.9",
+    "@trpkit/config": "workspace:*",
     "@types/node": "^20.5.0",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",

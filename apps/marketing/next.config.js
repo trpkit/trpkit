@@ -9,6 +9,7 @@ plugins.push(withContentlayer);
 const config = {
   reactStrictMode: true,
   output: "standalone",
+  transpilePackages: ["@trpkit/config"],
 };
 
 module.exports = () => plugins.reduce((acc, next) => next(acc), config);
