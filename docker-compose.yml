@@ -41,7 +41,7 @@ services:
     ports:
       - "27017:27017"
     profiles:
-      - dev
+      - development
       - fullstack
 
   inbucket:
@@ -51,5 +51,5 @@ services:
       - "2500:2500"
       - "1100:1100"
     profiles:
-      - dev
+      - development
       - fullstack
