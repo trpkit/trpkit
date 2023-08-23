@@ -16,7 +16,7 @@
   - apps/web-client/**
 
 "app: url-shortener":
-  - apps/trpk.it/**
+  - apps/url-shortener/**
 
 "package: config":
   - packages/config/**

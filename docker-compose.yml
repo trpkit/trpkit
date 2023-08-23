@@ -25,7 +25,7 @@ services:
   urlshortener:
     build:
       context: .
-      dockerfile: apps/trpk.it/Dockerfile
+      dockerfile: apps/url-shortener/Dockerfile
     ports:
       - "8888:8888"
     profiles:
