@@ -5,7 +5,7 @@ import { useMDXComponent } from "next-contentlayer/hooks";
 import { notFound } from "next/navigation";
 
 export default function Page({ params }: { params: { post: string } }) {
-  const doc = allBlogDocuments.find((doc) => (doc.href = params.post));
+  const doc = allBlogDocuments.find((doc) => doc.href === params.post);
 
   if (!doc) {
     return notFound();
