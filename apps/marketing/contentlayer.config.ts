@@ -9,7 +9,7 @@ export const LegalDocument = defineDocumentType(() => ({
     effectiveDate: { type: "date", required: true },
   },
   computedFields: {
-    href: { type: "string", resolve: (doc) => `/${doc._raw.flattenedPath}` },
+    href: { type: "string", resolve: (doc) => doc._raw.flattenedPath },
   },
 }));
 
@@ -23,7 +23,7 @@ export const BlogDocument = defineDocumentType(() => ({
     author: { type: "string", required: true },
   },
   computedFields: {
-    href: { type: "string", resolve: (doc) => `/${doc._raw.flattenedPath}` },
+    href: { type: "string", resolve: (doc) => doc._raw.flattenedPath },
   },
 }));
 
