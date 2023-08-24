@@ -9,6 +9,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: "https://trpkit.com",
       lastModified,
     },
+    {
+      url: "https://trpkit.com/blog",
+      lastModified,
+    },
     ...allBlogDocuments.map((doc) => ({
       url: `https://trpkit.com/${doc._raw.flattenedPath}`,
       lastModified,
