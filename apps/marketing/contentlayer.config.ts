@@ -22,10 +22,10 @@ export const BlogDocument = defineDocumentType(() => ({
     author: { type: "string", required: true },
     authorImage: { type: "string", required: true },
     authorRole: { type: "string", required: true },
-    description: { type: "string", required: true },
+    summary: { type: "string", required: true },
   },
   computedFields: {
-    href: { type: "string", resolve: (doc) => `/${doc._raw.flattenedPath}` },
+    href: { type: "string", resolve: (doc) => doc._raw.flattenedPath },
   },
 }));
 

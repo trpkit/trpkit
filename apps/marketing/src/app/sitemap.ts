@@ -14,7 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
     },
     ...allBlogDocuments.map((doc) => ({
-      url: `https://trpkit.com/${doc._raw.flattenedPath}`,
+      url: `https://trpkit.com/${doc.href}`,
       lastModified,
     })),
     ...allLegalDocuments.map((doc) => ({
