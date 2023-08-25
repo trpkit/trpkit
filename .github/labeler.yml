@@ -6,5 +6,28 @@
   - "**/Dockerfile"
   - "docker-compose.yml"
 
+"app: api":
+  - apps/api/**
+
 "app: marketing":
   - apps/marketing/**
+
+"app: web-client":
+  - apps/web-client/**
+
+"app: url-shortener":
+  - apps/url-shortener/**
+
+"package: config":
+  - packages/config/**
+  - packages/tsconfig/**
+
+"package: kms":
+  - packages/kms/**
+
+"package: storage":
+  - packages/storage/**
+
+"package: tracker":
+  - packages/tracker-crypto/**
+  - packages/tracker-script/**

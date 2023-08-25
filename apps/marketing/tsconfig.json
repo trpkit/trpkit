@@ -24,6 +24,9 @@
     ],
     "baseUrl": ".",
     "paths": {
+      "@components/*": ["src/components/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@styles/*": ["src/styles/*"],
       "contentlayer/generated": ["./.contentlayer/generated"]
     }
   },

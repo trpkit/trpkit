@@ -5,3 +5,6 @@ dist
 .idea
 *.iml
 .contentlayer
+.env*
+!.env.example
+target
