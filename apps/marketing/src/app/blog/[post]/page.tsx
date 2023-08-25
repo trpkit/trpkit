@@ -1,5 +1,5 @@
-import BlogArticle from "@components/BlogArticle";
-import { formatDate } from "@lib/format-date";
+import BlogArticle from "@components/blog/BlogArticle";
+import BlogArticleHeader from "@components/blog/BlogArticleHeader";
 import { allBlogDocuments } from "contentlayer/generated";
 import { Metadata } from "next";
 import { useMDXComponent } from "next-contentlayer/hooks";
@@ -45,21 +45,12 @@ export default function Page({ params }: { params: { post: string } }) {
 
   return (
     <BlogArticle>
-      <header className="mx-auto flex max-w-5xl flex-col text-center">
-        <h1 className="font-display text-5xl font-medium tracking-tight text-white sm:text-6xl mb-2">
-          {doc.title}
-        </h1>
-        <p className="text-sm text-neutral-400">
-          Published by{" "}
-          <span className="font-semibold">
-            {doc.author} ({doc.authorRole})
-          </span>{" "}
-          on{" "}
-          <time dateTime={doc.date} className="font-semibold">
-            {formatDate(doc.date)}
-          </time>
-        </p>
-      </header>
+      <BlogArticleHeader
+        title={doc.title}
+        author={doc.author}
+        authorRole={doc.authorRole}
+        date={doc.date}
+      />
       <MDXContent />
     </BlogArticle>
   );
