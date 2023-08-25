@@ -1,7 +1,12 @@
 import { formatDate } from "@lib/format-date";
 import { allBlogDocuments } from "contentlayer/generated";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Blog",
+};
 
 export default function Page() {
   return (
