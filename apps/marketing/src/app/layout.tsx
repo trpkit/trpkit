@@ -14,7 +14,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "https://trpkit.com"),
   title: {
     default: "Privacy-first and cookie-free web analytics platform — Trpkit",
     template: "%s — Trpkit",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     title: "Privacy-first and cookie-free web analytics platform — Trpkit",
     description:
       "A privacy-first, cookie-free and end-to-end encrypted alternative to Google Analytics.",
-    url: process.env.NEXT_PUBLIC_BASE_URL,
+    url: process.env.NEXT_PUBLIC_BASE_URL || "https://trpkit.com",
     siteName: "Trpkit",
     locale: "en_US",
     type: "website",

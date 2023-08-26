@@ -16,7 +16,9 @@ export async function GET(request: NextRequest) {
           flexDirection: "column",
           alignItems: "flex-start",
           justifyContent: "center",
-          backgroundImage: `url(${process.env.NEXT_PUBLIC_BASE_URL}/og/${illustration}.jpg)`,
+          backgroundImage: `url(${
+            process.env.NEXT_PUBLIC_BASE_URL || "https://trpkit.com"
+          }/og/${illustration}.jpg)`,
         }}>
         <div
           style={{
