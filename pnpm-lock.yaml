@@ -149,6 +149,22 @@ importers:
         specifier: ^3.3.3
         version: 3.3.3
 
+  packages/kms:
+    dependencies:
+      '@noble/ciphers':
+        specifier: ^0.2.0
+        version: 0.2.0
+      '@scure/base':
+        specifier: ^1.1.1
+        version: 1.1.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.4.10
+        version: 20.5.0
+      typescript:
+        specifier: ^5.1.6
+        version: 5.1.6
+
   packages/storage:
     dependencies:
       '@aws-sdk/client-s3':
@@ -1504,6 +1520,10 @@ packages:
     requiresBuild: true
     dev: false
     optional: true
+
+  /@noble/ciphers@0.2.0:
+    resolution: {integrity: sha512-6YBxJDAapHSdd3bLDv6x2wRPwq4QFMUaB3HvljNBUTThDd12eSm7/3F+2lnfzx2jvM+S6Nsy0jEt9QbPqSwqRw==}
+    dev: false
 
   /@nodelib/fs.scandir@2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}

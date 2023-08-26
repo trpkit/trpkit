@@ -1,0 +1,22 @@
+{
+  "name": "@trpkit/kms",
+  "version": "0.0.1",
+  "private": true,
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc -w"
+  },
+  "dependencies": {
+    "@noble/ciphers": "^0.2.0",
+    "@scure/base": "^1.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.4.10",
+    "typescript": "^5.1.6"
+  }
+}
