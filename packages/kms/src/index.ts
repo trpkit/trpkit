@@ -10,6 +10,12 @@ export {
 } from "./key";
 
 export {
+  create as keychainCreate,
+  inject as keychainInject,
+  dump as keychainDump,
+} from "./keychain";
+
+export {
   serialize as messageSerialize,
   encrypt as messageEncrypt,
   decrypt as messageDecrypt,
@@ -23,6 +29,10 @@ export type {
   KMSKey,
   KMSParsedKey,
   KMSKeyUsage,
+  KMSBaseKeychainEntry,
+  KMSKeychainEntry,
+  KMSSerializedKeychainEntry,
+  KMSKeychain,
 } from "./types";
 
 export { KMSMessageRegex, KMSKeyRegex, KMSKeyFingerprintLength, KMSKeyLength } from "./types";
