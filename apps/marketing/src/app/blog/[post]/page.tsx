@@ -10,7 +10,7 @@ export async function generateMetadata({
 }: {
   params: { post: string };
 }): Promise<Metadata | undefined> {
-  const doc = allBlogDocuments.find((doc) => `blog/${params.post}`);
+  const doc = allBlogDocuments.find((doc) => doc.href === `blog/${params.post}`);
 
   if (!doc) {
     return;
