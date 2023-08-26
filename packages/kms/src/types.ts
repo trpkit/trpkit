@@ -1,32 +1,36 @@
-export type CipherEncryptionResult = {
-  nonce: Uint8Array;
+// The algorithm key can be a CryptoKey or a Uint8Array
+export type AlgorithmKey = CryptoKey | Uint8Array;
+
+// The algorithm cipher contains the encrypted text and the nonce
+export type AlgorithmCipher = {
   text: Uint8Array;
+  nonce: Uint8Array;
 };
 
-// Regex for verifying KMS keys
-export const KMSAesGcm256Key = /^kms\/aesgcm256\/(?<key>[a-zA-Z0-9-_]{43}=?)$/;
-export const KMSXChaCha20Poly1305Key = /^kms\/xchacha20poly1305\/(?<key>[a-zA-Z0-9-_]{43}=?)$/;
+// The KMS message is a string that contains the fingerprint, nonce and ciphertext
+export type KMSMessage = string;
 
-// Regex for verifying KMS messages
-export const KMSAesGcm256Message =
-  /^kms\/aesgcm256\/(?<fingerprint>[0-9a-fA-F]{8})\/(?<nonce>[a-zA-Z0-9-_]{16})\/(?<cipher>[a-zA-Z0-9-_]{22,})={0,2}$/;
-export const KMSXChaCha20Poly1305Message = /^/; // todo fill me out
+// The KMS message regex is used to parse the KMS message
+export const KMSMessageRegex =
+  /^kms\/(?<fingerprint>[0-9a-fA-F]{8})\/(?<nonce>[a-zA-Z0-9-_]{16})\/(?<ciphertext>[a-zA-Z0-9-_]{22,})={0,2}$/;
 
-// The formatted key
+// The KMS key is a string that contains the key
 export type KMSKey = string;
 
-// The parsed key, which is the raw key and the fingerprint
-export type ParsedKMSKey = {
-  raw: CryptoKey | Uint8Array;
-  algorithm: KMSAlgorithm;
+// The serialized KMS key is an object that contains the raw key and the fingerprint
+export type SerializedKMSKey = {
+  raw: AlgorithmKey;
   fingerprint: string;
 };
 
-// The usage for the KMS key
+// The KMS key usage is the usage of the key
 export type KMSKeyUsage = "encrypt" | "decrypt";
 
-// The algorithms supported by the KMS
-export type KMSAlgorithm = "aesgcm256" | "xchacha20poly1305";
+// The KMS key regex is used to parse the KMS key
+export const KMSKeyRegex = /^kms\/(?<key>[a-zA-Z0-9-_]{43}=?)$/;
 
-// The formatted encrypted message
-export type KMSMessage = string;
+// The KMS key fingerprint length is the length of the fingerprint
+export const KMSKeyFingerprintLength = 8;
+
+// The KMS key length is the length of the key
+export const KMSKeyLength = 32;

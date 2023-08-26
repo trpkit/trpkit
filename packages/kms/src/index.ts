@@ -1,17 +1,28 @@
-export type {
-  CipherEncryptionResult,
-  KMSKey,
-  ParsedKMSKey,
-  KMSKeyUsage,
-  KMSAlgorithm,
-} from "./types";
+export { encrypt as aesEncrypt, decrypt as aesDecrypt } from "./algorithm";
+
 export {
-  KMSAesGcm256Key,
-  KMSXChaCha20Poly1305Key,
-  KMSAesGcm256Message,
-  KMSXChaCha20Poly1305Message,
+  serialize as keySerialize,
+  parse as keyParse,
+  generate as keyGenerate,
+  inject as keyInject,
+  dump as keyDump,
+  fingerprint as keyFingerprint,
+} from "./key";
+
+export {
+  serialize as messageSerialize,
+  encrypt as messageEncrypt,
+  decrypt as messageDecrypt,
+  fingerprint as messageFingerprint,
+} from "./message";
+
+export type {
+  AlgorithmKey,
+  AlgorithmCipher,
+  KMSMessage,
+  KMSKey,
+  SerializedKMSKey,
+  KMSKeyUsage,
 } from "./types";
 
-export { formatKey, parseKey, generateKey, importKey, exportKey, getKeyFingerprint } from "./key";
-
-export { formatMessage, encryptMessage, decryptMessage, getMessageFingerprint } from "./message";
+export { KMSMessageRegex, KMSKeyRegex, KMSKeyFingerprintLength, KMSKeyLength } from "./types";

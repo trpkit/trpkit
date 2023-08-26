@@ -1,84 +1,70 @@
-import { base64url, hex, utf8 } from "@scure/base";
+import { base64, hex, utf8 } from "@scure/base";
 import { createHash, randomBytes } from "crypto";
 
 import {
-  KMSAesGcm256Key,
-  KMSAlgorithm,
+  AlgorithmKey,
   KMSKey,
+  KMSKeyFingerprintLength,
+  KMSKeyLength,
+  KMSKeyRegex,
   KMSKeyUsage,
-  KMSXChaCha20Poly1305Key,
-  ParsedKMSKey,
+  SerializedKMSKey,
 } from "./types";
 
 /**
- * Formats a key
+ * Serialize a raw key to a KMS key
  *
- * @param raw The raw key to format
- * @param algorithm The algorithm for the key
+ * @param raw Raw key
  */
-export function formatKey(raw: Uint8Array, algorithm: KMSAlgorithm): string {
-  return `kms/${algorithm}/${base64url.encode(raw)}`;
+export function serialize(raw: Uint8Array) {
+  return `kms/${base64.encode(raw)}`;
 }
 
 /**
- * Parses a key
+ * Parse a KMS key to a raw key
  *
- * @param key The key to parse
- * @param algorithm The algorithm for the key
- * @param usage The usage for the key
+ * @param key KMS key
+ * @param usage Key usage
  */
-export async function parseKey(key: KMSKey, usage?: KMSKeyUsage): Promise<ParsedKMSKey> {
-  const algorithm = key.match(KMSAesGcm256Key) ? "aesgcm256" : "xchacha20poly1305";
-
+export async function parse(key: KMSKey, usage?: KMSKeyUsage): Promise<SerializedKMSKey> {
   return {
-    raw: await importKey(key, algorithm, usage),
-    algorithm: algorithm,
-    fingerprint: await getKeyFingerprint(key),
+    raw: await inject(key, usage),
+    fingerprint: await fingerprint(key),
   };
 }
 
 /**
- * Generates a new key
- *
- * @param algorithm The algorithm for the key
+ * Generate a new KMS key
  */
-export function generateKey(algorithm: KMSAlgorithm = "aesgcm256"): KMSKey {
+export function generate(): KMSKey {
   if (typeof window !== "undefined") {
-    const key = window.crypto.getRandomValues(new Uint8Array(32));
-    return formatKey(key, algorithm);
+    const key = window.crypto.getRandomValues(new Uint8Array(KMSKeyLength));
+    return serialize(key);
   } else {
-    const key = randomBytes(32);
-    return formatKey(key, algorithm);
+    const key = randomBytes(KMSKeyLength);
+    return serialize(key);
   }
 }
 
 /**
- * Imports a key
+ * Inject a KMS key
  *
- * @param key The key to import
- * @param algorithm The algorithm for the key
- * @param usage The usage for the key
+ * @param key KMS key
+ * @param usage Key usage
  */
-export async function importKey(
-  key: KMSKey,
-  algorithm: KMSAlgorithm,
-  usage?: KMSKeyUsage
-): Promise<CryptoKey | Uint8Array> {
-  const match = key.match(algorithm === "aesgcm256" ? KMSAesGcm256Key : KMSXChaCha20Poly1305Key);
+export async function inject(key: KMSKey, usage?: KMSKeyUsage): Promise<AlgorithmKey> {
+  const match = key.match(KMSKeyRegex);
   if (!match) {
-    throw new Error("The key does not match the expected format");
+    throw new Error("Invalid KMS key");
   }
 
-  const raw = base64url.decode(match.groups!.key);
+  const raw = base64.decode(match.groups!.key);
 
-  if (typeof window !== "undefined" && algorithm !== "xchacha20poly1305") {
+  if (typeof window !== "undefined") {
     return await window.crypto.subtle.importKey(
       "raw",
       raw,
-      {
-        name: "AES-GCM",
-        length: 256,
-      },
+      { name: "AES-GCM", length: 256 },
       true,
       usage ? [usage] : ["encrypt", "decrypt"]
     );
@@ -88,34 +74,29 @@ export async function importKey(
 }
 
 /**
- * Exports a key
+ * Dump a CryptoKey to a KMS key
  *
- * @param key The key to export
- * @param algorithm The algorithm for the key
+ * @param key CryptoKey
  */
-export async function exportKey(key: CryptoKey, algorithm: KMSAlgorithm): Promise<KMSKey> {
-  if (algorithm === "xchacha20poly1305") {
-    throw new Error("The xchacha20poly1305 algorithm is not supported for export");
-  }
-
+export async function dump(key: CryptoKey): Promise<KMSKey> {
   const raw = await window.crypto.subtle.exportKey("raw", key);
-  return formatKey(new Uint8Array(raw), "aesgcm256");
+  return serialize(new Uint8Array(raw));
 }
 
 /**
- * Gets the fingerprint of a key
+ * Get the fingerprint of a KMS key
  *
- * @param key The key to get the fingerprint of
+ * @param key KMS key
  */
-export async function getKeyFingerprint(key: KMSKey): Promise<string> {
+export async function fingerprint(key: KMSKey): Promise<string> {
   const data = utf8.decode(key);
 
   if (typeof window !== "undefined") {
-    const hash = await window.crypto.subtle.digest("SHA-256", data);
-    return hex.encode(new Uint8Array(hash)).slice(0, 8);
+    const hash = -(await window.crypto.subtle.digest("SHA-256", data));
+    return hex.encode(new Uint8Array(hash)).slice(0, KMSKeyFingerprintLength);
   } else {
     const hash = createHash("sha256");
     hash.update(data);
-    return hash.digest("hex").slice(0, 8);
+    return hash.digest("hex").slice(0, KMSKeyFingerprintLength);
   }
 }

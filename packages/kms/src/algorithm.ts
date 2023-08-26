@@ -1,18 +1,15 @@
-import { bytesToUtf8, utf8ToBytes } from "@noble/ciphers/utils";
+import { utf8 } from "@scure/base";
 import { createCipheriv, createDecipheriv, randomBytes } from "crypto";
 
-import { CipherEncryptionResult } from "../../types";
+import { AlgorithmCipher, AlgorithmKey } from "./types";
 
 /**
- * Encrypts a message using AES-GCM algorithm.
+ * Encrypts a message with AES-256-GCM
  *
- * @param key The key to use for encryption.
- * @param message The message to encrypt.
+ * @param key The key to use for encryption
+ * @param message The message to encrypt
  */
-export async function encryptAesGcm(
-  key: CryptoKey | Uint8Array,
-  message: string
-): Promise<CipherEncryptionResult> {
+export async function encrypt(key: AlgorithmKey, message: string): Promise<AlgorithmCipher> {
   if (typeof window !== "undefined") {
     const nonce = window.crypto.getRandomValues(new Uint8Array(12));
     const instance = await window.crypto.subtle.encrypt(
@@ -21,7 +18,7 @@ export async function encryptAesGcm(
         iv: nonce,
       },
       key as CryptoKey,
-      utf8ToBytes(message)
+      utf8.decode(message)
     );
 
     return {
@@ -43,15 +40,12 @@ export async function encryptAesGcm(
 }
 
 /**
- * Decrypts a message using AES-GCM algorithm.
+ * Decrypts a message with AES-256-GCM
  *
- * @param key The key to use for decryption.
- * @param cipher The cipher to decrypt.
+ * @param key The key to use for decryption
+ * @param cipher The cipher to decrypt
  */
-export async function decryptAesGcm(
-  key: CryptoKey | Uint8Array,
-  cipher: CipherEncryptionResult
-): Promise<string> {
+export async function decrypt(key: AlgorithmKey, cipher: AlgorithmCipher): Promise<string> {
   if (typeof window !== "undefined") {
     const instance = await window.crypto.subtle.decrypt(
       {
@@ -62,7 +56,7 @@ export async function decryptAesGcm(
       cipher.text
     );
 
-    return bytesToUtf8(new Uint8Array(instance));
+    return utf8.encode(new Uint8Array(instance));
   } else {
     const instance = createDecipheriv("aes-256-gcm", key as Uint8Array, cipher.nonce);
     const tag = cipher.text.slice(-16);

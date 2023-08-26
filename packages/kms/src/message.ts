@@ -1,103 +1,79 @@
-import { base64url } from "@scure/base";
+import { base64 } from "@scure/base";
 
-import { decryptAesGcm, encryptAesGcm } from "./ciphers/native/aes-gcm";
-import { decryptXChaCha20Poly1305, encryptXChaCha20Poly1305 } from "./ciphers/xchacha20-poly1305";
-import { parseKey } from "./key";
-import {
-  KMSAesGcm256Message,
-  KMSAlgorithm,
-  KMSKey,
-  KMSMessage,
-  KMSXChaCha20Poly1305Message,
-  ParsedKMSKey,
-} from "./types";
+import { decrypt as aesDecrypt, encrypt as aesEncrypt } from "./algorithm";
+import { inject as keyInject, parse as keyParse } from "./key";
+import { AlgorithmKey, KMSKey, KMSMessage, KMSMessageRegex, SerializedKMSKey } from "./types";
 
 /**
- * Formats a message
+ * Serializes a KMS message
  *
- * @param algorithm The algorithm for the message
- * @param fingerprint The fingerprint for the message
- * @param nonce The nonce for the message
- * @param cipher The cipher for the message
+ * @param fingerprint The fingerprint of the key
+ * @param nonce The nonce used for encryption
+ * @param text The encrypted text
  */
-export function formatMessage(
-  algorithm: KMSAlgorithm,
-  fingerprint: string,
-  nonce: Uint8Array,
-  cipher: Uint8Array
-): KMSMessage {
-  return `kms/${algorithm}/${fingerprint}/${base64url.encode(nonce)}/${base64url.encode(cipher)}`;
+export function serialize(fingerprint: string, nonce: Uint8Array, text: Uint8Array) {
+  return `kms/${fingerprint}/${base64.encode(nonce)}/${base64.encode(text)}`;
 }
 
 /**
- * Encrypts a message
+ * Encrypts a message with a key
  *
  * @param message The message to encrypt
- * @param key The key to encrypt the message with
+ * @param key The key to use for encryption
  */
-export async function encryptMessage(
+export async function encrypt(
   message: string,
-  key: KMSKey | ParsedKMSKey
+  key: KMSKey | SerializedKMSKey
 ): Promise<KMSMessage> {
   if (typeof key === "string") {
-    key = await parseKey(key, "encrypt");
+    key = await keyParse(key, "encrypt");
   }
 
-  if (key.algorithm === "aesgcm256") {
-    const { text, nonce } = await encryptAesGcm(key.raw, message);
-    return formatMessage(key.algorithm, key.fingerprint, nonce, text);
-  } else {
-    const { text, nonce } = encryptXChaCha20Poly1305(key.raw, message);
-    return formatMessage(key.algorithm, key.fingerprint, nonce, text);
-  }
+  const { text, nonce } = await aesEncrypt(key.raw, message);
+  return serialize(key.fingerprint, nonce, text);
 }
 
 /**
- * Decrypts a message
+ * Decrypts a message with a key
  *
  * @param message The message to decrypt
- * @param key The key to decrypt the message with
+ * @param key The key to use for decryption
  */
-export async function decryptMessage(
+export async function decrypt(
   message: KMSMessage,
-  key: KMSKey | ParsedKMSKey
+  key: KMSKey | SerializedKMSKey
 ): Promise<string> {
-  if (typeof key === "string") {
-    key = await parseKey(key, "decrypt");
-  }
-
-  const match = message.match(
-    key.algorithm === "aesgcm256" ? KMSAesGcm256Message : KMSXChaCha20Poly1305Message
-  );
+  const match = message.match(KMSMessageRegex);
   if (!match) {
-    throw new Error("The message does not match the expected format");
+    throw new Error("Invalid KMS message");
   }
 
-  const nonce = base64url.decode(match.groups!.nonce);
-  const cipher = base64url.decode(match.groups!.cipher);
+  const nonce = match.groups!.nonce;
+  const text = match.groups!.text;
 
-  return key.algorithm === "aesgcm256"
-    ? decryptAesGcm(key.raw, { nonce, text: cipher })
-    : decryptXChaCha20Poly1305(key.raw, { nonce, text: cipher });
+  let finalKey: AlgorithmKey;
+  if (typeof key === "string") {
+    finalKey = await keyInject(key, "decrypt");
+  } else {
+    finalKey = key.raw;
+  }
+
+  return await aesDecrypt(finalKey, {
+    text: base64.decode(text),
+    nonce: base64.decode(nonce),
+  });
 }
 
 /**
- * Gets the fingerprint for a message
+ * Returns the fingerprint of a KMS message
  *
- * @param message The message to get the fingerprint for
+ * @param message The message to get the fingerprint from
  */
-export function getMessageFingerprint(message: KMSMessage): string {
-  const match1 = message.match(KMSAesGcm256Message);
-
-  if (!match1) {
-    const match2 = message.match(KMSXChaCha20Poly1305Message);
-
-    if (!match2) {
-      throw new Error("The message does not match the expected format");
-    }
-
-    return match2.groups!.fingerprint;
+export function fingerprint(message: KMSMessage) {
+  const match = message.match(KMSMessageRegex);
+  if (!match) {
+    throw new Error("Invalid KMS message");
   }
 
-  return match1.groups!.fingerprint;
+  return match.groups!.fingerprint;
 }
