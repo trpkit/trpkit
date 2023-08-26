@@ -1,8 +1,8 @@
 // The algorithm key can be a CryptoKey or a Uint8Array
-export type AlgorithmKey = CryptoKey | Uint8Array;
+export type KMSAlgorithmKey = CryptoKey | Uint8Array;
 
 // The algorithm cipher contains the encrypted text and the nonce
-export type AlgorithmCipher = {
+export type KMSAlgorithmCipher = {
   text: Uint8Array;
   nonce: Uint8Array;
 };
@@ -19,7 +19,7 @@ export type KMSKey = string;
 
 // The parsed KMS key is an object that contains the raw key and the fingerprint
 export type KMSParsedKey = {
-  raw: AlgorithmKey;
+  raw: KMSAlgorithmKey;
   fingerprint: string;
 };
 

@@ -17,8 +17,8 @@ export {
 } from "./message";
 
 export type {
-  AlgorithmKey,
-  AlgorithmCipher,
+  KMSAlgorithmKey,
+  KMSAlgorithmCipher,
   KMSMessage,
   KMSKey,
   KMSParsedKey,

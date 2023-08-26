@@ -2,7 +2,7 @@ import { base64 } from "@scure/base";
 
 import { decrypt as aesDecrypt, encrypt as aesEncrypt } from "./algorithm";
 import { inject as keyInject, parse as keyParse } from "./key";
-import { AlgorithmKey, KMSKey, KMSMessage, KMSMessageRegex, KMSParsedKey } from "./types";
+import { KMSAlgorithmKey, KMSKey, KMSMessage, KMSMessageRegex, KMSParsedKey } from "./types";
 
 /**
  * Serializes a KMS message
@@ -45,7 +45,7 @@ export async function decrypt(message: KMSMessage, key: KMSKey | KMSParsedKey): 
   const nonce = match.groups!.nonce;
   const text = match.groups!.text;
 
-  let finalKey: AlgorithmKey;
+  let finalKey: KMSAlgorithmKey;
   if (typeof key === "string") {
     finalKey = await keyInject(key, "decrypt");
   } else {

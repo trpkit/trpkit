@@ -1,7 +1,7 @@
 import { utf8 } from "@scure/base";
 import { createCipheriv, createDecipheriv, randomBytes } from "crypto";
 
-import { AlgorithmCipher, AlgorithmKey } from "./types";
+import { KMSAlgorithmCipher, KMSAlgorithmKey } from "./types";
 
 /**
  * Encrypts a message with AES-256-GCM
@@ -9,7 +9,7 @@ import { AlgorithmCipher, AlgorithmKey } from "./types";
  * @param key The key to use for encryption
  * @param message The message to encrypt
  */
-export async function encrypt(key: AlgorithmKey, message: string): Promise<AlgorithmCipher> {
+export async function encrypt(key: KMSAlgorithmKey, message: string): Promise<KMSAlgorithmCipher> {
   if (typeof window !== "undefined") {
     const nonce = window.crypto.getRandomValues(new Uint8Array(12));
     const instance = await window.crypto.subtle.encrypt(
@@ -45,7 +45,7 @@ export async function encrypt(key: AlgorithmKey, message: string): Promise<Algor
  * @param key The key to use for decryption
  * @param cipher The cipher to decrypt
  */
-export async function decrypt(key: AlgorithmKey, cipher: AlgorithmCipher): Promise<string> {
+export async function decrypt(key: KMSAlgorithmKey, cipher: KMSAlgorithmCipher): Promise<string> {
   if (typeof window !== "undefined") {
     const instance = await window.crypto.subtle.decrypt(
       {

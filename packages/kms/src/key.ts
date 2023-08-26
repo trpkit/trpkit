@@ -2,7 +2,7 @@ import { base64, hex, utf8 } from "@scure/base";
 import { createHash, randomBytes } from "crypto";
 
 import {
-  AlgorithmKey,
+  KMSAlgorithmKey,
   KMSKey,
   KMSKeyFingerprintLength,
   KMSKeyLength,
@@ -52,7 +52,7 @@ export function generate(): KMSKey {
  * @param key KMS key
  * @param usage Key usage
  */
-export async function inject(key: KMSKey, usage?: KMSKeyUsage): Promise<AlgorithmKey> {
+export async function inject(key: KMSKey, usage?: KMSKeyUsage): Promise<KMSAlgorithmKey> {
   const match = key.match(KMSKeyRegex);
   if (!match) {
     throw new Error("Invalid KMS key");
