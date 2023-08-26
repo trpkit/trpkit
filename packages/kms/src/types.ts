@@ -12,7 +12,7 @@ export type KMSMessage = string;
 
 // The KMS message regex is used to parse the KMS message
 export const KMSMessageRegex =
-  /^kms\/(?<fingerprint>[0-9a-fA-F]{8})\/(?<nonce>[a-zA-Z0-9-_]{16})\/(?<ciphertext>[a-zA-Z0-9-_]{22,})={0,2}$/;
+  /^kms\/(?<fingerprint>[0-9a-fA-F]{8})\/(?<nonce>[a-zA-Z0-9-_]{16})\/(?<text>[a-zA-Z0-9-_]{22,})={0,2}$/;
 
 // The KMS key is a string that contains the key
 export type KMSKey = string;
