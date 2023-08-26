@@ -9,7 +9,7 @@ module.exports = config({
     path: __dirname + "/dist",
     name: "analytics.js",
   },
-  externalModules: ["tweetnacl", "@scure/base"],
+  externalModules: ["tweetnacl", "@scure/base", "@trpkit/tracker-crypto"],
   options: {
     minify: true,
     jsc: {
