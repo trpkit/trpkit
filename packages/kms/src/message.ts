@@ -2,7 +2,7 @@ import { base64 } from "@scure/base";
 
 import { decrypt as aesDecrypt, encrypt as aesEncrypt } from "./algorithm";
 import { inject as keyInject, parse as keyParse } from "./key";
-import { AlgorithmKey, KMSKey, KMSMessage, KMSMessageRegex, SerializedKMSKey } from "./types";
+import { AlgorithmKey, KMSKey, KMSMessage, KMSMessageRegex, KMSParsedKey } from "./types";
 
 /**
  * Serializes a KMS message
@@ -21,10 +21,7 @@ export function serialize(fingerprint: string, nonce: Uint8Array, text: Uint8Arr
  * @param message The message to encrypt
  * @param key The key to use for encryption
  */
-export async function encrypt(
-  message: string,
-  key: KMSKey | SerializedKMSKey
-): Promise<KMSMessage> {
+export async function encrypt(message: string, key: KMSKey | KMSParsedKey): Promise<KMSMessage> {
   if (typeof key === "string") {
     key = await keyParse(key, "encrypt");
   }
@@ -39,10 +36,7 @@ export async function encrypt(
  * @param message The message to decrypt
  * @param key The key to use for decryption
  */
-export async function decrypt(
-  message: KMSMessage,
-  key: KMSKey | SerializedKMSKey
-): Promise<string> {
+export async function decrypt(message: KMSMessage, key: KMSKey | KMSParsedKey): Promise<string> {
   const match = message.match(KMSMessageRegex);
   if (!match) {
     throw new Error("Invalid KMS message");

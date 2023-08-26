@@ -21,7 +21,7 @@ export type {
   AlgorithmCipher,
   KMSMessage,
   KMSKey,
-  SerializedKMSKey,
+  KMSParsedKey,
   KMSKeyUsage,
 } from "./types";
 

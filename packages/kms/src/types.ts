@@ -17,8 +17,8 @@ export const KMSMessageRegex =
 // The KMS key is a string that contains the key
 export type KMSKey = string;
 
-// The serialized KMS key is an object that contains the raw key and the fingerprint
-export type SerializedKMSKey = {
+// The parsed KMS key is an object that contains the raw key and the fingerprint
+export type KMSParsedKey = {
   raw: AlgorithmKey;
   fingerprint: string;
 };
@@ -34,3 +34,23 @@ export const KMSKeyFingerprintLength = 8;
 
 // The KMS key length is the length of the key
 export const KMSKeyLength = 32;
+
+// The KMS base keychain entry contains the creation date
+export type KMSBaseKeychainEntry = {
+  createdAt: number;
+};
+
+// The KMS keychain entry contains the key and the base keychain entry
+export type KMSKeychainEntry = KMSBaseKeychainEntry & {
+  key: KMSParsedKey;
+};
+
+// The KMS serialized keychain entry contains the key and the base keychain entry
+export type KMSSerializedKeychainEntry = KMSBaseKeychainEntry & {
+  key: KMSKey;
+};
+
+// The KMS keychain contains the keychain entries
+export type KMSKeychain = {
+  [fingerprint: string]: KMSKeychainEntry;
+};

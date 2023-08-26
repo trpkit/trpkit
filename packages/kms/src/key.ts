@@ -8,7 +8,7 @@ import {
   KMSKeyLength,
   KMSKeyRegex,
   KMSKeyUsage,
-  SerializedKMSKey,
+  KMSParsedKey,
 } from "./types";
 
 /**
@@ -26,7 +26,7 @@ export function serialize(raw: Uint8Array) {
  * @param key KMS key
  * @param usage Key usage
  */
-export async function parse(key: KMSKey, usage?: KMSKeyUsage): Promise<SerializedKMSKey> {
+export async function parse(key: KMSKey, usage?: KMSKeyUsage): Promise<KMSParsedKey> {
   return {
     raw: await inject(key, usage),
     fingerprint: await fingerprint(key),
