@@ -1,14 +1,11 @@
-import { ImageResponse } from "next/server";
+import { ImageResponse, NextRequest } from "next/server";
 
-export const alt = "Trpkit";
-export const size = {
-  width: 1920,
-  height: 1080,
-};
+export async function GET(request: NextRequest) {
+  const { searchParams } = request.nextUrl;
+  const title = searchParams.get("title");
+  // TODO: Maybe ensure that the illustration is a valid one?
+  const illustration = searchParams.has("illustration") ? searchParams.get("illustration") : "base";
 
-export const contentType = "image/png";
-
-export default async function Image() {
   return new ImageResponse(
     (
       <div
@@ -21,7 +18,7 @@ export default async function Image() {
           justifyContent: "center",
           backgroundImage: `url(${
             process.env.NEXT_PUBLIC_BASE_URL || "https://trpkit.com"
-          }/og/base.jpg)`,
+          }/og/${illustration}.jpg)`,
         }}>
         <div
           style={{
@@ -36,10 +33,13 @@ export default async function Image() {
             lineHeight: "60px",
             whiteSpace: "pre-wrap",
           }}>
-          A privacy-first, cookie-free and end-to-end encrypted alternative to Google Analytics.
+          {title}
         </div>
       </div>
     ),
-    { ...size }
+    {
+      width: 1920,
+      height: 1080,
+    }
   );
 }
