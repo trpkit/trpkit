@@ -23,7 +23,12 @@ export default async function Image() {
           justifyContent: "center",
           alignItems: "center",
         }}>
-        <img src="https://trpkit.com/branding/logo.svg" alt="Trpkit LLC" width={400} height={210} />
+        <img
+          src={`${process.env.NEXT_PUBLIC_BASE_URL || "https://trpkit.com"}/branding/logo.svg`}
+          alt="Trpkit LLC"
+          width={400}
+          height={210}
+        />
       </div>
     ),
     { ...size }
