@@ -5,6 +5,10 @@ import { Metadata } from "next";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import { notFound } from "next/navigation";
 
+export async function generateStaticParams({ params }: { params: { post: string } }) {
+  return allBlogDocuments.map((doc) => ({ post: doc.href }));
+}
+
 export async function generateMetadata({
   params,
 }: {
