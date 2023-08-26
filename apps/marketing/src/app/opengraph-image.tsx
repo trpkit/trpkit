@@ -2,8 +2,8 @@ import { ImageResponse } from "next/server";
 
 export const alt = "Trpkit";
 export const size = {
-  width: 1200,
-  height: 630,
+  width: 1920,
+  height: 1080,
 };
 
 export const contentType = "image/png";
@@ -13,22 +13,31 @@ export default async function Image() {
     (
       <div
         style={{
-          display: "flex",
-          fontSize: 40,
-          color: "black",
-          background: "white",
-          width: "100%",
           height: "100%",
-          textAlign: "center",
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "flex-start",
           justifyContent: "center",
-          alignItems: "center",
+          backgroundImage: `url(${
+            process.env.NEXT_PUBLIC_BASE_URL || "https://trpkit.com"
+          }/og/base.jpg)`,
         }}>
-        <img
-          src={`${process.env.NEXT_PUBLIC_BASE_URL || "https://trpkit.com"}/branding/logo.svg`}
-          alt="Trpkit LLC"
-          width={400}
-          height={210}
-        />
+        <div
+          style={{
+            marginLeft: 190,
+            marginRight: 190,
+            display: "flex",
+            fontSize: 48,
+            fontFamily: "Arial, sans-serif",
+            letterSpacing: "-0.05em",
+            fontStyle: "normal",
+            color: "white",
+            lineHeight: "60px",
+            whiteSpace: "pre-wrap",
+          }}>
+          A privacy-first, cookie-free and end-to-end encrypted alternative to Google Analytics.
+        </div>
       </div>
     ),
     { ...size }
