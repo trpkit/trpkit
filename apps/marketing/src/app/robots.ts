@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/*",
       disallow: ["/_next/*"],
     },
-    sitemap: "https://trpkit.com/sitemap.xml",
+    sitemap: `${process.env.NEXT_PUBLIC_BASE_URL}/sitemap.xml`,
   };
 }

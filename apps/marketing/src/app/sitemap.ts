@@ -6,15 +6,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     {
-      url: "https://trpkit.com",
+      url: `${process.env.NEXT_PUBLIC_BASE_URL}`,
       lastModified,
     },
     ...allBlogDocuments.map((doc) => ({
-      url: `https://trpkit.com/${doc._raw.flattenedPath}`,
+      url: `${process.env.NEXT_PUBLIC_BASE_URL}/${doc._raw.flattenedPath}`,
       lastModified,
     })),
     ...allLegalDocuments.map((doc) => ({
-      url: `https://trpkit.com/${doc._raw.flattenedPath}`,
+      url: `${process.env.NEXT_PUBLIC_BASE_URL}/${doc._raw.flattenedPath}`,
       lastModified,
     })),
   ];

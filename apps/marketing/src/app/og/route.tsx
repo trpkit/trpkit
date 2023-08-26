@@ -16,7 +16,7 @@ export async function GET(request: NextRequest) {
           flexDirection: "column",
           alignItems: "flex-start",
           justifyContent: "center",
-          backgroundImage: `url(https://trpkit.com/blog/og/${illustration}.png)`,
+          backgroundImage: `url(${process.env.NEXT_PUBLIC_BASE_URL}/og/${illustration}.jpg)`,
         }}>
         <div
           style={{
@@ -27,7 +27,7 @@ export async function GET(request: NextRequest) {
             fontFamily: "Arial, sans-serif",
             letterSpacing: "-0.05em",
             fontStyle: "normal",
-            color: "black",
+            color: "white",
             lineHeight: "120px",
             whiteSpace: "pre-wrap",
           }}>
