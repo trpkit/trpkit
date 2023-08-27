@@ -1,6 +1,10 @@
 import { XCircleIcon } from "@heroicons/react/20/solid";
 
-export default function ErrorNotification({ errors }: { errors: string[] }) {
+interface ErrorNotificationProps {
+  errors: string[];
+}
+
+export default function ErrorNotification({ errors }: ErrorNotificationProps) {
   return (
     <div className="rounded-md bg-red-400/10 p-4">
       <div className="flex">

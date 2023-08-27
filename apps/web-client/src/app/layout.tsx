@@ -10,7 +10,11 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+interface RootLayoutProps {
+  children: React.ReactNode;
+}
+
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" className={inter.variable} suppressHydrationWarning>
       <body className="h-full bg-slate-900">
