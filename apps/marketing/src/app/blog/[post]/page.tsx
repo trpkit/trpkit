@@ -103,7 +103,6 @@ export default function Page({ params }: { params: { post: string } }) {
                   <div className="mt-1">
                     <a
                       href={`https://twitter.com/${doc.twitter}`}
-                      target="_blank"
                       className="text-blue-500 hover:text-blue-400">
                       @{doc.twitter}
                     </a>
