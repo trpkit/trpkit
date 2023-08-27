@@ -1,7 +1,7 @@
 "use client";
 
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/20/solid";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 import ErrorNotification from "./ErrorNotification";
@@ -33,7 +33,7 @@ export default function RegistrationForm() {
     // TODO: Show recovery code/key for user to download/view/print
 
     // Redirect to dashboard
-    await router.push("/");
+    router.push("/");
   };
 
   return (
