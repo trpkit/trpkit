@@ -1,21 +1,21 @@
+import { allBlogDocuments, allLegalDocuments } from "contentlayer/generated";
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  // TODO: Look into automatically pulling all pages and inserting into the sitemap.
-  return [
-    {
-      url: "https://trpkit.com",
-      lastModified: new Date(),
-    },
-    {
-      url: "https://trpkit.com/legal/terms",
-      // TODO: We should probably pull the legal document from contentlayer and grab the date from that. (Requires a new field)
-      lastModified: new Date(),
-    },
-    {
-      url: "https://trpkit.com/legal/privacy",
-      // TODO: See L12
-      lastModified: new Date(),
-    },
-  ];
+  const legalPages = allLegalDocuments.map((doc) => ({
+    url: `${process.env.NEXT_PUBLIC_BASE_URL || "https://trpkit.com"}/${doc.href}`,
+    lastModified: new Date().toISOString().split("T")[0],
+  }));
+
+  const blogPages = allBlogDocuments.map((doc) => ({
+    url: `${process.env.NEXT_PUBLIC_BASE_URL || "https://trpkit.com"}/${doc.href}`,
+    lastModified: doc.date,
+  }));
+
+  const routes = [""].map((route) => ({
+    url: `${process.env.NEXT_PUBLIC_BASE_URL || "https://trpkit.com"}${route}`,
+    lastModified: new Date().toISOString().split("T")[0],
+  }));
+
+  return [...routes, ...blogPages, ...legalPages];
 }

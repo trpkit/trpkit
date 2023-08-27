@@ -23,7 +23,7 @@ Please see our [contributing guide](.github/CONTRIBUTING.md).
 
 We have a list of [help wanted](https://github.com/trpkit/trpkit/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22) issues that contain small features and bugs which have a relatively limited scope. This is a great place to get started, gain experience, and get familiar with our contributions process.
 
-## Getting Started
+### Prerequisites
 
 Before diving into the code, make sure you have the following prerequisites installed:
 
@@ -31,6 +31,19 @@ Before diving into the code, make sure you have the following prerequisites inst
 2. **MongoDB**: Ensure MongoDB is up and running. If you need to install it, refer to the [official MongoDB documentation](https://docs.mongodb.com/manual/installation/).
 3. **pnpm**: Trpkit uses pnpm for package management. If you need to install it, refer to the [official pnpm documentation](https://pnpm.io/installation).
 4. **Docker & docker compose**: While not required, Docker and docker compose are highly recommended for local development. If you need to install it, refer to the [official Docker documentation](https://docs.docker.com/get-docker/).
+
+### Quickstart
+
+> The quickstart assumes you will be using [Docker](https://docs.docker.com/get-docker/) and [docker compose](https://docs.docker.com/compose/) for spinning up MongoDB and Inbucket.
+
+1. Clone the repository with `git clone https://github.com/trpkit/trpkit.git`
+2. Install the dependencies with `pnpm i`
+3. Spin up MongoDB and Inbucket with `pnpm run dx`
+4. Start the applications with `pnpm run dev`
+   1. You may need to configure `.env` in different applications, check to see if they have an `.env.example`
+   2. You can view the web client at http://localhost:3000
+   3. You can view the API application at http://localhost:3001
+   4. You can view the marketing application at http://localhost:3002
 
 ## License
 

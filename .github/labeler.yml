@@ -16,11 +16,11 @@
   - apps/web-client/**
 
 "app: url-shortener":
-  - apps/trpk.it/**
+  - apps/url-shortener/**
 
 "package: config":
   - packages/config/**
-  - packages/ts-config/**
+  - packages/tsconfig/**
 
 "package: kms":
   - packages/kms/**
