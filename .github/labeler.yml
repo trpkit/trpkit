@@ -20,7 +20,7 @@
 
 "package: config":
   - packages/config/**
-  - packages/ts-config/**
+  - packages/tsconfig/**
 
 "package: kms":
   - packages/kms/**

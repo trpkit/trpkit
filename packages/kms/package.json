@@ -1,5 +1,5 @@
 {
-  "name": "@trpkit/tracker-crypto",
+  "name": "@trpkit/kms",
   "version": "0.0.1",
   "private": true,
   "main": "dist/index.js",
@@ -12,8 +12,8 @@
     "dev": "tsc -w"
   },
   "dependencies": {
-    "@scure/base": "^1.1.2",
-    "tweetnacl": "^1.0.3"
+    "@noble/ciphers": "^0.2.0",
+    "@scure/base": "^1.1.2"
   },
   "devDependencies": {
     "@types/node": "^20.5.6",
