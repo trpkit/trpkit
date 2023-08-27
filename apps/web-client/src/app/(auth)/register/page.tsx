@@ -1,6 +1,5 @@
+import RegistrationForm from "@components/(auth)/RegistrationForm";
 import Link from "next/link";
-
-import RegistrationForm from "../../../components/(auth)/RegistrationForm";
 
 export default function Page() {
   // TODO: Check for price_id in search parameters, send user to checkout after signup. Otherwise user will need to select plan while in the dashboard

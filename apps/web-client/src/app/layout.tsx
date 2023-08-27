@@ -1,7 +1,7 @@
+import "@styles/globals.css";
 import { Inter } from "next/font/google";
 import React from "react";
 
-import "../styles/globals.css";
 import Providers from "./providers";
 
 const inter = Inter({
