@@ -2,9 +2,12 @@
 
 import React, { useState } from "react";
 
+import ErrorNotification from "./ErrorNotification";
+
 export default function LoginForm() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [errors, setErrors] = useState<string[]>([]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -14,6 +17,7 @@ export default function LoginForm() {
 
   return (
     <form className="space-y-6" onSubmit={handleSubmit}>
+      {errors.length !== 0 && <ErrorNotification errors={errors} />}
       <div>
         <label htmlFor="email" className="block text-sm font-medium leading-6 text-white">
           Email address

@@ -4,6 +4,8 @@ import { EyeIcon, EyeSlashIcon } from "@heroicons/react/20/solid";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 
+import ErrorNotification from "./ErrorNotification";
+
 export default function RegistrationForm() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -36,7 +38,7 @@ export default function RegistrationForm() {
 
   return (
     <form className="space-y-6" onSubmit={handleSubmit}>
-      {/* Error component */}
+      {errors.length !== 0 && <ErrorNotification errors={errors} />}
       <div>
         <label htmlFor="email" className="block text-sm font-medium leading-6 text-white">
           Email address
