@@ -140,17 +140,17 @@ importers:
   apps/web-client:
     dependencies:
       '@headlessui/react':
-        specifier: ^1.7.16
-        version: 1.7.16(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^1.7.17
+        version: 1.7.17(react-dom@18.2.0)(react@18.2.0)
       '@heroicons/react':
         specifier: ^2.0.18
         version: 2.0.18(react@18.2.0)
       next:
-        specifier: ^13.4.16
-        version: 13.4.16(@opentelemetry/api@1.4.1)(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^13.4.19
+        version: 13.4.19(@opentelemetry/api@1.4.1)(react-dom@18.2.0)(react@18.2.0)
       next-themes:
         specifier: ^0.2.1
-        version: 0.2.1(next@13.4.16)(react-dom@18.2.0)(react@18.2.0)
+        version: 0.2.1(next@13.4.19)(react-dom@18.2.0)(react@18.2.0)
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -159,8 +159,8 @@ importers:
         version: 18.2.0(react@18.2.0)
     devDependencies:
       '@tailwindcss/forms':
-        specifier: ^0.5.4
-        version: 0.5.4(tailwindcss@3.3.3)
+        specifier: ^0.5.5
+        version: 0.5.5(tailwindcss@3.3.3)
       '@tailwindcss/typography':
         specifier: ^0.5.9
         version: 0.5.9(tailwindcss@3.3.3)
@@ -168,11 +168,11 @@ importers:
         specifier: workspace:*
         version: link:../../packages/config
       '@types/node':
-        specifier: ^20.5.0
-        version: 20.5.0
+        specifier: ^20.5.6
+        version: 20.5.6
       '@types/react':
-        specifier: ^18.2.20
-        version: 18.2.20
+        specifier: ^18.2.21
+        version: 18.2.21
       '@types/react-dom':
         specifier: ^18.2.7
         version: 18.2.7
@@ -189,8 +189,8 @@ importers:
         specifier: ^3.3.3
         version: 3.3.3
       typescript:
-        specifier: ^5.1.6
-        version: 5.1.6
+        specifier: ^5.2.2
+        version: 5.2.2
 
   packages/config:
     devDependencies:
