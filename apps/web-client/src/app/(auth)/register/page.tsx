@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import RegistrationForm from "../../../components/(auth)/RegistrationForm";
+
 export default function Page() {
   // TODO: Check for price_id in search parameters, send user to checkout after signup. Otherwise user will need to select plan while in the dashboard
 
@@ -16,7 +18,7 @@ export default function Page() {
         </h2>
       </div>
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        {/* TODO: Registration form */}
+        <RegistrationForm />
         <p className="mt-10 text-center text-sm text-gray-400">
           Already a member?{" "}
           <Link href="/login" className="font-semibold leading-6 text-blue-400 hover:text-blue-300">
