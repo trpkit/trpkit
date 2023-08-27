@@ -4,5 +4,5 @@
 module.exports = {
   reactStrictMode: true,
   output: "standalone",
-  transpilePackages: ["@trpkit/config"],
+  transpilePackages: ["@trpkit/config", "@trpkit/kms"],
 };

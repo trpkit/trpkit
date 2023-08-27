@@ -4,6 +4,10 @@ import { EyeIcon, EyeSlashIcon } from "@heroicons/react/20/solid";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
+import { keyGenerate } from "@trpkit/kms";
+
+import { createMasterKey } from "../../lib/masterKey";
+import { createSrpVerifierAndSalt } from "../../lib/srp";
 import ErrorNotification from "./ErrorNotification";
 
 export default function RegistrationForm() {
@@ -21,6 +25,8 @@ export default function RegistrationForm() {
     // TODO: Validate inputs with zod
 
     // TODO: Create client and server objects for registration
+    const { salt: srpSalt, verifier: srpVerifier } = await createSrpVerifierAndSalt(password);
+    const { salt: masterSalt, key: masterKey } = await createMasterKey(password);
 
     // TODO: Send request to API with server objects
 
