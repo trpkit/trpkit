@@ -22,6 +22,10 @@ export {
   fingerprint as messageFingerprint,
 } from "./message";
 
+export { loadStore, saveStore } from "./store";
+
+export type { StoreObject } from "./store";
+
 export type {
   KMSAlgorithmKey,
   KMSAlgorithmCipher,
