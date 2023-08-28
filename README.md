@@ -45,6 +45,10 @@ Before diving into the code, make sure you have the following prerequisites inst
    3. You can view the API application at http://localhost:3001
    4. You can view the marketing application at http://localhost:3002
 
+## Repository Activity
+
+![Alt](https://repobeats.axiom.co/api/embed/5fa039fa8f8b05e18a7278f2db41e792387f366a.svg "Repobeats analytics image")
+
 ## License
 
 Trpkit is an open source software licensed under the [AGPL 3.0 license](LICENSE).
