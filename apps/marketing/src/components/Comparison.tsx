@@ -115,13 +115,6 @@ export default function Comparison() {
               <div key={index}>
                 <h3 className="text-sm font-semibold leading-6 text-white">{section.name}</h3>
                 <div className="relative -mx-8 mt-2">
-                  <div
-                    className="absolute inset-x-8 inset-y-0 grid grid-cols-4 gap-x-8 before:block"
-                    aria-hidden={true}>
-                    <div className="h-full w-full rounded-lg shadow-sm" />
-                    <div className="h-full w-full rounded-lg shadow-sm" />
-                    <div className="h-full w-full rounded-lg shadow-sm" />
-                  </div>
                   <table className="relative w-full border-separate border-spacing-x-8">
                     <thead>
                       <tr className="text-left">
@@ -180,13 +173,6 @@ export default function Comparison() {
                       ))}
                     </tbody>
                   </table>
-                  <div
-                    className="pointer-events-none absolute inset-x-8 inset-y-0 grid grid-cols-4 gap-x-8 before:block"
-                    aria-hidden={true}>
-                    {comparison.sites.map((site, index) => (
-                      <div key={index} className="rounded-lg" />
-                    ))}
-                  </div>
                 </div>
               </div>
             ))}
