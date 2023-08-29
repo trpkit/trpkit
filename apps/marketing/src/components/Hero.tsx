@@ -42,7 +42,7 @@ export default function Hero() {
         </div>
         <div className="overflow-hidden">
           <div className="py-24 sm:py-32 lg:pb-40">
-            <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="max-w-screen-2xl mx-auto w-full px-5">
               <div className="mx-auto max-w-2xl text-center">
                 <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
                   Privacy-first analytics is coming
