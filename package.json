@@ -7,7 +7,7 @@
     "bump:version": "node ./scripts/bump-version.js",
     "bump:dependencies": "pnpm dlx npm-check-updates --deep -u && pnpm i",
     "dev": "turbo run dev",
-    "dx": "docker compose --profile development up -d",
+    "dx": "pnpm i && docker compose --profile development up -d",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,mdx}\"",
     "lint-staged": "lint-staged",
     "prepare": "husky install"
