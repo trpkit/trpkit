@@ -37,13 +37,16 @@ Before diving into the code, make sure you have the following prerequisites inst
 > The quickstart assumes you will be using [Docker](https://docs.docker.com/get-docker/) and [docker compose](https://docs.docker.com/compose/) for spinning up MongoDB and Inbucket.
 
 1. Clone the repository with `git clone https://github.com/trpkit/trpkit.git`
-2. Install the dependencies with `pnpm i`
-3. Spin up MongoDB and Inbucket with `pnpm run dx`
-4. Start the applications with `pnpm run dev`
+2. Spin up MongoDB and Inbucket with `pnpm run dx`
+3. Start the applications with `pnpm run dev`
    1. You may need to configure `.env` in different applications, check to see if they have an `.env.example`
    2. You can view the web client at http://localhost:3000
    3. You can view the API application at http://localhost:3001
    4. You can view the marketing application at http://localhost:3002
+
+## Repository Activity
+
+![Alt](https://repobeats.axiom.co/api/embed/5fa039fa8f8b05e18a7278f2db41e792387f366a.svg "Repobeats analytics image")
 
 ## License
 
