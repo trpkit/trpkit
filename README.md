@@ -1,6 +1,6 @@
 <p align="center" style="margin-top: 48px">
     <a href="https://github.com/trpkit/trpkit">
-        <img width="200px" src="https://trpkit.com/branding/logo.svg" alt="Trpkit Logo">
+        <img width="200px" src="./apps/marketing/public/branding/github-banner-early-access.jpg" alt="Trpkit Logo" width="100%">
     </a>
 </p>
 <p align="center">
@@ -8,8 +8,6 @@
     <br />
     <a href="https://trpkit.com">Learn more</a>
 </p>
-
-<img width="100%" alt="webapp" src="https://trpkit.com/features/webapp.png">
 
 ## About Trpkit
 
