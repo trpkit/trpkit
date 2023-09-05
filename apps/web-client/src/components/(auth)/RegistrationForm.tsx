@@ -4,8 +4,9 @@ import { EyeIcon, EyeSlashIcon } from "@heroicons/react/20/solid";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
-import { keyGenerate } from "@trpkit/kms";
+import { StoreObject, keyGenerate, loadStore, messageEncrypt, saveStore } from "@trpkit/kms";
 
+import { createKeychain, encryptKeychain } from "../../lib/keychain";
 import { createMasterKey } from "../../lib/masterKey";
 import { createSrpVerifierAndSalt } from "../../lib/srp";
 import ErrorNotification from "./ErrorNotification";
@@ -24,17 +25,33 @@ export default function RegistrationForm() {
 
     // TODO: Validate inputs with zod
 
-    // TODO: Create client and server objects for registration
+    // Generate SRP entities and master/keychain keys
     const { salt: srpSalt, verifier: srpVerifier } = await createSrpVerifierAndSalt(password);
     const { salt: masterSalt, key: masterKey } = await createMasterKey(password);
+    const keychainKey = keyGenerate();
+    const encryptedKeychainKey = await messageEncrypt(keychainKey, masterKey);
+    const keychain = createKeychain();
+    const encryptedKeychain = await encryptKeychain(keychain, keychainKey);
 
     // TODO: Send request to API with server objects
+    // TODO: Ensure that these fields match the API
+    const serverRequest = {
+      srpSalt,
+      srpVerifier,
+      masterSalt,
+      keychainKey: encryptedKeychainKey,
+      keychain: encryptedKeychain,
+    };
 
     // TODO: Check for errors from API response
 
-    // TODO: Create encrypted store
+    // Add keychain key and email in store
+    const store = new Map<string, StoreObject>();
+    store.set("keychainKey", { value: keychainKey });
+    store.set("email", { value: email });
 
-    // TODO: Store client objects in encrypted store
+    // Save store
+    saveStore(store);
 
     // TODO: Show recovery code/key for user to download/view/print
 
