@@ -1,7 +1,6 @@
-import { utf8 } from "@scure/base";
-import { JWTPayload, SignJWT } from "jose";
 import { NextRequest, NextResponse } from "next/server";
 
+import { sign } from "@trpkit/common";
 import { mongo } from "@trpkit/storage";
 
 // TODO: Probably should look into using zod for types
@@ -36,24 +35,6 @@ interface IncomingBodyKeychainRequest {
 interface KeychainObject {
   secret: string;
   public: string;
-}
-
-// TODO: Move this into a separate package with other common utilities
-async function sign(payload: JWTPayload): Promise<string> {
-  return (
-    new SignJWT(payload)
-      // TODO: Switch to RS256, we'll do this before market release, may use HS256 for beta though
-      .setProtectedHeader({
-        alg: "HS256",
-        typ: "JWT",
-      })
-      .setIssuedAt()
-      .setIssuer("urn:trpkit:api.trpkit.com")
-      .setAudience("urn:trpkit:app.trpkit.com")
-      .setExpirationTime("7d")
-      // TODO: We'll probably create a CLI to generate secrets through our KMS during an initialization script for dev environments
-      .sign(utf8.decode(process.env.JWT_SECRET))
-  );
 }
 
 export async function POST(request: NextRequest) {
