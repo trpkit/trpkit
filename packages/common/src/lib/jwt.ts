@@ -29,7 +29,7 @@ export async function sign(payload: JWTPayload): Promise<string> {
  * @param token The JWT token to verify
  */
 export async function verify(token: string): Promise<JWTVerifyResult> {
-  return await jwtVerify(token, new TextEncoder().encode(process.env.JWT_SECRET!), {
+  return await jwtVerify(token, utf8.decode(process.env.JWT_SECRET!), {
     algorithms: ["HS256"],
     issuer: "urn:trpkit:api.trpkit.com",
     audience: "urn:trpkit:app.trpkit.com",
