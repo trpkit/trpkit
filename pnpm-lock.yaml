@@ -35,6 +35,9 @@ importers:
       '@scure/base':
         specifier: ^1.1.3
         version: 1.1.3
+      '@trpkit/common':
+        specifier: workspace:*
+        version: link:../../packages/common
       '@trpkit/storage':
         specifier: workspace:*
         version: link:../../packages/storage
@@ -203,6 +206,22 @@ importers:
       tailwindcss:
         specifier: ^3.3.3
         version: 3.3.3
+      typescript:
+        specifier: ^5.2.2
+        version: 5.2.2
+
+  packages/common:
+    dependencies:
+      '@scure/base':
+        specifier: ^1.1.3
+        version: 1.1.3
+      jose:
+        specifier: ^4.14.6
+        version: 4.14.6
+    devDependencies:
+      '@types/node':
+        specifier: ^20.6.0
+        version: 20.6.0
       typescript:
         specifier: ^5.2.2
         version: 5.2.2
