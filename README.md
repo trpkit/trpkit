@@ -15,7 +15,7 @@
 
 [Trpkit](https://trpkit.com) is an open-source, privacy-first web analytics solution that's cookie-free and end-to-end encrypted. We're on a mission to tighten security, facilitate compliance in data handling, and enhance collaboration, all while ensuring you remain in complete control of your data.
 
-### Contact us
+### Contact Us
 
 If you have any questions, comments, or concerns, please feel free to reach out to us at [opensource@trpkit.com](mailto:opensource@trpkit.com). If you are interested in our Enterprise plan, book a conversation with us.
 
