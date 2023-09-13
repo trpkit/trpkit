@@ -4,7 +4,7 @@ import { EyeIcon, EyeSlashIcon } from "@heroicons/react/20/solid";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
-import { StoreObject, keyGenerate, loadStore, messageEncrypt, saveStore } from "@trpkit/kms";
+import { keyGenerate, messageEncrypt, saveStore } from "@trpkit/kms";
 
 import { createKeychain, encryptKeychain } from "../../lib/keychain";
 import { createMasterKey } from "../../lib/masterKey";
@@ -46,9 +46,9 @@ export default function RegistrationForm() {
     // TODO: Check for errors from API response
 
     // Add keychain key and email in store
-    const store = new Map<string, StoreObject>();
-    store.set("keychainKey", { value: keychainKey });
-    store.set("email", { value: email });
+    const store = new Map<string, string>();
+    store.set("keychainKey", keychainKey);
+    store.set("email", email);
 
     // Save store
     saveStore(store);
