@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import { verify } from "./lib/jwt";
+import { verify } from "@trpkit/common";
 
 export const config = {
   matcher: ["/((?!login|register|_next/static|_next/image|favicon.ico).*)"],
