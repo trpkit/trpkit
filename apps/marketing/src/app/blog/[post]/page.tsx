@@ -65,7 +65,7 @@ export default function Page({ params }: { params: { post: string } }) {
 
   return (
     <>
-      <div className="max-w-3xl mx-auto px-4">
+      <div className="max-w-3xl mx-auto px-4 py-24 sm:py-32">
         <div className="mb-6 flex">
           <Link
             href="/blog"
