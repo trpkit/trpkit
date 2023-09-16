@@ -8,7 +8,7 @@ export const LegalDocument = defineDocumentType(() => ({
     title: { type: "string", required: true },
   },
   computedFields: {
-    href: { type: "string", resolve: (doc) => `/${doc._raw.flattenedPath}` },
+    href: { type: "string", resolve: (doc) => doc._raw.flattenedPath },
   },
 }));
 
