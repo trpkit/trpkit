@@ -8,3 +8,4 @@ dist
 .env*
 !.env.example
 target
+apps/marketing/src/content/**
