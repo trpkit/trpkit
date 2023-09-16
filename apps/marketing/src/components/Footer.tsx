@@ -14,7 +14,7 @@ export default function Footer() {
           <div className="col-span-12 md:col-span-4">
             <ul className="flex items-center space-x-3">
               <li>
-                <a href="https://x.com/trpkit">
+                <a href="https://x.com/trpkit" target="_blank" rel="noopener noreferrer">
                   <svg
                     height="16"
                     strokeLinecap="round"
@@ -31,7 +31,10 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="https://github.com/trpkit/trpkit">
+                <a
+                  href="https://github.com/trpkit/trpkit"
+                  target="_blank"
+                  rel="noopener noreferrer">
                   <svg
                     width="24"
                     height="24"
