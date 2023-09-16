@@ -6,6 +6,7 @@
     "build": "turbo run build",
     "bump:version": "node ./scripts/bump-version.js",
     "bump:dependencies": "pnpm dlx npm-check-updates --deep -u && pnpm i",
+    "clone:trpkit-materials": "node ./scripts/clone-trpkit-materials.js",
     "dev": "turbo run dev",
     "dx": "pnpm i && docker compose --profile development up -d",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,mdx}\"",
