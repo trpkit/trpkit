@@ -6,9 +6,10 @@ export const LegalDocument = defineDocumentType(() => ({
   contentType: "mdx",
   fields: {
     title: { type: "string", required: true },
+    effectiveDate: { type: "date", required: true },
   },
   computedFields: {
-    href: { type: "string", resolve: (doc) => `/${doc._raw.flattenedPath}` },
+    href: { type: "string", resolve: (doc) => doc._raw.flattenedPath },
   },
 }));
 
