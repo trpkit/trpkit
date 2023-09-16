@@ -1,6 +1,7 @@
 const { exec } = require("child_process");
 const fs = require("fs");
 const path = require("path");
+const readline = require("readline");
 
 const projectDir = path.resolve(__dirname, "..");
 const cloneDir = path.join(projectDir, "tmp/materials");
@@ -53,8 +54,28 @@ function copyFiles(source, destination) {
   });
 }
 
+function promptLicenseAgreement() {
+  return new Promise((resolve, reject) => {
+    const rl = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout,
+    });
+
+    rl.question("Do you agree to the license of the materials repository? (Y/N): ", (answer) => {
+      if (["Y", "Yes", "y", "yes"].includes(answer.trim())) {
+        resolve();
+      } else {
+        reject(new Error("License agreement not accepted. Exiting."));
+      }
+      rl.close();
+    });
+  });
+}
+
 async function main() {
   try {
+    await promptLicenseAgreement();
+
     if (!fs.existsSync(blogDir)) {
       fs.mkdirSync(blogDir, { recursive: true });
     }
@@ -69,7 +90,7 @@ async function main() {
 
     console.log("Done!");
   } catch (error) {
-    console.error("An error occurred:", error);
+    console.error(error.message);
   }
 }
 
