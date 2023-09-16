@@ -9,3 +9,4 @@ dist
 !.env.example
 target
 apps/marketing/src/content/**
+tmp
