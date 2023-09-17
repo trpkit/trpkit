@@ -9,14 +9,14 @@ const legalDir = path.join(projectDir, "apps/marketing/src/content/legal");
 
 function isGitAdded() {
   return new Promise((resolve, reject) => {
-    exec("git --version", error => {
-      if(error){
+    exec("git --version", (error) => {
+      if (error) {
         reject("Git is not installed");
-      }else{
-        resolve("Git is installed")
+      } else {
+        resolve("Git is installed");
       }
-    })
-  })
+    });
+  });
 }
 
 function cloneRepository() {
