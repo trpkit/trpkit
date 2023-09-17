@@ -7,24 +7,42 @@ const cloneDir = path.join(projectDir, "tmp/materials");
 const blogDir = path.join(projectDir, "apps/marketing/src/content/blog");
 const legalDir = path.join(projectDir, "apps/marketing/src/content/legal");
 
-function cloneRepository() {
+function isGitAdded() {
   return new Promise((resolve, reject) => {
-    if (fs.existsSync(path.join(cloneDir, ".git"))) {
-      exec(`git -C ${cloneDir} pull`, (error) => {
-        if (error) {
-          reject(error);
-        } else {
-          resolve();
-        }
-      });
-    } else {
-      exec(`git clone https://github.com/trpkit/materials.git ${cloneDir}`, (error) => {
-        if (error) {
-          reject(error);
-        } else {
-          resolve();
-        }
-      });
+    exec("git --version", error => {
+      if(error){
+        reject("Git is not installed");
+      }else{
+        resolve("Git is installed")
+      }
+    })
+  })
+}
+
+function cloneRepository() {
+  return new Promise(async (resolve, reject) => {
+    try {
+      await isGitAdded();
+
+      if (fs.existsSync(path.join(cloneDir, ".git"))) {
+        exec(`git -C ${cloneDir} pull`, (error) => {
+          if (error) {
+            reject(error);
+          } else {
+            resolve();
+          }
+        });
+      } else {
+        exec(`git clone https://github.com/trpkit/materials.git ${cloneDir}`, (error) => {
+          if (error) {
+            reject(error);
+          } else {
+            resolve();
+          }
+        });
+      }
+    } catch (error) {
+      reject(error);
     }
   });
 }
