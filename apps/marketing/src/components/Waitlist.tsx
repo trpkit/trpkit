@@ -73,7 +73,7 @@ export default function Waitlist() {
             </p>
           </div>
           {submitted ? (
-            <div className="w-full max-w-md lg:col-span-5 lg:pt-2">
+            <div className="w-full max-w-md lg:col-span-5 lg:pt-2 lg:ml-auto">
               <p className="text-sm leading-6 text-gray-200">
                 Thank you for the interest in our launch of Trpkit! We're excited to have you
                 onboard for the journey!
@@ -90,7 +90,9 @@ export default function Waitlist() {
               </p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="w-full max-w-md lg:col-span-5 lg:pt-2">
+            <form
+              onSubmit={handleSubmit}
+              className="w-full max-w-md lg:col-span-5 lg:pt-2 lg:ml-auto">
               <div className="flex gap-x-4">
                 <label htmlFor="email" className="sr-only">
                   Email address
