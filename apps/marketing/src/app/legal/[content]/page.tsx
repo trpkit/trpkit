@@ -1,3 +1,4 @@
+import { formatDate } from "@lib/format-date";
 import { allLegalDocuments } from "contentlayer/generated";
 import { Metadata } from "next";
 import { useMDXComponent } from "next-contentlayer/hooks";
@@ -33,7 +34,13 @@ export default function Page({ params }: { params: { content: string } }) {
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-24 sm:py-32">
-      <article className="mt-6 prose prose-invert max-w-3xl">
+      <div className="mx-auto max-w-3xl lg:mx-0 pb-12">
+        <h2 className="text-4xl font-bold tracking-tight text-white">{doc.title}</h2>
+        <p className="mt-4 text-lg leading-6 text-gray-300">
+          Effective date: {formatDate(doc.effectiveDate)}
+        </p>
+      </div>
+      <article className="prose prose-invert max-w-3xl">
         <MDXContent />
       </article>
     </div>
