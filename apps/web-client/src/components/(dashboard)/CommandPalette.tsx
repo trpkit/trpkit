@@ -2,9 +2,8 @@
 
 import { Combobox, Dialog, Transition } from "@headlessui/react";
 import { GlobeAltIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import { cn } from "@lib/cn";
 import { Fragment, useEffect, useState } from "react";
-
-import { cn } from "../../lib/cn";
 
 // TODO: This should be fetched from the API
 const sites = [
