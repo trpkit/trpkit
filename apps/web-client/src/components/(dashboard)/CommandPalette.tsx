@@ -14,15 +14,10 @@ const sites = [
 
 export default function CommandPalette() {
   const [open, setOpen] = useState(false);
-  const [rawQuery, setRawQuery] = useState("");
-  const query = rawQuery.toLowerCase().replace(/^[\/]/, "");
+  const [query, setQuery] = useState("");
 
   const filteredSites =
-    rawQuery === "/"
-      ? sites
-      : query === ""
-      ? []
-      : sites.filter((site) => site.name.toLowerCase().includes(query));
+    query === "" ? sites : sites.filter((site) => site.name.toLowerCase().includes(query));
 
   useEffect(() => {
     function handler(e: KeyboardEvent) {
@@ -37,7 +32,7 @@ export default function CommandPalette() {
   }, []);
 
   return (
-    <Transition.Root show={open} as={Fragment} afterLeave={() => setRawQuery("")} appear>
+    <Transition.Root show={open} as={Fragment} afterLeave={() => setQuery("")} appear>
       <Dialog as="div" className="relative z-10" onClose={setOpen}>
         <Transition.Child
           as={Fragment}
@@ -69,13 +64,13 @@ export default function CommandPalette() {
                   <Combobox.Input
                     className="h-12 w-full border-0 bg-transparent pl-11 pr-4 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm"
                     placeholder="Search..."
-                    onChange={(event) => setRawQuery(event.target.value)}
+                    onChange={(event) => setQuery(event.target.value)}
                   />
                 </div>
                 {filteredSites.length > 0 && (
                   <Combobox.Options
                     static
-                    className="max-h-80 scroll-py-10 scroll-py-10 scroll-pb-2 scroll-pb-2 space-y-4 overflow-y-auto py-2 px-4">
+                    className="max-h-80 scroll-py-10 scroll-pb-2 space-y-4 overflow-y-auto py-2 px-4">
                     {filteredSites.length > 0 && (
                       <li>
                         <ul className="-mx-4 text-sm text-gray-700">
@@ -113,17 +108,7 @@ export default function CommandPalette() {
                   <kbd
                     className={cn(
                       "mx-1 flex h-5 w-5 items-center justify-center rounded border bg-white font-semibold sm:mx-2",
-                      rawQuery.startsWith("/")
-                        ? "border-blue-600 text-blue-600"
-                        : "border-gray-400 text-gray-900"
-                    )}>
-                    /
-                  </kbd>{" "}
-                  for sites and{" "}
-                  <kbd
-                    className={cn(
-                      "mx-1 flex h-5 w-5 items-center justify-center rounded border bg-white font-semibold sm:mx-2",
-                      rawQuery === "?"
+                      query === "?"
                         ? "border-blue-600 text-blue-600"
                         : "border-gray-400 text-gray-900"
                     )}>
