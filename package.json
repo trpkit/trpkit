@@ -19,7 +19,7 @@
     "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
     "prettier": "^3.0.3",
-    "turbo": "^1.10.13"
+    "turbo": "^1.10.14"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx,mdx}": [
