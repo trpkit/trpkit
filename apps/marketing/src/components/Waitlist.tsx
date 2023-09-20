@@ -1,6 +1,7 @@
 "use client";
 
 import useSmoothScrollTo from "@hooks/useSmoothScrollTo";
+import { base64url, utf8 } from "@scure/base";
 import React, { useState } from "react";
 
 export default function Waitlist() {
@@ -11,10 +12,13 @@ export default function Waitlist() {
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
 
-    const res = await fetch(`https://api.trpkit.com/launch?email=${email}`, {
-      method: "post",
-      body: JSON.stringify({}),
-    });
+    const res = await fetch(
+      `https://api.trpkit.com/v1/launch?email=${base64url.encode(utf8.decode(email))}`,
+      {
+        method: "post",
+        body: JSON.stringify({}),
+      }
+    );
 
     if (res.ok) {
       setSubmitted(true);
