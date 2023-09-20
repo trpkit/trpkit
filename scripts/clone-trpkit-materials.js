@@ -7,7 +7,7 @@ const cloneDir = path.join(projectDir, "tmp/materials");
 const blogDir = path.join(projectDir, "apps/marketing/src/content/blog");
 const legalDir = path.join(projectDir, "apps/marketing/src/content/legal");
 
-function isGitAdded() {
+function isGitInstalled() {
   return new Promise((resolve, reject) => {
     exec("git --version", (error) => {
       if (error) {
@@ -20,10 +20,8 @@ function isGitAdded() {
 }
 
 function cloneRepository() {
-  return new Promise(async (resolve, reject) => {
+  return new Promise((resolve, reject) => {
     try {
-      await isGitAdded();
-
       if (fs.existsSync(path.join(cloneDir, ".git"))) {
         exec(`git -C ${cloneDir} pull`, (error) => {
           if (error) {
@@ -73,6 +71,8 @@ function copyFiles(source, destination) {
 
 async function main() {
   try {
+    await isGitInstalled();
+
     if (!fs.existsSync(blogDir)) {
       fs.mkdirSync(blogDir, { recursive: true });
     }
