@@ -1,53 +1,32 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import { sign } from "@trpkit/common";
+import { ZAuthRegistration, sign } from "@trpkit/common";
 import { mongo } from "@trpkit/storage";
 
-// TODO: Probably should look into using zod for types
-interface IncomingBodyRequest {
-  firstName: string;
-  lastName: string;
-  email: string;
-  credentials: IncomingBodyCredentialsRequest[];
-  kms: IncomingBodyKMSRequest;
-  keychain: IncomingBodyKeychainRequest;
-}
-
-interface IncomingBodyCredentialsRequest {
-  type: CredentialsType;
-  preferred?: boolean;
-  [key: string]: unknown;
-}
-
-type CredentialsType = "srp" | "2fa-authenticator" | "2fa-passkey";
-
-interface IncomingBodyKMSRequest {
-  salt: string;
-  recovery: string;
-  keychain: string;
-}
-
-interface IncomingBodyKeychainRequest {
-  signature: KeychainObject;
-  sharing: KeychainObject;
-}
-
-interface KeychainObject {
-  secret: string;
-  public: string;
-}
-
 export async function POST(request: NextRequest) {
-  const body = (await request.json()) as IncomingBodyRequest;
+  const body = await request.json();
 
-  // TODO: Validate all necessary fields exist (400 bad request)
-  // We're not worried about the first and last name at the moment. The onboarding flow beta will be slightly different from our first release.
+  // Validate incoming request
+  const validatedBody = ZAuthRegistration.safeParse(body);
+
+  if (!validatedBody.success) {
+    return NextResponse.json(
+      {
+        message: "Invalid registration form.",
+      },
+      {
+        status: 400,
+      }
+    );
+  }
+
+  const data = validatedBody.data;
 
   const client = await mongo();
   const db = client.db(process.env.MONGO_DATABASE);
 
   // Validate email address (400 bad request)
-  const emailExist = await db.collection("users").countDocuments({ email: body.email });
+  const emailExist = await db.collection("users").countDocuments({ email: data.email });
 
   if (emailExist > 0) {
     // Email exists
@@ -63,22 +42,15 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  // Insert into database
-  // TODO: Once we switch to zod, we can use safeParse to ensure the correct fields are being inserted. This will happen before beta launch.
   await db.collection("users").insertOne({
-    firstName: body.firstName,
-    lastName: body.lastName,
-    email: body.email,
-    credentials: [...body.credentials],
-    kms: {
-      salt: body.kms.salt,
-      recovery: body.kms.recovery,
-      keychain: body.kms.keychain,
-    },
-    keychain: {
-      signature: body.keychain.signature,
-      sharing: body.keychain.sharing,
-    },
+    firstName: data.firstName,
+    lastName: data.lastName,
+    email: data.email,
+    srp: data.srp,
+    kms: data.kms,
+    keychain: data.keychain,
+    createdAt: new Date(),
+    updatedAt: null,
   });
 
   // TODO: Send welcome email
