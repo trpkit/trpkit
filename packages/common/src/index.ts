@@ -1,2 +1,2 @@
 export * from "./lib/jwt";
-export * from "./types/AuthRegistration";
+export * from "./types/Auth";

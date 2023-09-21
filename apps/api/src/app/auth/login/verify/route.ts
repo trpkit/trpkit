@@ -1,24 +1,34 @@
 import { NextRequest, NextResponse } from "next/server";
 import { deriveSession } from "secure-remote-password/server";
 
+import { ZAuthVerify } from "@trpkit/common";
 import { mongo } from "@trpkit/storage";
-
-// TODO: Probably should look into using zod for types
-interface IncomingBodyRequest {
-  email: string;
-  clientSession: string;
-}
 
 export async function POST(request: NextRequest) {
   // Client -----> Server
   // clientSession.proof
-  const body = (await request.json()) as IncomingBodyRequest;
+  const body = await request.json();
+
+  const validatedBody = ZAuthVerify.safeParse(body);
+
+  if (!validatedBody.success) {
+    return NextResponse.json(
+      {
+        message: "Invalid verification request",
+      },
+      {
+        status: 400,
+      }
+    );
+  }
+
+  const data = validatedBody.data;
 
   const client = await mongo();
   const db = client.db(process.env.MONGO_DATABASE);
 
   // Validate incoming email
-  const emailExist = await db.collection("users").countDocuments({ email: body.email });
+  const emailExist = await db.collection("users").countDocuments({ email: data.email });
 
   if (emailExist === 0) {
     return NextResponse.json(
@@ -36,14 +46,10 @@ export async function POST(request: NextRequest) {
   // TODO: Create a type for this document (preferably with zod)
   const user = await db.collection("users").findOne({ email: body.email });
 
-  // Find srp credentials
-  // TODO: Probably do some validation that this actually exists
-  const srpCredentials = user.credentials.find((c: any) => c.type === "srp");
-
   // Grab user session document
   // TODO: Create a type for this document (preferably with zod)
   const userSession = await db.collection("user_sessions").findOne({
-    email: body.email,
+    email: data.email,
     client: { session: null },
     server: { session: { key: null, proof: null } },
     updatedAt: null,
@@ -53,10 +59,10 @@ export async function POST(request: NextRequest) {
   const serverSession = deriveSession(
     userSession.server.ephemeral.secret,
     userSession.client.epheremal,
-    srpCredentials.salt,
-    body.email,
-    srpCredentials.verifier,
-    body.clientSession
+    user.srp.salt,
+    data.email,
+    user.srp.verifier,
+    data.clientSession
   );
 
   // Store server session secret and public in database for later use
@@ -68,7 +74,7 @@ export async function POST(request: NextRequest) {
     {
       $set: {
         client: {
-          session: body.clientSession,
+          session: data.clientSession,
         },
         server: {
           session: {
