@@ -12,4 +12,4 @@ serde = "1.0.139"
 url = { version = "2.2.2", features = ["serde"] }
 
 [profile.release]
-opt-level = 'z'
+opt-level = "z"
