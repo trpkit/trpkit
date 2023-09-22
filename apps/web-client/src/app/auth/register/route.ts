@@ -4,6 +4,17 @@ import { ZAuthRegistration, sign } from "@trpkit/common";
 import { mongo } from "@trpkit/storage";
 
 export async function POST(request: NextRequest) {
+  if (process.env.NEXT_PUBLIC_SIGNUP_ENABLED !== "true") {
+    return NextResponse.json(
+      {
+        message: "Registration is currently disabled.",
+      },
+      {
+        status: 403,
+      }
+    );
+  }
+
   const body = await request.json();
 
   // Validate incoming request

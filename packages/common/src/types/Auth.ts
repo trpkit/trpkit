@@ -25,18 +25,12 @@ export const ZAuthRegistration = z.object({
   }),
 });
 
-export type AuthRegistration = z.infer<typeof ZAuthRegistration>;
-
 export const ZAuthChallenge = z.object({
   email: z.string().email(),
   clientEphemeral: z.string(),
 });
 
-export type AuthChallenge = z.infer<typeof ZAuthChallenge>;
-
 export const ZAuthVerify = z.object({
   email: z.string().email(),
   clientSession: z.string(),
 });
-
-export type AuthVerify = z.infer<typeof ZAuthVerify>;
