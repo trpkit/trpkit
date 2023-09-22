@@ -47,8 +47,7 @@ Before diving into the code, make sure you have the following prerequisites inst
 3. Start the applications with `pnpm run dev`
    1. You may need to configure `.env` in different applications, check to see if they have an `.env.example`
    2. You can view the web client at http://localhost:3000
-   3. You can view the API application at http://localhost:3001
-   4. You can view the marketing application at http://localhost:3002
+   3. You can view the marketing application at http://localhost:3002
 
 ## Repository Activity
 
