@@ -9,6 +9,9 @@
 "app: api":
   - apps/api/**
 
+"app: ingress":
+  - apps/ingress/**
+
 "app: marketing":
   - apps/marketing/**
 
