@@ -1,18 +1,32 @@
 import { base64url, utf8 } from "@scure/base";
 import { NextRequest, NextResponse } from "next/server";
 
+import { ZLaunch } from "@trpkit/common";
 import { mongo } from "@trpkit/storage";
 
 // Specifying a version in this route is not necessary since its temporary and will be removed at launch
 export async function POST(request: NextRequest) {
+  // Error response from no email address
+  if (!request.nextUrl.searchParams.has("email")) {
+    return NextResponse.json(
+      {
+        message: "Missing email address.",
+      },
+      {
+        status: 400,
+      }
+    );
+  }
+
   // Get email address from search parameter and decode it from base64url (e.g. ?email=am9obi5kb2VAZXhhbXBsZS5jb20= -> john.doe@example.com)
   const email = utf8.encode(base64url.decode(request.nextUrl.searchParams.get("email")));
 
-  // Error response from no email address
-  if (!email) {
+  const validatedEmail = ZLaunch.safeParse(email);
+
+  if (!validatedEmail.success) {
     return NextResponse.json(
       {
-        message: "Missing email address from request.",
+        message: "Invalid email address.",
       },
       {
         status: 400,
