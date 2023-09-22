@@ -1,7 +1,14 @@
+"use client";
+
+import { ComputerDesktopIcon, MoonIcon, SunIcon } from "@heroicons/react/24/outline";
+import { cn } from "@lib/cn";
+import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Footer() {
+  const { theme, setTheme } = useTheme();
+
   return (
     <footer className="relative pt-12">
       <div className="max-w-screen-2xl mx-auto w-full px-5">
@@ -87,8 +94,40 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="mt-10 border-t pt-6 pb-16 border-slate-800">
-          <div className="text-xs text-gray-400">&copy; 2023 Trpkit LLC</div>
+        <div className="mt-10 border-t pt-6 pb-16 border-slate-800 flex">
+          <div className="text-xs text-gray-400 mr-auto">&copy; 2023 Trpkit LLC</div>
+          <ul className="flex items-center space-x-3">
+            <li>
+              <MoonIcon
+                className={cn(
+                  theme === "light" ? "text-white" : "text-gray-400",
+                  "h-5 w-5 cursor-pointer"
+                )}
+                onClick={() => setTheme("light")}
+                aria-hidden={true}
+              />
+            </li>
+            <li>
+              <SunIcon
+                className={cn(
+                  theme === "dark" ? "text-white" : "text-gray-400",
+                  "h-5 w-5 cursor-pointer"
+                )}
+                onClick={() => setTheme("dark")}
+                aria-hidden={true}
+              />
+            </li>
+            <li>
+              <ComputerDesktopIcon
+                className={cn(
+                  theme === "system" ? "text-white" : "text-gray-400",
+                  "h-5 w-5 cursor-pointer"
+                )}
+                onClick={() => setTheme("system")}
+                aria-hidden={true}
+              />
+            </li>
+          </ul>
         </div>
       </div>
     </footer>
