@@ -6,9 +6,6 @@
   - "**/Dockerfile"
   - "docker-compose.yml"
 
-"app: api":
-  - apps/api/**
-
 "app: marketing":
   - apps/marketing/**
 

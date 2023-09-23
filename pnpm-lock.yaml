@@ -27,55 +27,6 @@ importers:
         specifier: ^1.10.14
         version: 1.10.14
 
-  apps/api:
-    dependencies:
-      '@aws-sdk/client-s3':
-        specifier: ^3.417.0
-        version: 3.417.0
-      '@scure/base':
-        specifier: ^1.1.3
-        version: 1.1.3
-      '@trpkit/common':
-        specifier: workspace:*
-        version: link:../../packages/common
-      '@trpkit/storage':
-        specifier: workspace:*
-        version: link:../../packages/storage
-      '@trpkit/tracker-crypto':
-        specifier: workspace:*
-        version: link:../../packages/tracker-crypto
-      jose:
-        specifier: ^4.14.6
-        version: 4.14.6
-      mongodb:
-        specifier: ^6.1.0
-        version: 6.1.0
-      next:
-        specifier: ^13.5.2
-        version: 13.5.2(@opentelemetry/api@1.4.1)(react-dom@18.2.0)(react@18.2.0)
-      react:
-        specifier: ^18.2.0
-        version: 18.2.0
-      react-dom:
-        specifier: ^18.2.0
-        version: 18.2.0(react@18.2.0)
-      secure-remote-password:
-        specifier: ^0.3.1
-        version: 0.3.1
-    devDependencies:
-      '@types/node':
-        specifier: ^20.6.3
-        version: 20.6.3
-      '@types/react':
-        specifier: ^18.2.22
-        version: 18.2.22
-      '@types/react-dom':
-        specifier: ^18.2.7
-        version: 18.2.7
-      typescript:
-        specifier: ^5.2.2
-        version: 5.2.2
-
   apps/marketing:
     dependencies:
       '@headlessui/react':
@@ -139,6 +90,55 @@ importers:
       tailwindcss:
         specifier: ^3.3.3
         version: 3.3.3
+      typescript:
+        specifier: ^5.2.2
+        version: 5.2.2
+
+  apps/web-client:
+    dependencies:
+      '@aws-sdk/client-s3':
+        specifier: ^3.417.0
+        version: 3.417.0
+      '@scure/base':
+        specifier: ^1.1.3
+        version: 1.1.3
+      '@trpkit/common':
+        specifier: workspace:*
+        version: link:../../packages/common
+      '@trpkit/storage':
+        specifier: workspace:*
+        version: link:../../packages/storage
+      '@trpkit/tracker-crypto':
+        specifier: workspace:*
+        version: link:../../packages/tracker-crypto
+      jose:
+        specifier: ^4.14.6
+        version: 4.14.6
+      mongodb:
+        specifier: ^6.1.0
+        version: 6.1.0
+      next:
+        specifier: ^13.5.2
+        version: 13.5.2(react-dom@18.2.0)(react@18.2.0)
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.2.0(react@18.2.0)
+      secure-remote-password:
+        specifier: ^0.3.1
+        version: 0.3.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.6.3
+        version: 20.6.3
+      '@types/react':
+        specifier: ^18.2.22
+        version: 18.2.22
+      '@types/react-dom':
+        specifier: ^18.2.7
+        version: 18.2.7
       typescript:
         specifier: ^5.2.2
         version: 5.2.2
@@ -2848,17 +2848,17 @@ packages:
     resolution: {integrity: sha512-bsTwuIg/BZZK/vreVTYYbSWoe2F+71P7K5QGEX+pT250DZbfU1MQ5prOKpPR+LL6uWKK3KMwMCAS74QB3Um1uw==}
     dependencies:
       browserslist: 4.21.10
-      caniuse-lite: 1.0.30001520
+      caniuse-lite: 1.0.30001538
       lodash.memoize: 4.1.2
       lodash.uniq: 4.5.0
     dev: true
 
   /caniuse-lite@1.0.30001520:
     resolution: {integrity: sha512-tahF5O9EiiTzwTUqAeFjIZbn4Dnqxzz7ktrgGlMYNLH43Ul26IgTMH/zvL3DG0lZxBYnlT04axvInszUsZULdA==}
+    dev: false
 
   /caniuse-lite@1.0.30001538:
     resolution: {integrity: sha512-HWJnhnID+0YMtGlzcp3T9drmBJUVDchPJ08tpUGFLs9CYlwWPH2uLgpHn8fND5pCgXVtnGS3H4QR9XLMHVNkHw==}
-    dev: true
 
   /ccount@2.0.1:
     resolution: {integrity: sha512-eyrF0jiFpY+3drT6383f1qhkbGsLSifNAjA61IUjZjmLCWjItY6LB9ft9YhoDgwfmclB2zhu51Lc7+95b8NRAg==}
@@ -4862,6 +4862,46 @@ packages:
       '@swc/helpers': 0.5.2
       busboy: 1.6.0
       caniuse-lite: 1.0.30001520
+      postcss: 8.4.14
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      styled-jsx: 5.1.1(react@18.2.0)
+      watchpack: 2.4.0
+      zod: 3.21.4
+    optionalDependencies:
+      '@next/swc-darwin-arm64': 13.5.2
+      '@next/swc-darwin-x64': 13.5.2
+      '@next/swc-linux-arm64-gnu': 13.5.2
+      '@next/swc-linux-arm64-musl': 13.5.2
+      '@next/swc-linux-x64-gnu': 13.5.2
+      '@next/swc-linux-x64-musl': 13.5.2
+      '@next/swc-win32-arm64-msvc': 13.5.2
+      '@next/swc-win32-ia32-msvc': 13.5.2
+      '@next/swc-win32-x64-msvc': 13.5.2
+    transitivePeerDependencies:
+      - '@babel/core'
+      - babel-plugin-macros
+    dev: false
+
+  /next@13.5.2(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-vog4UhUaMYAzeqfiAAmgB/QWLW7p01/sg+2vn6bqc/CxHFYizMzLv6gjxKzl31EVFkfl/F+GbxlKizlkTE9RdA==}
+    engines: {node: '>=16.14.0'}
+    hasBin: true
+    peerDependencies:
+      '@opentelemetry/api': ^1.1.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
+      sass: ^1.3.0
+    peerDependenciesMeta:
+      '@opentelemetry/api':
+        optional: true
+      sass:
+        optional: true
+    dependencies:
+      '@next/env': 13.5.2
+      '@swc/helpers': 0.5.2
+      busboy: 1.6.0
+      caniuse-lite: 1.0.30001538
       postcss: 8.4.14
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
