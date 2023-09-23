@@ -85,11 +85,6 @@ function splitParts(input: string) {
   return [base64.encode(nonce), base64.encode(copy)];
 }
 
-// The store object
-export type StoreObject = {
-  value: string;
-};
-
 /**
  * Load the store from the window.top.name and window.sessionStorage
  */
@@ -107,7 +102,7 @@ export function loadStore() {
     return;
   }
 
-  const store: [string, StoreObject][] = JSON.parse(combined);
+  const store: [string, string][] = JSON.parse(combined);
 
   return new Map(
     store.map(([key, value]) => {
@@ -121,7 +116,7 @@ export function loadStore() {
  *
  * @param store The store to save
  */
-export function saveStore(store: Map<string, StoreObject>) {
+export function saveStore(store: Map<string, string>) {
   const data = JSON.stringify(Array.from(store.entries()));
   const [windowPart, sessionPart] = splitParts(data);
 
