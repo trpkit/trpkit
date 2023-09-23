@@ -44,11 +44,11 @@ export default function Header() {
           </button>
         </div>
         <div className="hidden lg:flex">
-          <Link
+          <a
             href="#waitlist"
             className="text-sm font-semibold leading-6 text-gray-300 hover:text-white">
             Join waitlist <span aria-hidden="true">&rarr;</span>
-          </Link>
+          </a>
         </div>
         <Dialog
           as="div"
