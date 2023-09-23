@@ -1,3 +1,3 @@
 export * from "./lib/jwt";
-export * from "./types/Auth";
-export * from "./types/Launch";
+export * from "./types/authentication";
+export * from "./types/launch";

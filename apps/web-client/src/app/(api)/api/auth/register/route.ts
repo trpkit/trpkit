@@ -54,8 +54,6 @@ export async function POST(request: NextRequest) {
   }
 
   await db.collection("users").insertOne({
-    firstName: data.firstName,
-    lastName: data.lastName,
     email: data.email,
     srp: data.srp,
     kms: data.kms,
