@@ -6,11 +6,23 @@ import { cn } from "@lib/cn";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
+// TODO: Future navigation pages
 const navigation = [
-  { name: "Product", href: "" },
-  { name: "Pricing", href: "" },
+  // { name: "Product", href: "" },
+  // { name: "Pricing", href: "" },
   { name: "Blog", href: "/blog" },
-  { name: "Resources", href: "" },
+  // { name: "Resources", href: "" },
+];
+
+// TODO: Future resource pages (dropdown menu)
+const resources = [
+  // { name: 'About us', href: '' },
+  // { name: 'Open source', href: '' },
+  // { name: 'Whitepaper', href: '' },
+  // { name: 'Transparency', href: '' },
+  // { name: 'Changelog', href: '' },
+  // { name: 'Roadmap', href: '' },
+  // { name: 'Help', href: '' },
 ];
 
 export default function Header() {
