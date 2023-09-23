@@ -15,8 +15,7 @@ function checkPayload(payload: string) {
 }
 
 export async function GET(request: NextRequest, { params }: RouteParameters) {
-  // TODO: Create a function to handle versioning
-  if (params.version !== "v1" || !request.nextUrl.searchParams.has("p")) {
+  if (!request.nextUrl.searchParams.has("p")) {
     // Drop request early
     return new Response(null, {
       status: 204,
@@ -66,14 +65,6 @@ export async function GET(request: NextRequest, { params }: RouteParameters) {
 }
 
 export async function POST(request: NextRequest, { params }: RouteParameters) {
-  // TODO: Create a function to handle versioning
-  if (params.version !== "v1") {
-    // Drop request early
-    return new Response(null, {
-      status: 204,
-    });
-  }
-
   const siteId = params.siteId;
   const country = request.headers.get("cf-ipcountry");
   const payload = await request.text();

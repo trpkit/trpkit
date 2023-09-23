@@ -4,7 +4,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { ZLaunch } from "@trpkit/common";
 import { mongo } from "@trpkit/storage";
 
-// Specifying a version in this route is not necessary since its temporary and will be removed at launch
 export async function POST(request: NextRequest) {
   // Error response from no email address
   if (!request.nextUrl.searchParams.has("email")) {
