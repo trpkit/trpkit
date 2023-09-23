@@ -24,8 +24,6 @@ export {
 
 export { loadStore, saveStore } from "./store";
 
-export type { StoreObject } from "./store";
-
 export type {
   KMSAlgorithmKey,
   KMSAlgorithmCipher,
