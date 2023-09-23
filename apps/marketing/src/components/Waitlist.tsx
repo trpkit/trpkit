@@ -13,7 +13,7 @@ export default function Waitlist() {
     e.preventDefault();
 
     const res = await fetch(
-      `https://api.trpkit.com/v1/launch?email=${base64url.encode(utf8.decode(email))}`,
+      `https://app.trpkit.com/api/v1/launch?email=${base64url.encode(utf8.decode(email))}`,
       {
         method: "post",
         body: JSON.stringify({}),
