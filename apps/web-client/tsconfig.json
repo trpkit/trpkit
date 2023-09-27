@@ -22,8 +22,9 @@
         "name": "next"
       }
     ],
+    "baseUrl": ".",
     "paths": {
-      "@styles/*": ["src/styles/*"],
+      "@styles/*": ["src/styles/*"]
     }
   },
   "include": [
