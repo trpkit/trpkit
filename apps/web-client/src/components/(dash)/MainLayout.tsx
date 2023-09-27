@@ -9,7 +9,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
         <div className="flex h-full">
           <Sidebar />
           <section className="relative mx-auto w-full max-w-screen overflow-auto">
-            {children}
+            <div className="relative min-h-screen px-10 pb-32 pt-6">{children}</div>
           </section>
         </div>
       </div>
