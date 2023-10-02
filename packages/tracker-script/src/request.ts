@@ -2,16 +2,16 @@ import { baseUrl } from "./config";
 
 export function handleRequest(siteId: string, payload: string) {
   for (const handle of [postFetch, postBeacon]) {
-    if (handle(`${baseUrl}${siteId}`, payload)) {
+    if (handle(siteId, payload)) {
       break;
     }
   }
 }
 
-function postFetch(url: string, payload: string): boolean {
+function postFetch(siteId: string, payload: string): boolean {
   if (!("fetch" in window)) return false;
 
-  fetch(url, {
+  fetch(`${baseUrl}${siteId}`, {
     method: "post",
     body: payload,
     credentials: "omit",
@@ -21,14 +21,12 @@ function postFetch(url: string, payload: string): boolean {
       "content-type": "text/plain",
     },
   });
-
   return true;
 }
 
-function postBeacon(url: string, payload: string): boolean {
+function postBeacon(siteId: string, payload: string): boolean {
   if (typeof navigator.sendBeacon !== "function") return false;
 
-  navigator.sendBeacon(url, payload);
-
+  navigator.sendBeacon(`${baseUrl}${siteId}`, payload);
   return true;
 }
