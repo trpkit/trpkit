@@ -1,6 +1,7 @@
 import {
   ChartBarIcon,
   ChevronDownIcon,
+  ChevronLeftIcon,
   Cog6ToothIcon,
   HomeIcon,
   LockClosedIcon,
@@ -23,7 +24,7 @@ export default function Sidebar() {
         <div className="px-6 space-y-1">
           <a
             href="#"
-            className="group m-0 flex min-h-[40px] w-full cursor-pointer items-center rounded px-3 text-sm text-white hover:bg-neutral-900 focus:outline-none bg-neutral-900">
+            className="group m-0 flex min-h-[40px] w-full cursor-pointer items-center rounded px-3 text-sm text-gray-300 hover:bg-neutral-900 hover:text-white focus:outline-none">
             <div className="mr-3 h-5 w-5">
               <HomeIcon className="h-5 w-5" aria-hidden="true" />
             </div>
@@ -37,7 +38,7 @@ export default function Sidebar() {
             </div>
             <div>Analytics</div>
             <div className="ml-auto h-4 w-4 flex-shrink-0">
-              <ChevronDownIcon className="h-4 w-4" aria-hidden="true" />
+              <ChevronLeftIcon className="h-4 w-4" aria-hidden="true" />
             </div>
           </a>
           <a
@@ -51,6 +52,23 @@ export default function Sidebar() {
               <ChevronDownIcon className="h-4 w-4" aria-hidden="true" />
             </div>
           </a>
+          <div className="space-y-1">
+            <a
+              href="#"
+              className="relative m-0 flex min-h-[40px] w-full cursor-pointer items-center rounded pl-12 pr-4 hover:bg-neutral-900 focus:outline-none text-gray-400 text-sm">
+              General
+            </a>
+            <a
+              href="#"
+              className="relative m-0 flex min-h-[40px] w-full cursor-pointer items-center rounded pl-12 pr-4 hover:bg-neutral-900 focus:outline-none text-gray-400 text-sm bg-neutral-900">
+              Encryption keys
+            </a>
+            <a
+              href="#"
+              className="relative m-0 flex min-h-[40px] w-full cursor-pointer items-center rounded pl-12 pr-4 hover:bg-neutral-900 focus:outline-none text-gray-400 text-sm">
+              Data & privacy
+            </a>
+          </div>
           <a
             href="#"
             className="group m-0 flex min-h-[40px] w-full cursor-pointer items-center rounded px-3 text-sm text-gray-300 hover:bg-neutral-900 hover:text-white focus:outline-none">
@@ -59,7 +77,7 @@ export default function Sidebar() {
             </div>
             <div>Settings</div>
             <div className="ml-auto h-4 w-4 flex-shrink-0">
-              <ChevronDownIcon className="h-4 w-4" aria-hidden="true" />
+              <ChevronLeftIcon className="h-4 w-4" aria-hidden="true" />
             </div>
           </a>
         </div>
