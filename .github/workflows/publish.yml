@@ -26,11 +26,11 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          file: apps/marketing/Dockerfile
+          file: ./apps/marketing/Dockerfile
           tags: ${{ secrets.ACR_REGISTRY }}/marketing:latest
       - name: Build and push webclient app
         uses: docker/build-push-action@v5
         with:
           push: true
-          file: apps/web-client/Dockerfile
+          file: ./apps/web-client/Dockerfile
           tags: ${{ secrets.ACR_REGISTRY }}/webclient:latest
