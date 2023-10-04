@@ -84,7 +84,7 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/legal/transparency" className="hover:text-gray-300">
+                  <Link href="/transparency" className="hover:text-gray-300">
                     Transparency
                   </Link>
                 </li>
