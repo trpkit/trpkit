@@ -53,6 +53,19 @@ export default function Footer() {
           </div>
           <div className="text-sm col-span-6 md:col-span-3 lg:col-span-2">
             <span className="font-bold text-white">Product</span>
+            <div className="mt-5">
+              <ul className="space-y-3 text-gray-400">
+                <li>
+                  <a
+                    href="https://trpkit.openstatus.dev/"
+                    className="hover:text-gray-300"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    Status
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
           <div className="text-sm col-span-6 md:col-span-3 lg:col-span-2">
             <span className="font-bold text-white">Help</span>
