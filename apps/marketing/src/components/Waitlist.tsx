@@ -13,7 +13,9 @@ export default function Waitlist() {
     e.preventDefault();
 
     const res = await fetch(
-      `https://app.trpkit.com/api/v1/launch?email=${base64url.encode(utf8.decode(email))}`,
+      `${process.env.NEXT_PUBLIC_WEBCLIENT_URL}/api/v1/launch?email=${base64url.encode(
+        utf8.decode(email)
+      )}`,
       {
         method: "post",
         body: JSON.stringify({}),
