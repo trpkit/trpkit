@@ -31,5 +31,6 @@ COPY --link --from=installer /app/apps/web-client/package.json .
 COPY --link --from=installer --chown=nextjs:nodejs /app/apps/web-client/.next/standalone ./
 COPY --link --from=installer --chown=nextjs:nodejs /app/apps/web-client/.next/static ./apps/api/.next/static
 ENV PORT 3000
+ENV WEBSITES_PORT 3000
 ENV HOSTNAME localhost
 CMD node apps/web-client/server.js

@@ -32,5 +32,6 @@ COPY --link --from=installer --chown=nextjs:nodejs /app/apps/marketing/.next/sta
 COPY --link --from=installer --chown=nextjs:nodejs /app/apps/marketing/.next/static ./apps/marketing/.next/static
 COPY --link --from=installer --chown=nextjs:nodejs /app/apps/marketing/public ./apps/marketing/public
 ENV PORT 3000
+ENV WEBSITES_PORT 3000
 ENV HOSTNAME localhost
 CMD node apps/marketing/server.js
