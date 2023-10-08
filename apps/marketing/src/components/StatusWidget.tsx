@@ -40,7 +40,7 @@ const dictionary = {
 } as const;
 
 export async function StatusWidget() {
-  const res = await fetch(`https://api.openstatus.dev/public/status/trpkit`, {
+  const res = await fetch("https://api.openstatus.dev/public/status/trpkit", {
     next: { revalidate: 60 }, // cache request for 60 seconds
   });
   const data = await res.json();
@@ -56,7 +56,7 @@ export async function StatusWidget() {
   return (
     <a
       className="text-foreground/70 hover:bg-muted hover:text-foreground inline-flex max-w-fit items-center gap-2 rounded-md border border-slate-800 px-3 py-1 text-sm"
-      href={`https://trpkit.openstatus.dev`}
+      href="https://trpkit.openstatus.dev"
       target="_blank"
       rel="noopener noreferrer">
       {label}
