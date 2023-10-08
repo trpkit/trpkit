@@ -21,6 +21,8 @@ export async function GET(request: NextRequest, { params }: RouteParameters) {
       status: 204,
       headers: {
         "cache-control": "private, no-cache, proxy-revalidate",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST",
       },
     });
   }
@@ -35,6 +37,8 @@ export async function GET(request: NextRequest, { params }: RouteParameters) {
       status: 204,
       headers: {
         "cache-control": "private, no-cache, proxy-revalidate",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST",
       },
     });
   }
@@ -60,6 +64,8 @@ export async function GET(request: NextRequest, { params }: RouteParameters) {
     status: 201,
     headers: {
       "cache-control": "private, no-cache, proxy-revalidate",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST",
     },
   });
 }
@@ -73,6 +79,10 @@ export async function POST(request: NextRequest, { params }: RouteParameters) {
     // Drop request
     return new Response(null, {
       status: 204,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST",
+      },
     });
   }
 
@@ -95,5 +105,9 @@ export async function POST(request: NextRequest, { params }: RouteParameters) {
 
   return new Response(null, {
     status: 201,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST",
+    },
   });
 }

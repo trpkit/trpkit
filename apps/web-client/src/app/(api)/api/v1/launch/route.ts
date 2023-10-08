@@ -13,6 +13,10 @@ export async function POST(request: NextRequest) {
       },
       {
         status: 400,
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "POST",
+        },
       }
     );
   }
@@ -29,6 +33,10 @@ export async function POST(request: NextRequest) {
       },
       {
         status: 400,
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "POST",
+        },
       }
     );
   }
@@ -48,5 +56,9 @@ export async function POST(request: NextRequest) {
   // Return a created status code
   return new Response(null, {
     status: 201,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST",
+    },
   });
 }
