@@ -55,7 +55,7 @@ export default function Page() {
               <div>
                 <h3 className="text-2xl text-white font-semibold">Security audits</h3>
                 <p className="pt-6 pb-12 text-gray-300">
-                  We are planning to undergo security audits regularly. See a comprehensive list
+                  We are planning to undergo independent security audits regularly. See a comprehensive list
                   below of the audits we have completed.
                 </p>
                 <table className="w-full divide-y divide-slate-800">
