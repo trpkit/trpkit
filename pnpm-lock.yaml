@@ -59,6 +59,9 @@ importers:
       sharp:
         specifier: ^0.32.6
         version: 0.32.6
+      zod:
+        specifier: ^3.22.4
+        version: 3.22.4
     devDependencies:
       '@tailwindcss/forms':
         specifier: ^0.5.6
