@@ -1,3 +1,4 @@
+import { StatusWidget } from "@components/StatusWidget";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -48,6 +49,9 @@ export default function Footer() {
                     />
                   </svg>
                 </a>
+              </li>
+              <li>
+                <StatusWidget />
               </li>
             </ul>
           </div>
