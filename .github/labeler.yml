@@ -6,9 +6,6 @@
   - "**/Dockerfile"
   - "docker-compose.yml"
 
-"app: api":
-  - apps/api/**
-
 "app: marketing":
   - apps/marketing/**
 
@@ -17,6 +14,9 @@
 
 "app: url-shortener":
   - apps/url-shortener/**
+
+"package: common":
+  - packages/common/**
 
 "package: config":
   - packages/config/**

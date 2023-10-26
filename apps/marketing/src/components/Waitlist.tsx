@@ -1,6 +1,7 @@
 "use client";
 
 import useSmoothScrollTo from "@hooks/useSmoothScrollTo";
+import { base64url, utf8 } from "@scure/base";
 import React, { useState } from "react";
 
 export default function Waitlist() {
@@ -11,10 +12,15 @@ export default function Waitlist() {
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
 
-    const res = await fetch(`https://api.trpkit.com/launch?email=${email}`, {
-      method: "post",
-      body: JSON.stringify({}),
-    });
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_WEBCLIENT_URL}/api/v1/launch?email=${base64url.encode(
+        utf8.decode(email)
+      )}`,
+      {
+        method: "post",
+        body: JSON.stringify({}),
+      }
+    );
 
     if (res.ok) {
       setSubmitted(true);
@@ -62,7 +68,7 @@ export default function Waitlist() {
             }}
           />
         </div>
-        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 lg:grid-cols-12 lg:gap-8 lg:px-8">
+        <div className="max-w-screen-2xl mx-auto w-full px-5 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-8">
           <div className="max-w-xl lg:col-span-7">
             <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
               Do you want to be kept in the loop with Trpkit?
@@ -73,7 +79,7 @@ export default function Waitlist() {
             </p>
           </div>
           {submitted ? (
-            <div className="w-full max-w-md lg:col-span-5 lg:pt-2">
+            <div className="w-full max-w-md lg:col-span-5 lg:pt-2 lg:ml-auto">
               <p className="text-sm leading-6 text-gray-200">
                 Thank you for the interest in our launch of Trpkit! We're excited to have you
                 onboard for the journey!
@@ -90,7 +96,9 @@ export default function Waitlist() {
               </p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="w-full max-w-md lg:col-span-5 lg:pt-2">
+            <form
+              onSubmit={handleSubmit}
+              className="w-full max-w-md lg:col-span-5 lg:pt-2 lg:ml-auto">
               <div className="flex gap-x-4">
                 <label htmlFor="email" className="sr-only">
                   Email address

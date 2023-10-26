@@ -31,6 +31,6 @@ COPY --link --from=installer /app/apps/marketing/package.json .
 COPY --link --from=installer --chown=nextjs:nodejs /app/apps/marketing/.next/standalone ./
 COPY --link --from=installer --chown=nextjs:nodejs /app/apps/marketing/.next/static ./apps/marketing/.next/static
 COPY --link --from=installer --chown=nextjs:nodejs /app/apps/marketing/public ./apps/marketing/public
-ENV PORT 3000
+ENV PORT 8080
 ENV HOSTNAME localhost
 CMD node apps/marketing/server.js

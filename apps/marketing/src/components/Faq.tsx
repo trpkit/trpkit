@@ -15,7 +15,7 @@ const faqs = [
       "Yes, Trpkit is completely open source and can be found on <a href='https://github.com/trpkit/trpkit' target='_blank' class='text-blue-500 hover:text-blue-400'>GitHub</a>! Additionally, we will be publishing Trpkit's design and security processes in a whitepaper.",
   },
   {
-    question: "How much will Trpkit cost at open beta/market release?",
+    question: "How much will Trpkit cost at market release?",
     answer:
       "Trpkit will cost $11 USD monthly per 100,000 events. You can switch to our yearly pricing and receive two months free.",
   },
@@ -39,7 +39,7 @@ const faqs = [
 export default function Faq() {
   return (
     <section>
-      <div className="mx-auto max-w-2xl px-4 py-24 sm:px-6 sm:py-32 lg:max-w-7xl lg:px-8">
+      <div className="max-w-screen-2xl mx-auto w-full px-5 py-24 sm:py-32">
         <div className="mx-auto divide-y divide-slate-800">
           <h2 className="text-3xl font-bold leading-10 tracking-tight text-white sm:text-4xl">
             Frequently asked questions

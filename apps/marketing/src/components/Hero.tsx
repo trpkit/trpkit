@@ -42,15 +42,16 @@ export default function Hero() {
         </div>
         <div className="overflow-hidden">
           <div className="py-24 sm:py-32 lg:pb-40">
-            <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="max-w-screen-2xl mx-auto w-full px-5">
               <div className="mx-auto max-w-2xl text-center">
-                <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
-                  Privacy-first analytics is coming
+                <h1 className="text-3xl font-bold tracking-tight text-white sm:text-5xl">
+                  Privacy-first <span className="text-blue-400">end-to-end encrypted</span> web
+                  analytics
                 </h1>
                 <p className="mt-6 text-lg leading-8 text-gray-300">
-                  The Trpkit beta program is starting soon, for a{" "}
+                  The Trpkit early access program is starting soon, for a{" "}
                   <strong className="font-semibold">limited number of participants</strong>.
-                  Register your interest to become a beta tester and get early access for free.
+                  Register your interest to get early access for free.
                 </p>
                 <div className="mt-10 flex items-center justify-center gap-x-6">
                   <a
