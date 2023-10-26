@@ -57,11 +57,11 @@ export async function POST(request: NextRequest) {
 
   // Validate the proof and derive session
   const serverSession = deriveSession(
-    userSession.server.ephemeral.secret,
-    userSession.client.epheremal,
-    user.srp.salt,
+    userSession?.server.ephemeral.secret,
+    userSession?.client.epheremal,
+    user?.srp.salt,
     data.email,
-    user.srp.verifier,
+    user?.srp.verifier,
     data.clientSession
   );
 
@@ -69,7 +69,7 @@ export async function POST(request: NextRequest) {
   // This collection has an TTL index to automatically delete sessions after 7d
   await db.collection("user_sessions").updateOne(
     {
-      _id: userSession._id,
+      _id: userSession?._id,
     },
     {
       $set: {

@@ -31,7 +31,7 @@ export async function GET(request: NextRequest, { params }: RouteParameters) {
   const country = request.headers.get("cf-ipcountry");
   const payload = request.nextUrl.searchParams.get("p");
 
-  if (!checkPayload(payload)) {
+  if (!checkPayload(payload!)) {
     // Drop request
     return new Response(null, {
       status: 204,

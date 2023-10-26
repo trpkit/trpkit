@@ -3,5 +3,5 @@
  */
 module.exports = {
   output: "standalone",
-  transpilePackages: ["@trpkit/storage", "@trpkit/tracker-crypto"],
+  transpilePackages: ["@trpkit/common", "@trpkit/storage", "@trpkit/tracker-crypto"],
 };

@@ -49,7 +49,7 @@ export async function POST(request: NextRequest) {
   const user = await db.collection("users").findOne({ email: data.email });
 
   // Generate server ephemeral
-  const serverEphemeral = generateEphemeral(user.srp.verifier);
+  const serverEphemeral = generateEphemeral(user?.srp.verifier);
 
   // Store server ephemeral secret and public in database for later use
   // This collection has an TTL index to automatically delete sessions after 7d
@@ -82,7 +82,7 @@ export async function POST(request: NextRequest) {
       d: {
         ephemeral: serverEphemeral.public,
         // Note: this is the SRP salt, not the KMS salt
-        salt: user.srp.salt,
+        salt: user?.srp.salt,
       },
     },
     {
