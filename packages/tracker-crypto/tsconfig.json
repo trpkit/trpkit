@@ -1,25 +1,5 @@
 {
-  "compilerOptions": {
-    "baseUrl": ".",
-    "target": "ES2018",
-    "lib": ["DOM"],
-    "module": "CommonJS",
-    "declaration": true,
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "esModuleInterop": true,
-    "strict": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
-    "strictPropertyInitialization": true,
-    "noImplicitThis": true,
-    "alwaysStrict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true
-  },
-  "include": ["./src/**/*.ts"],
-  "exclude": ["./dist", "./node_modules"]
+  "extends": "@trpkit/tsconfig/react-library.json",
+  "include": ".",
+  "exclude": ["dist", "node_modules"]
 }

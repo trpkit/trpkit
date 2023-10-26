@@ -16,6 +16,7 @@
     "mongodb": "^6.2.0"
   },
   "devDependencies": {
+    "@trpkit/tsconfig": "workspace:*",
     "@types/node": "^20.8.9",
     "typescript": "^5.2.2"
   }
