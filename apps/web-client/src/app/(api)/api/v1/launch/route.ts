@@ -22,7 +22,7 @@ export async function POST(request: NextRequest) {
   }
 
   // Get email address from search parameter and decode it from base64url (e.g. ?email=am9obi5kb2VAZXhhbXBsZS5jb20= -> john.doe@example.com)
-  const email = utf8.encode(base64url.decode(request.nextUrl.searchParams.get("email")));
+  const email = utf8.encode(base64url.decode(request.nextUrl.searchParams.get("email") ?? ""));
 
   const validatedEmail = ZLaunch.safeParse(email);
 

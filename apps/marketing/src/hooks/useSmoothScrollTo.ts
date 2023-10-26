@@ -6,6 +6,7 @@ export default function useSmoothScrollTo(id: string) {
   useEffect(() => {
     function handler(e: HashChangeEvent) {
       if (ref.current && location.hash === id) {
+        // @ts-ignore
         ref.current.scrollIntoView({ behavior: "smooth" });
       }
     }
