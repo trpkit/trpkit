@@ -47,16 +47,15 @@ export default function Page() {
                 <h2 className="text-3xl text-white font-semibold">Data privacy</h2>
                 <p className="pt-6 text-gray-300">
                   For Trpkit, security and data privacy are of paramount importance. We do not track
-                  or anonymize IP addresses or identifiable information when providing analytical
-                  services. Trpkit end-to-end encrypts all metric data, unlike all mainstream web
-                  analytic providers.
+                  identifiable information when providing analytical services. Trpkit end-to-end
+                  encrypts all metric data, unlike all mainstream web analytic providers.
                 </p>
               </div>
               <div>
                 <h3 className="text-2xl text-white font-semibold">Security audits</h3>
                 <p className="pt-6 pb-12 text-gray-300">
-                  We are planning to undergo independent security audits regularly. See a comprehensive list
-                  below of the audits we have completed.
+                  We are planning to undergo independent security audits regularly. See a
+                  comprehensive list below of the audits we have completed.
                 </p>
                 <table className="w-full divide-y divide-slate-800">
                   <thead>
