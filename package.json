@@ -6,11 +6,11 @@
     "build": "turbo run build",
     "bump:version": "node ./scripts/bump-version.js",
     "bump:dependencies": "pnpm dlx npm-check-updates --deep -u && pnpm i",
-    "generate:trpkit-materials": "node ./scripts/clone-trpkit-materials.js",
-    "generate:trpkit-opaque": "node ./scripts/clone-opaque-wasm.js",
     "dev": "turbo run dev",
     "dx": "pnpm i && docker compose --profile development up -d",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,mdx}\"",
+    "generate:trpkit-materials": "node ./scripts/clone-trpkit-materials.js",
+    "generate:trpkit-opaque": "node ./scripts/clone-opaque-wasm.js",
     "lint-staged": "lint-staged",
     "prepare": "husky install"
   },
