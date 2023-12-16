@@ -1,7 +1,7 @@
 /**
  * @type {import('ts-jest').JestConfigWithTsJest}
  */
-module.exports = {
+const jestConfig = {
   preset: "ts-jest",
   testEnvironment: "jsdom",
   transform: {
@@ -13,3 +13,5 @@ module.exports = {
   },
   extensionsToTreatAsEsm: [".ts", ".tsx"],
 };
+
+export default jestConfig;
