@@ -40,7 +40,7 @@ Before diving into the code, make sure you have the following prerequisites inst
 4. **Docker & docker compose**: While not required, Docker and docker compose are highly recommended for local development. If you need to install it, refer to the [official Docker documentation](https://docs.docker.com/get-docker/).
 5. **Rust**: Install at [Rust official website](https://www.rust-lang.org/tools/install).
 6. **wasm-pack**: Install at [wasm-pack official website](https://rustwasm.github.io/wasm-pack/installer/)
-   1. **Windows only**: Install __Desktop development with C++__ in [VS](https://visualstudio.microsoft.com/visual-cpp-build-tools/)
+   1. **Windows only**: Install <ins>Desktop development with C++</ins> in [VS](https://visualstudio.microsoft.com/visual-cpp-build-tools/)
 
 ### Quickstart
 
