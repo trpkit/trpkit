@@ -9,7 +9,8 @@
     <a href="https://trpkit.com">Learn more</a>
 </p>
 
-<img width="100%" alt="webapp" src="https://trpkit.com/features/webapp.png">
+> [!IMPORTANT]
+> This project under active development and constantly changing. The prerequisites and installation instructions may not be accurate.
 
 ## About Trpkit
 
@@ -37,6 +38,9 @@ Before diving into the code, make sure you have the following prerequisites inst
 2. **MongoDB**: Ensure MongoDB is up and running. If you need to install it, refer to the [official MongoDB documentation](https://docs.mongodb.com/manual/installation/).
 3. **pnpm**: Trpkit uses pnpm for package management. If you need to install it, refer to the [official pnpm documentation](https://pnpm.io/installation).
 4. **Docker & docker compose**: While not required, Docker and docker compose are highly recommended for local development. If you need to install it, refer to the [official Docker documentation](https://docs.docker.com/get-docker/).
+5. **Rust**: Install at [Rust official website](https://www.rust-lang.org/tools/install).
+6. **wasm-pack**: Install at [wasm-pack official website](https://rustwasm.github.io/wasm-pack/installer/)
+   1. **Windows only**: Install __Desktop development with C++__ in [VS](https://visualstudio.microsoft.com/visual-cpp-build-tools/)
 
 ### Quickstart
 
