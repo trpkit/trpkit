@@ -17,7 +17,7 @@ fi
 if [ -d "$rootDir/tmp/opaque-wasm/.git" ]; then
   git -C "$rootDir/tmp/opaque-wasm" pull
 else
-  git clone https://github.com/marucjmar/opaque-wasm "$rootDir/tmp/opaque-wasm"
+  git clone https://github.com/marucjmar/opaque-wasm.git "$rootDir/tmp/opaque-wasm"
 fi
 
 # Build server
