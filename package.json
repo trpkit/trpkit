@@ -10,7 +10,7 @@
     "dx": "pnpm i && docker compose --profile development up -d",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,mdx}\"",
     "generate:trpkit-materials": "node ./scripts/clone-trpkit-materials.js",
-    "generate:trpkit-opaque": "node ./scripts/clone-opaque-wasm.js",
+    "generate:trpkit-opaque": "./scripts/generate-trpkit-opaque.sh",
     "lint-staged": "lint-staged",
     "prepare": "husky install"
   },
