@@ -9,7 +9,7 @@
     "dev": "turbo run dev",
     "dx": "pnpm i && docker compose --profile development up -d",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,mdx}\"",
-    "generate:trpkit-materials": "node ./scripts/clone-trpkit-materials.js",
+    "generate:materials": "scripts/generate-materials.sh",
     "generate:opaque": "scripts/generate-opaque.sh",
     "lint-staged": "lint-staged",
     "prepare": "husky install"
