@@ -233,6 +233,31 @@ importers:
         specifier: ^3.3.6
         version: 3.3.6
 
+  packages/crypto:
+    dependencies:
+      zod:
+        specifier: ^3.22.4
+        version: 3.22.4
+    devDependencies:
+      '@trpkit/jest':
+        specifier: workspace:*
+        version: link:../jest
+      '@types/jest':
+        specifier: ^29.5.11
+        version: 29.5.11
+      '@types/node':
+        specifier: ^20.10.4
+        version: 20.10.4
+      jest:
+        specifier: ^29.7.0
+        version: 29.7.0(@types/node@20.10.4)
+      tsup:
+        specifier: ^8.0.1
+        version: 8.0.1(typescript@5.3.3)
+      typescript:
+        specifier: ^5.3.3
+        version: 5.3.3
+
   packages/jest:
     devDependencies:
       '@swc/core':
