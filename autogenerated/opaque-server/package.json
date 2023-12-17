@@ -1,0 +1,36 @@
+{
+  "name": "@trpkit/opaque-server",
+  "collaborators": [
+    "Marcin Lazar <marcin.lazar@pm.me>",
+    "Hawkheart",
+    "r0kk3rz"
+  ],
+  "description": "An implementation of the OPAQUE key exchange protocol in WASM(WebAssembly)",
+  "version": "2.1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marucjmar/opaque-wasm"
+  },
+  "files": [
+    "opaque-server_bg.wasm",
+    "opaque-server.js",
+    "opaque-server.d.ts"
+  ],
+  "main": "opaque-server.js",
+  "types": "opaque-server.d.ts",
+  "keywords": [
+    "cryptography",
+    "crypto",
+    "opaque",
+    "passwords",
+    "authentication",
+    "wasm",
+    "js",
+    "browser",
+    "webassembly",
+    "node",
+    "wasm-pack",
+    "bindgen",
+    "wasm-bindgen"
+  ]
+}
