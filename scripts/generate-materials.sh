@@ -3,7 +3,7 @@
 cd "$(dirname "$0")/.." || exit
 rootDir=$(pwd)
 
-echo -e "ATTENTION: The files being accessed through this script are subject to different licensing terms than the rest of the project. By proceeding, you acknowledge that you have reviewed and accepted these terms.\n\nIf you are not familiar with these terms, please review them before continuing.\n\nDo you wish to continue? (Y/Yes to accept and proceed, any other key to abort)"
+echo -e "ATTENTION: The files being accessed through this script are subject to different licensing terms than the rest of the project. By proceeding, you acknowledge that you have read and accept the terms of the license for these files.\n\nIf you are not familiar with these terms, please review them before continuing.\n\nDo you wish to continue? (Y/Yes to accept and proceed, any other key to abort)"
 read -r answer
 
 if [[ ! $answer =~ ^[Yy](es)?$ ]]; then
