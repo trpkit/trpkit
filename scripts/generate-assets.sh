@@ -17,10 +17,10 @@ if ! command -v git &> /dev/null; then
 fi
 
 # Check if repository is already cloned
-if [ -d "$rootDir/tmp/materials/.git" ]; then
-  git -C "$rootDir/tmp/materials" pull
+if [ -d "$rootDir/tmp/assets/.git" ]; then
+  git -C "$rootDir/tmp/assets" pull
 else
-  git clone https://github.com/trpkit/materials.git "$rootDir/tmp/materials"
+  git clone https://github.com/trpkit/assets.git "$rootDir/tmp/assets"
 fi
 
 # Function to copy contents to another directory
@@ -39,5 +39,4 @@ copy_files() {
   echo "Done copying files to $destination"
 }
 
-copy_files "$rootDir/tmp/materials/blog" "$rootDir/apps/marketing/src/content/blog"
-copy_files "$rootDir/tmp/materials/legal" "$rootDir/apps/marketing/src/content/legal"
+copy_files "$rootDir/tmp/assets/marketing" "$rootDir/apps/marketing/public"
