@@ -4,13 +4,13 @@
   "private": true,
   "scripts": {
     "build": "turbo run build",
-    "bump:version": "node ./scripts/bump-version.js",
+    "bump:version": "./scripts/bump-version.sh",
     "bump:dependencies": "pnpm dlx npm-check-updates --deep -u && pnpm i",
     "dev": "turbo run dev",
     "dx": "pnpm i && docker compose --profile development up -d",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,mdx}\"",
     "generate:trpkit-materials": "node ./scripts/clone-trpkit-materials.js",
-    "generate:trpkit-opaque": "./scripts/generate-trpkit-opaque.sh",
+    "generate:trpkit-opaque": "scripts/generate-opaque.sh",
     "lint-staged": "lint-staged",
     "prepare": "husky install"
   },
