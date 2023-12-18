@@ -58,18 +58,18 @@ export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembl
 
 export interface InitOutput {
   readonly memory: WebAssembly.Memory;
-  readonly __wbg_registration_free: (a: number) => void;
-  readonly registration_new: () => number;
-  readonly registration_start: (a: number, b: number, c: number, d: number) => void;
-  readonly registration_finish: (a: number, b: number, c: number, d: number, e: number, f: number) => void;
-  readonly registration_getExportKey: (a: number, b: number) => void;
-  readonly set_panic_hook: () => void;
   readonly __wbg_login_free: (a: number) => void;
   readonly login_new: () => number;
   readonly login_start: (a: number, b: number, c: number, d: number) => void;
   readonly login_finish: (a: number, b: number, c: number, d: number, e: number, f: number) => void;
   readonly login_getSessionKey: (a: number, b: number) => void;
   readonly login_getExportKey: (a: number, b: number) => void;
+  readonly __wbg_registration_free: (a: number) => void;
+  readonly registration_new: () => number;
+  readonly registration_start: (a: number, b: number, c: number, d: number) => void;
+  readonly registration_finish: (a: number, b: number, c: number, d: number, e: number, f: number) => void;
+  readonly registration_getExportKey: (a: number, b: number) => void;
+  readonly set_panic_hook: () => void;
   readonly __wbindgen_add_to_stack_pointer: (a: number) => number;
   readonly __wbindgen_malloc: (a: number, b: number) => number;
   readonly __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
