@@ -285,6 +285,27 @@ importers:
         specifier: ^5.3.3
         version: 5.3.3
 
+  packages/guard:
+    devDependencies:
+      '@trpkit/jest-config':
+        specifier: workspace:*
+        version: link:../../configs/jest-config
+      '@types/jest':
+        specifier: ^29.5.11
+        version: 29.5.11
+      '@types/node':
+        specifier: ^20.10.4
+        version: 20.10.4
+      jest:
+        specifier: ^29.7.0
+        version: 29.7.0(@types/node@20.10.4)
+      tsup:
+        specifier: ^8.0.1
+        version: 8.0.1(typescript@5.3.3)
+      typescript:
+        specifier: ^5.3.3
+        version: 5.3.3
+
   packages/kms:
     dependencies:
       '@noble/ciphers':
@@ -4139,7 +4160,7 @@ packages:
     resolution: {integrity: sha512-bsTwuIg/BZZK/vreVTYYbSWoe2F+71P7K5QGEX+pT250DZbfU1MQ5prOKpPR+LL6uWKK3KMwMCAS74QB3Um1uw==}
     dependencies:
       browserslist: 4.22.2
-      caniuse-lite: 1.0.30001538
+      caniuse-lite: 1.0.30001570
       lodash.memoize: 4.1.2
       lodash.uniq: 4.5.0
     dev: true
