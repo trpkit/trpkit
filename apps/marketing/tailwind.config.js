@@ -1,4 +1,4 @@
-const base = require("@trpkit/config/tailwind-default");
+const base = require("@trpkit/tailwind-config");
 
 /**
  * @type {import('tailwindcss').Config}
