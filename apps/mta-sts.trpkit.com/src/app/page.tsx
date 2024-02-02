@@ -1,4 +1,4 @@
-import IndexPage from "../components/IndexPage";
+import IndexPage from "@/components/IndexPage";
 
 export default function Page() {
   return <IndexPage />;

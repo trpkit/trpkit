@@ -1,8 +1,8 @@
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { formatDate } from "@lib/format-date";
 import { allLegalDocuments } from "contentlayer/generated";
-import { Metadata } from "next";
 import { useMDXComponent } from "next-contentlayer/hooks";
-import { notFound } from "next/navigation";
 
 export const generateStaticParams = async () =>
   allLegalDocuments.map((doc) => ({ content: doc.href }));

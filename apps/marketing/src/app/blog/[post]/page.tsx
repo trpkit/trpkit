@@ -1,13 +1,13 @@
+import { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
 import BlogArticle from "@components/blog/BlogArticle";
 import BlogArticleHeader from "@components/blog/BlogArticleHeader";
 import { ChevronLeftIcon } from "@heroicons/react/20/solid";
 import { formatDate } from "@lib/format-date";
 import { allBlogDocuments } from "contentlayer/generated";
-import { Metadata } from "next";
 import { useMDXComponent } from "next-contentlayer/hooks";
-import Image from "next/image";
-import Link from "next/link";
-import { notFound } from "next/navigation";
 
 export async function generateStaticParams({ params }: { params: { post: string } }) {
   return allBlogDocuments.map((doc) => ({ post: doc.href }));

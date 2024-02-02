@@ -1,6 +1,5 @@
 import { base64url, utf8 } from "@scure/base";
 import { sign } from "tweetnacl";
-
 import { NaclSignatureKey, parse } from "./common";
 
 /**
