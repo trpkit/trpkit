@@ -33,7 +33,7 @@ export default function Page() {
                 <p className="pt-6 text-gray-300">
                   Trpkit is committed to your privacy and being transparent about government
                   requests for customer data globally. As stated in our Privacy Policy, all metric
-                  data is end-to-end encrypted and to the best of Trpkit's knowledge, Trpkit is
+                  data is end-to-end encrypted and to the best of Trpkit&apos;s knowledge, Trpkit is
                   unable to decrypt or access it.
                 </p>
               </div>

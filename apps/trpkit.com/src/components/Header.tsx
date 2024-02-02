@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { cn } from "@lib/cn";
+import { cn } from "@/lib/cn";
 
 // TODO: Future navigation pages
 const navigation = [
@@ -65,7 +65,7 @@ export default function Header() {
           <div className="flex lg:hidden">
             <button
               type="button"
-              className="5 -m-2 inline-flex items-center justify-center rounded-md p-2.5 text-gray-300"
+              className="-m-2 inline-flex items-center justify-center rounded-md p-2.5 text-gray-300"
               onClick={() => setMobileMenuOpen(true)}>
               <span className="sr-only">Open menu</span>
               <Bars3Icon className="size-6" aria-hidden="true" />

@@ -17,8 +17,8 @@ export default function Features() {
                 <dt className="text-sm font-medium text-white">Most insightful metrics</dt>
                 <dd className="mt-3 text-sm text-gray-300">
                   We are tracking the most important metrics to help you understand your audience.
-                  No need to worry about quota overage, we'll continue to track for the occasional
-                  spikes.
+                  No need to worry about quota overage, we&apos;ll continue to track for the
+                  occasional spikes.
                 </dd>
               </div>
               <div>
@@ -27,15 +27,15 @@ export default function Features() {
                 </dt>
                 <dd className="mt-3 text-sm text-gray-300">
                   You can give people read-only or full access to your metrics. And when sharing,
-                  you're still in control.
+                  you&apos;re still in control.
                 </dd>
               </div>
               <div>
                 <dt className="text-sm font-medium text-white">Be in control of your data</dt>
                 <dd className="mt-3 text-sm text-gray-300">
-                  Whether it's giving people limited or full access to metrics you share with them
-                  or preventing new team members from reading old metric data, your data is in your
-                  hands.
+                  Whether it&apos;s giving people limited or full access to metrics you share with
+                  them or preventing new team members from reading old metric data, your data is in
+                  your hands.
                 </dd>
               </div>
               <div>

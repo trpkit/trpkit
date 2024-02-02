@@ -55,7 +55,7 @@ export async function StatusWidget() {
 
   return (
     <a
-      className="text-foreground/70 hover:bg-muted hover:text-foreground inline-flex max-w-fit items-center gap-2 rounded-md border border-slate-800 px-3 py-1 text-sm"
+      className="inline-flex max-w-fit items-center gap-2 rounded-md border border-slate-800 px-3 py-1 text-sm"
       href="https://trpkit.openstatus.dev"
       target="_blank"
       rel="noopener noreferrer">

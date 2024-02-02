@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import useSmoothScrollTo from "@hooks/useSmoothScrollTo";
 import { base64url, utf8 } from "@scure/base";
+import useSmoothScrollTo from "@/hooks/useSmoothScrollTo";
 
 export default function Waitlist() {
   const [submitted, setSubmitted] = useState<boolean>(false);
@@ -81,11 +81,11 @@ export default function Waitlist() {
           {submitted ? (
             <div className="w-full max-w-md lg:col-span-5 lg:ml-auto lg:pt-2">
               <p className="text-sm leading-6 text-gray-200">
-                Thank you for the interest in our launch of Trpkit! We're excited to have you
+                Thank you for the interest in our launch of Trpkit! We&apos;re excited to have you
                 onboard for the journey!
               </p>
               <p className="mt-4 text-sm leading-6 text-gray-200">
-                Don't forget to follow us on{" "}
+                Don&apos;t forget to follow us on{" "}
                 <a
                   href="https://twitter.com/Trpkit"
                   target="_blank"

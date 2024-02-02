@@ -3,6 +3,7 @@
   "version": "1.0.0-alpha.0",
   "private": true,
   "scripts": {
+    "build": "next build",
     "dev": "next --turbo",
     "lint": "next lint",
     "lint:fix": "next lint --fix"
