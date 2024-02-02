@@ -12,11 +12,11 @@
     "dev": "tsc -w"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.474.0",
+    "@aws-sdk/client-s3": "^3.504.0",
     "mongodb": "^6.3.0"
   },
   "devDependencies": {
-    "@types/node": "^20.10.4",
+    "@types/node": "^20.11.16",
     "typescript": "^5.3.3"
   }
 }
