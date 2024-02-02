@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Features() {
   return (
     <section>
-      <div className="max-w-screen-2xl mx-auto w-full px-5 py-24 sm:py-32">
+      <div className="mx-auto w-full max-w-screen-2xl px-5 py-24 sm:py-32">
         <div className="grid grid-cols-1 items-center gap-x-8 gap-y-16 lg:grid-cols-2">
           <div>
             <div className="border-b border-slate-800 pb-10">
@@ -63,7 +63,7 @@ export default function Features() {
                 alt="App screenshot"
                 width={1280}
                 height={804}
-                className="h-full w-full object-cover object-center"
+                className="size-full object-cover object-center"
               />
             </div>
             <div className="mt-4 grid grid-cols-2 gap-4 sm:mt-6 sm:gap-6 lg:mt-8 lg:gap-8">
@@ -73,7 +73,7 @@ export default function Features() {
                   alt="App screenshot"
                   width={540}
                   height={540}
-                  className="h-full w-full object-cover object-center"
+                  className="size-full object-cover object-center"
                 />
               </div>
               <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg">
@@ -82,7 +82,7 @@ export default function Features() {
                   alt="App screenshot"
                   width={540}
                   height={540}
-                  className="h-full w-full object-cover object-center"
+                  className="size-full object-cover object-center"
                 />
               </div>
             </div>

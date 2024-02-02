@@ -10,8 +10,8 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <div className="max-w-screen-2xl mx-auto w-full px-5 py-24 sm:py-32">
-      <div className="mx-auto max-w-2xl lg:mx-0 pb-24">
+    <div className="mx-auto w-full max-w-screen-2xl px-5 py-24 sm:py-32">
+      <div className="mx-auto max-w-2xl pb-24 lg:mx-0">
         <h2 className="text-4xl font-bold tracking-tight text-white">The Trpkit Blog</h2>
         <p className="mt-4 text-lg leading-6 text-gray-300">
           Read about insights, use cases, customer stories, product updates and company

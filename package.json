@@ -9,6 +9,7 @@
     "clone:trpkit-materials": "node ./scripts/clone-trpkit-materials.js",
     "dev": "turbo run dev",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,mdx}\"",
+    "lint": "turbo run lint",
     "lint-staged": "lint-staged",
     "prepare": "husky install"
   },

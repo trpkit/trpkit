@@ -15,7 +15,7 @@ export default function BlogArticleHeader({
 }: BlogArticleHeaderProps) {
   return (
     <header className="mx-auto flex max-w-5xl flex-col text-center">
-      <h1 className="font-display text-5xl font-medium tracking-tight text-white sm:text-6xl mb-2">
+      <h1 className="font-display mb-2 text-5xl font-medium tracking-tight text-white sm:text-6xl">
         {title}
       </h1>
       <p className="text-sm text-neutral-400">

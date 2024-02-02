@@ -33,8 +33,8 @@ export default function Page({ params }: { params: { content: string } }) {
   const MDXContent = useMDXComponent(doc.body.code);
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-24 sm:py-32">
-      <div className="mx-auto max-w-3xl lg:mx-0 pb-12">
+    <div className="mx-auto max-w-3xl px-4 py-24 sm:py-32">
+      <div className="mx-auto max-w-3xl pb-12 lg:mx-0">
         <h2 className="text-4xl font-bold tracking-tight text-white">{doc.title}</h2>
         <p className="mt-4 text-lg leading-6 text-gray-300">
           Effective date: {formatDate(doc.effectiveDate)}

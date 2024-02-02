@@ -5,13 +5,13 @@ import { StatusWidget } from "@components/StatusWidget";
 export default function Footer() {
   return (
     <footer className="relative pt-12">
-      <div className="max-w-screen-2xl mx-auto w-full px-5">
+      <div className="mx-auto w-full max-w-screen-2xl px-5">
         <div>
           <Link href="/" className="inline-flex">
             <Image src="/branding/icon.svg" alt="Trpkit" width={64} height={64} />
           </Link>
         </div>
-        <div className="mt-6 grid grid-cols-12 md:gap-x-8 gap-y-12 sm:mt-12">
+        <div className="mt-6 grid grid-cols-12 gap-y-12 sm:mt-12 md:gap-x-8">
           <div className="col-span-12 md:col-span-4">
             <ul className="flex items-center space-x-3">
               <li>
@@ -22,7 +22,7 @@ export default function Footer() {
                     strokeLinejoin="round"
                     viewBox="0 0 16 16"
                     width="16"
-                    className="inline-block w-6 h-6">
+                    className="inline-block size-6">
                     <path
                       fillRule="evenodd"
                       clipRule="evenodd"
@@ -41,7 +41,7 @@ export default function Footer() {
                     height="24"
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
-                    className="inline-block w-6 h-6">
+                    className="inline-block size-6">
                     <path
                       d="M0 12.305c0 5.435 3.438 10.047 8.207 11.674.6.113.82-.267.82-.593 0-.292-.011-1.066-.017-2.093-3.339.744-4.043-1.65-4.043-1.65-.545-1.42-1.332-1.798-1.332-1.798-1.09-.764.083-.749.083-.749 1.203.087 1.837 1.268 1.837 1.268 1.071 1.88 2.809 1.338 3.493 1.022.109-.795.42-1.337.762-1.645-2.665-.31-5.466-1.365-5.466-6.08 0-1.343.467-2.442 1.235-3.302-.123-.311-.535-1.562.117-3.256 0 0 1.008-.33 3.3 1.261.958-.273 1.984-.409 3.005-.414 1.019.005 2.046.141 3.004.414 2.29-1.592 3.297-1.261 3.297-1.261.654 1.694.242 2.945.119 3.256.77.86 1.234 1.959 1.234 3.302 0 4.726-2.806 5.767-5.48 6.071.431.38.815 1.13.815 2.279 0 1.645-.015 2.971-.015 3.375 0 .329.216.712.825.591 4.765-1.63 8.2-6.239 8.2-11.672C24 5.508 18.627 0 12 0S0 5.508 0 12.305z"
                       fill="#B5B5BD"
@@ -55,13 +55,13 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-          <div className="text-sm col-span-6 md:col-span-3 lg:col-span-2">
+          <div className="col-span-6 text-sm md:col-span-3 lg:col-span-2">
             <span className="font-bold text-white">Product</span>
           </div>
-          <div className="text-sm col-span-6 md:col-span-3 lg:col-span-2">
+          <div className="col-span-6 text-sm md:col-span-3 lg:col-span-2">
             <span className="font-bold text-white">Help</span>
           </div>
-          <div className="text-sm col-span-6 md:col-span-3 lg:col-span-2">
+          <div className="col-span-6 text-sm md:col-span-3 lg:col-span-2">
             <span className="font-bold text-white">Company</span>
             <div className="mt-5">
               <ul className="space-y-3 text-gray-400">
@@ -73,7 +73,7 @@ export default function Footer() {
               </ul>
             </div>
           </div>
-          <div className="text-sm col-span-6 md:col-span-3 lg:col-span-2">
+          <div className="col-span-6 text-sm md:col-span-3 lg:col-span-2">
             <span className="font-bold text-white">Legal</span>
             <div className="mt-5">
               <ul className="space-y-3 text-gray-400">
@@ -96,7 +96,7 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="mt-10 border-t pt-6 pb-16 border-slate-800">
+        <div className="mt-10 border-t border-slate-800 pb-16 pt-6">
           <div className="text-xs text-gray-400">&copy; 2023 Trpkit LLC</div>
         </div>
       </div>

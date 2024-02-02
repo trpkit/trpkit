@@ -1,49 +1,17 @@
-const { withContentlayer } = require("next-contentlayer");
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+  enabled: process.env.BUNDLE_ANALYZE === "true",
+});
 
-const plugins = [];
-plugins.push(withContentlayer);
-
-/**
- * @type {import('next').NextConfig}
- */
-const config = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   reactStrictMode: true,
-  output: "standalone",
-  transpilePackages: ["@trpkit/config"],
-  async headers() {
-    return [
-      {
-        source: "/:path*",
-        headers: [
-          {
-            key: "x-dns-prefetch-control",
-            value: "on",
-          },
-          {
-            key: "strict-transport-security",
-            value: "max-age=31536000; includeSubDomains; preload",
-          },
-          {
-            key: "x-frame-options",
-            value: "SAMEORIGIN",
-          },
-          {
-            key: "x-content-type-options",
-            value: "nosniff",
-          },
-          {
-            key: "referrer-policy",
-            value: "strict-origin-when-cross-origin",
-          },
-          {
-            key: "permissions-policy",
-            value:
-              "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()",
-          },
-        ],
-      },
-    ];
+  images: {
+    dangerouslyAllowSVG: true,
+    domains: ["trpkit.com"],
   },
 };
 
-module.exports = () => plugins.reduce((acc, next) => next(acc), config);
+module.exports = () => {
+  const plugins = [withBundleAnalyzer];
+  return plugins.reduce((acc, next) => next(acc), nextConfig);
+};
