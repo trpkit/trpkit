@@ -1,6 +1,6 @@
 {
   "name": "@trpkit/mta-sts.trpkit.com",
-  "version": "0.4.0",
+  "version": "1.0.0-alpha.0",
   "private": true,
   "scripts": {
     "build": "next build",
