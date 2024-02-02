@@ -201,37 +201,6 @@ importers:
         specifier: ^5.3.3
         version: 5.3.3
 
-  packages/common:
-    dependencies:
-      '@scure/base':
-        specifier: ^1.1.5
-        version: 1.1.5
-      jose:
-        specifier: ^5.2.0
-        version: 5.2.0
-      zod:
-        specifier: ^3.22.4
-        version: 3.22.4
-    devDependencies:
-      '@types/node':
-        specifier: ^20.11.16
-        version: 20.11.16
-      typescript:
-        specifier: ^5.3.3
-        version: 5.3.3
-
-  packages/config:
-    devDependencies:
-      '@tailwindcss/forms':
-        specifier: ^0.5.7
-        version: 0.5.7(tailwindcss@3.4.1)
-      '@tailwindcss/typography':
-        specifier: ^0.5.10
-        version: 0.5.10(tailwindcss@3.4.1)
-      tailwindcss:
-        specifier: ^3.4.1
-        version: 3.4.1
-
   packages/kms:
     dependencies:
       '@noble/ciphers':
@@ -5328,10 +5297,6 @@ packages:
     resolution: {integrity: sha512-oVhqoRDaBXf7sjkll95LHVS6Myyyb1zaunVwk4Z0+WPSW4gjS0pl01zYKHScTuyEhQsFxV5L4DR5r+YqSyqyyg==}
     hasBin: true
     dev: true
-
-  /jose@5.2.0:
-    resolution: {integrity: sha512-oW3PCnvyrcm1HMvGTzqjxxfnEs9EoFOFWi2HsEGhlFVOXxTE3K9GKWVMFoFw06yPUqwpvEWic1BmtUZBI/tIjw==}
-    dev: false
 
   /js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
