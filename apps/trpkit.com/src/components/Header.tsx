@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import GitHubStars from "@/components/GitHubStars";
 import { cn } from "@/lib/cn";
 
 // TODO: Future navigation pages
@@ -71,7 +72,8 @@ export default function Header() {
               <Bars3Icon className="size-6" aria-hidden="true" />
             </button>
           </div>
-          <div className="hidden lg:flex">
+          <div className="hidden lg:flex lg:gap-x-6">
+            <GitHubStars />
             <a
               href="#waitlist"
               className="text-sm font-semibold leading-6 text-gray-300 hover:text-white">
