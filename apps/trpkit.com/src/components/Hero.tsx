@@ -56,13 +56,13 @@ export default function Hero() {
                 <div className="mt-10 flex items-center justify-center gap-x-6">
                   <a
                     href="#waitlist"
-                    className="text-md inline-flex items-center gap-x-2 rounded-md bg-blue-500 px-5 py-3.5 font-semibold text-white shadow-sm hover:bg-blue-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400">
+                    className="inline-flex items-center gap-x-2 rounded-md bg-blue-500 px-5 py-3.5 font-semibold text-white shadow-sm hover:bg-blue-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400">
                     Register your interest
                   </a>
                   <a
                     href="https://github.com/trpkit/trpkit"
                     target="_blank"
-                    className="text-md inline-flex items-center gap-x-2 rounded-md bg-blue-500 px-5 py-3.5 font-semibold text-white shadow-sm hover:bg-blue-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400">
+                    className="inline-flex items-center gap-x-2 rounded-md bg-blue-500 px-5 py-3.5 font-semibold text-white shadow-sm hover:bg-blue-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400">
                     <svg
                       role="img"
                       viewBox="0 0 24 24"
