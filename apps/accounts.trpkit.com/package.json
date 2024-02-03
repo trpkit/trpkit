@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "dev": "next --turbo",
+    "dev": "next --turbo -p 3001",
     "lint": "next lint",
     "lint:fix": "next lint --fix"
   },
