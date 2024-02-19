@@ -1,0 +1,12 @@
+name: 'Feature request'
+description: "For ideas or feature requests"
+body:
+  - type: markdown
+    attributes:
+      value: "Please read our [contribution guide](https://github.com/trpkit/trpkit/blob/feat/experimental/.github/CONTRIBUTING.md) before submitting a feature request."
+  - type: textarea
+    attributes:
+      label: Description
+      description: Provide a detailed description of the idea or feature request.
+    validations:
+      required: true
