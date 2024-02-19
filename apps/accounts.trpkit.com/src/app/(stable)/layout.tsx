@@ -1,5 +1,6 @@
 import React from "react";
 import { Inter } from "next/font/google";
+import CookieConsent from "@/components/(stable)/CookieConsent";
 import { cn } from "@/lib/cn";
 import "@/styles/globals.css";
 
@@ -28,6 +29,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <div className="flex min-h-screen flex-col">
           <main className="flex flex-1 flex-col">{children}</main>
         </div>
+        <CookieConsent />
       </body>
     </html>
   );
