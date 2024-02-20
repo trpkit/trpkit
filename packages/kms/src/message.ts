@@ -1,5 +1,4 @@
 import { base64 } from "@scure/base";
-
 import { decrypt as aesDecrypt, encrypt as aesEncrypt } from "./algorithm";
 import { inject as keyInject, parse as keyParse } from "./key";
 import { KMSAlgorithmKey, KMSKey, KMSMessage, KMSMessageRegex, KMSParsedKey } from "./types";

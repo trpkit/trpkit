@@ -1,6 +1,6 @@
 {
   "name": "@trpkit/root",
-  "version": "0.4.0",
+  "version": "1.0.0-alpha.0",
   "private": true,
   "scripts": {
     "build": "turbo run build",
@@ -8,18 +8,18 @@
     "bump:dependencies": "pnpm dlx npm-check-updates --deep -u && pnpm i",
     "clone:trpkit-materials": "node ./scripts/clone-trpkit-materials.js",
     "dev": "turbo run dev",
-    "dx": "pnpm i && docker compose --profile development up -d",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,mdx}\"",
+    "lint": "turbo run lint",
     "lint-staged": "lint-staged",
     "prepare": "husky install"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "glob": "^10.3.10",
-    "husky": "^8.0.3",
-    "lint-staged": "^15.2.0",
-    "prettier": "^3.1.1",
-    "turbo": "^1.11.2"
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "prettier": "^3.2.5",
+    "turbo": "^1.12.4"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx,mdx}": [

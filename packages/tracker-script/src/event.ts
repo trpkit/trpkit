@@ -1,5 +1,4 @@
 import { boxEncrypt } from "@trpkit/tracker-crypto";
-
 import { Config } from "./config";
 import { handleRequest } from "./request";
 

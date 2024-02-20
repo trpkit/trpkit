@@ -1,6 +1,5 @@
 import { base64url, utf8 } from "@scure/base";
 import { box, randomBytes } from "tweetnacl";
-
 import { NaclBoxKey, parse } from "./common";
 
 /**

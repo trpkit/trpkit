@@ -22,15 +22,21 @@ jobs:
           registry: ${{ secrets.ACR_REGISTRY }}
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
-      - name: Build and push marketing app
+      - name: Build and push accounts.trpkit.com
         uses: docker/build-push-action@v5
         with:
           push: true
-          file: ./apps/marketing/Dockerfile
-          tags: ${{ secrets.ACR_REGISTRY }}/marketing:latest
-      - name: Build and push webclient app
+          file: ./apps/accounts.trpkit.com/Dockerfile
+          tags: ${{ secrets.ACR_REGISTRY }}/apps/accounts-trpkit-com:latest
+      - name: Build and push mta-sts.trpkit.com app
         uses: docker/build-push-action@v5
         with:
           push: true
-          file: ./apps/web-client/Dockerfile
-          tags: ${{ secrets.ACR_REGISTRY }}/webclient:latest
+          file: ./apps/mta-sts.trpkit.com/Dockerfile
+          tags: ${{ secrets.ACR_REGISTRY }}/apps/mts-sts-trpkit-com:latest
+      - name: Build and push trpkit.com app
+        uses: docker/build-push-action@v5
+        with:
+          push: true
+          file: ./apps/trpkit.com/Dockerfile
+          tags: ${{ secrets.ACR_REGISTRY }}/apps/trpkit-com:latest
