@@ -10,3 +10,5 @@ dist
 target
 apps/trpkit.com/src/content/**
 tmp
+infra/nginx/ssl/**
+!infra/nginx/ssl/cloudflare.pem
