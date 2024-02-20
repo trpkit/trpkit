@@ -3,7 +3,7 @@ description: "For ideas or feature requests"
 body:
   - type: markdown
     attributes:
-      value: "Please read our [contribution guide](https://github.com/trpkit/trpkit/blob/feat/experimental/.github/CONTRIBUTING.md) before submitting a feature request."
+      value: "Please read our [contribution guide](https://github.com/trpkit/trpkit/blob/main/.github/CONTRIBUTING.md) before submitting a feature request."
   - type: textarea
     attributes:
       label: Description

@@ -3,7 +3,7 @@ description: "Report something that's broken"
 body:
   - type: markdown
     attributes:
-      value: "Please read our [contribution guide](https://github.com/trpkit/trpkit/blob/feat/experimental/.github/CONTRIBUTING.md) before submitting bug reports."
+      value: "Please read our [contribution guide](https://github.com/trpkit/trpkit/blob/main/.github/CONTRIBUTING.md) before submitting bug reports."
   - type: textarea
     attributes:
       label: Description
