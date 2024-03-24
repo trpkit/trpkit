@@ -1,8 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import { generateEphemeral } from "secure-remote-password/server";
-
 import { ZAuthChallenge } from "@trpkit/common";
 import { mongo } from "@trpkit/storage";
+import { generateEphemeral } from "secure-remote-password/server";
 
 export async function POST(request: NextRequest) {
   // Client -----> Server

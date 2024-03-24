@@ -1,7 +1,7 @@
 "use client";
 
-import { Octokit } from "octokit";
 import { useEffect, useState } from "react";
+import { Octokit } from "octokit";
 
 export default function GitHubStars() {
   const [stars, setStars] = useState(0);

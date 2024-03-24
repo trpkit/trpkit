@@ -1,5 +1,4 @@
 import { NextRequest } from "next/server";
-
 import { mongo } from "@trpkit/storage";
 import { boxMessageRegex } from "@trpkit/tracker-crypto";
 

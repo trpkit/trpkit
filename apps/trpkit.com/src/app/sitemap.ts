@@ -1,5 +1,5 @@
-import { allBlogDocuments, allLegalDocuments } from "contentlayer/generated";
 import { MetadataRoute } from "next";
+import { allBlogDocuments, allLegalDocuments } from "contentlayer/generated";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const legalPages = allLegalDocuments.map((doc) => ({

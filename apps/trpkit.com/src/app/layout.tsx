@@ -1,10 +1,9 @@
+import React from "react";
+import { Metadata } from "next";
+import { Inter } from "next/font/google";
 import Footer from "@components/Footer";
 import Header from "@components/Header";
 import "@styles/globals.css";
-import { Metadata } from "next";
-import { Inter } from "next/font/google";
-import React from "react";
-
 import Providers from "./providers";
 
 const inter = Inter({

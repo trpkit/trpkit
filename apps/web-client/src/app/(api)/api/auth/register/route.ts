@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-
 import { ZAuthRegistration, sign } from "@trpkit/common";
 import { mongo } from "@trpkit/storage";
 

@@ -1,6 +1,5 @@
 import { utf8 } from "@scure/base";
 import { createCipheriv, createDecipheriv, randomBytes } from "crypto";
-
 import { KMSAlgorithmCipher, KMSAlgorithmKey } from "./types";
 
 /**
