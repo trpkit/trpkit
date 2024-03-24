@@ -8,7 +8,6 @@
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
-    "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "incremental": true,
     "esModuleInterop": true,
@@ -24,19 +23,14 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@components/*": ["src/components/*"],
-      "@hooks/*": ["src/hooks/*"],
-      "@lib/*": ["src/lib/*"],
-      "@styles/*": ["src/styles/*"],
-      "contentlayer/generated": ["./.contentlayer/generated"]
+      "@/*": ["./src/*"]
     }
   },
   "include": [
     "next-env.d.ts",
     ".next/types/**/*.ts",
     "**/*.ts",
-    "**/*.tsx",
-    ".contentlayer/generated"
+    "**/*.tsx"
   ],
   "exclude": [
     "node_modules"

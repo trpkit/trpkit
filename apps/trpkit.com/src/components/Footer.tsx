@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { StatusWidget } from "@components/StatusWidget";
+import { StatusWidget } from "@/components/StatusWidget";
 
 export default function Footer() {
   return (

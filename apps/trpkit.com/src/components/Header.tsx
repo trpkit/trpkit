@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import GitHubStars from "@components/GitHubStars";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { cn } from "@lib/cn";
+import GitHubStars from "@/components/GitHubStars";
+import { cn } from "@/lib/cn";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
