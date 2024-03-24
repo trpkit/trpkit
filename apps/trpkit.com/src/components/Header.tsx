@@ -6,25 +6,6 @@ import { cn } from "@lib/cn";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-// TODO: Future navigation pages
-const navigation = [
-  // { name: "Product", href: "" },
-  // { name: "Pricing", href: "" },
-  { name: "Blog", href: "/blog" },
-  // { name: "Resources", href: "" },
-];
-
-// TODO: Future resource pages (dropdown menu)
-const resources = [
-  // { name: 'About us', href: '' },
-  // { name: 'Open source', href: '' },
-  // { name: 'Whitepaper', href: '' },
-  // { name: 'Transparency', href: '' },
-  // { name: 'Changelog', href: '' },
-  // { name: 'Roadmap', href: '' },
-  // { name: 'Help', href: '' },
-];
-
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
@@ -51,16 +32,6 @@ export default function Header() {
               <span className="sr-only">Trpkit</span>
               <img src="/branding/logo.svg" alt="Trpkit Logo" className="h-8 w-auto" />
             </Link>
-            <div className="hidden lg:flex lg:gap-x-12">
-              {navigation.map((item, index) => (
-                <Link
-                  href={item.href}
-                  key={index}
-                  className="text-sm font-semibold leading-6 text-gray-300 hover:text-white">
-                  {item.name}
-                </Link>
-              ))}
-            </div>
           </div>
           <div className="flex lg:hidden">
             <button
@@ -97,20 +68,6 @@ export default function Header() {
                   <span className="sr-only">Close menu</span>
                   <XMarkIcon className="h-6 w-6" aria-hidden="true" />
                 </button>
-              </div>
-              <div className="mt-6 flow-root">
-                <div className="-my-6 divide-y divide-gray-500/10">
-                  <div className="space-y-2 py-6">
-                    {navigation.map((item, index) => (
-                      <Link
-                        href={item.href}
-                        key={index}
-                        className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900">
-                        {item.name}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
               </div>
             </Dialog.Panel>
           </Dialog>
