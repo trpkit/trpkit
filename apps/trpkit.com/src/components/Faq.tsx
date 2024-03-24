@@ -39,7 +39,7 @@ const faqs = [
 export default function Faq() {
   return (
     <section>
-      <div className="max-w-screen-2xl mx-auto w-full px-5 py-24 sm:py-32">
+      <div className="mx-auto w-full max-w-screen-2xl px-5 py-24 sm:py-32">
         <div className="mx-auto divide-y divide-slate-800">
           <h2 className="text-3xl font-bold leading-10 tracking-tight text-white sm:text-4xl">
             Frequently asked questions
@@ -54,9 +54,9 @@ export default function Faq() {
                         <span className="text-base font-semibold leading-7">{faq.question}</span>
                         <span className="ml-6 flex h-7 items-center">
                           {open ? (
-                            <MinusSmallIcon className="h-6 w-6" aria-hidden={true} />
+                            <MinusSmallIcon className="size-6" aria-hidden={true} />
                           ) : (
-                            <PlusSmallIcon className="h-6 w-6" aria-hidden={true} />
+                            <PlusSmallIcon className="size-6" aria-hidden={true} />
                           )}
                         </span>
                       </Disclosure.Button>

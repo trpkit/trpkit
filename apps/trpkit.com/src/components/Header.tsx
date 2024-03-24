@@ -27,7 +27,7 @@ export default function Header() {
           sticky ? "bg-slate-900 border-b border-slate-800 z-50" : "bg-transparent",
           "w-full fixed"
         )}>
-        <nav className="mx-auto flex max-w-screen-2xl items-center justify-between py-6 px-5">
+        <nav className="mx-auto flex max-w-screen-2xl items-center justify-between px-5 py-6">
           <div className="flex items-center gap-x-12">
             <Link href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Trpkit</span>
@@ -37,10 +37,10 @@ export default function Header() {
           <div className="flex lg:hidden">
             <button
               type="button"
-              className="-m-2 5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-300"
+              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-300"
               onClick={() => setMobileMenuOpen(true)}>
               <span className="sr-only">Open menu</span>
-              <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+              <Bars3Icon className="size-6" aria-hidden="true" />
             </button>
           </div>
           <div className="hidden lg:flex lg:gap-x-6">
@@ -57,7 +57,7 @@ export default function Header() {
             open={mobileMenuOpen}
             onClose={() => setMobileMenuOpen(false)}>
             <div className="fixed inset-0 z-10" />
-            <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm">
+            <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white p-6 sm:max-w-sm">
               <div className="flex items-center justify-between">
                 <Link href="/" className="-m-1.5 p-1.5">
                   <span className="sr-only">Trpkit</span>
@@ -68,7 +68,7 @@ export default function Header() {
                   className="-m-2.5 rounded-md p-2.5 text-gray-700"
                   onClick={() => setMobileMenuOpen(false)}>
                   <span className="sr-only">Close menu</span>
-                  <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                  <XMarkIcon className="size-6" aria-hidden="true" />
                 </button>
               </div>
             </Dialog.Panel>

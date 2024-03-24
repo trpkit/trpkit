@@ -31,7 +31,7 @@ export default function Waitlist() {
     <section {...bind}>
       <div className="relative isolate px-6 py-32 sm:py-40 lg:px-8">
         <svg
-          className="absolute inset-0 -z-10 h-full w-full stroke-white/10 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
+          className="absolute inset-0 -z-10 size-full stroke-white/10 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
           aria-hidden="true">
           <defs>
             <pattern
@@ -68,7 +68,7 @@ export default function Waitlist() {
             }}
           />
         </div>
-        <div className="max-w-screen-2xl mx-auto w-full px-5 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-8">
+        <div className="mx-auto grid w-full max-w-screen-2xl grid-cols-1 gap-10 px-5 lg:grid-cols-12 lg:gap-8">
           <div className="max-w-xl lg:col-span-7">
             <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
               Do you want to be kept in the loop with Trpkit?
@@ -79,13 +79,13 @@ export default function Waitlist() {
             </p>
           </div>
           {submitted ? (
-            <div className="w-full max-w-md lg:col-span-5 lg:pt-2 lg:ml-auto">
+            <div className="w-full max-w-md lg:col-span-5 lg:ml-auto lg:pt-2">
               <p className="text-sm leading-6 text-gray-200">
-                Thank you for the interest in our launch of Trpkit! We're excited to have you
+                Thank you for the interest in our launch of Trpkit! We&apos;re excited to have you
                 onboard for the journey!
               </p>
               <p className="mt-4 text-sm leading-6 text-gray-200">
-                Don't forget to follow us on{" "}
+                Don&apos;t forget to follow us on{" "}
                 <a
                   href="https://twitter.com/Trpkit"
                   target="_blank"
@@ -98,7 +98,7 @@ export default function Waitlist() {
           ) : (
             <form
               onSubmit={handleSubmit}
-              className="w-full max-w-md lg:col-span-5 lg:pt-2 lg:ml-auto">
+              className="w-full max-w-md lg:col-span-5 lg:ml-auto lg:pt-2">
               <div className="flex gap-x-4">
                 <label htmlFor="email" className="sr-only">
                   Email address

@@ -1,8 +1,19 @@
-const base = require("@trpkit/config/tailwind-default");
-
 /**
  * @type {import('tailwindcss').Config}
  */
 module.exports = {
-  ...base,
+  darkMode: ["class"],
+  content: ["./src/**/*.{js,jsx,ts,tsx,mdx}"],
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ["var(--font-inter)"],
+      },
+    },
+  },
+  plugins: [
+    require("@tailwindcss/aspect-ratio"),
+    require("@tailwindcss/forms"),
+    require("@tailwindcss/typography"),
+  ],
 };

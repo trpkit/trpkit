@@ -55,18 +55,18 @@ export async function StatusWidget() {
 
   return (
     <a
-      className="text-foreground/70 hover:bg-muted hover:text-foreground inline-flex max-w-fit items-center gap-2 rounded-md border border-slate-800 px-3 py-1 text-sm"
+      className="inline-flex max-w-fit items-center gap-2 rounded-md border border-slate-800 px-3 py-1 text-sm"
       href="https://trpkit.openstatus.dev"
       target="_blank"
       rel="noopener noreferrer">
       {label}
-      <span className="relative flex h-2 w-2">
+      <span className="relative flex size-2">
         {parsed.data.status === "operational" ? (
           <span
-            className={`absolute inline-flex h-full w-full animate-ping rounded-full ${color} opacity-75 duration-1000`}
+            className={`absolute inline-flex size-full animate-ping rounded-full ${color} opacity-75 duration-1000`}
           />
         ) : null}
-        <span className={`relative inline-flex h-2 w-2 rounded-full ${color}`} />
+        <span className={`relative inline-flex size-2 rounded-full ${color}`} />
       </span>
     </a>
   );

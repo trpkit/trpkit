@@ -16,7 +16,7 @@ export default function GitHubStars() {
         type: "public",
       })
       .then((res) => setStars(res.data?.stargazers_count));
-  }, []);
+  });
 
   return (
     <a

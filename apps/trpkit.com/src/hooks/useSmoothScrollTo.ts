@@ -4,7 +4,7 @@ export default function useSmoothScrollTo(id: string) {
   const ref = useRef(null);
 
   useEffect(() => {
-    function handler(e: HashChangeEvent) {
+    function handler() {
       if (ref.current && location.hash === id) {
         ref.current.scrollIntoView({ behavior: "smooth" });
       }
@@ -13,7 +13,7 @@ export default function useSmoothScrollTo(id: string) {
     window.addEventListener("hashchange", handler, true);
     // Cleanup to avoid memory leaks
     return () => window.removeEventListener("hashchange", handler);
-  }, []);
+  });
 
   // Props to be passed to the element
   return {

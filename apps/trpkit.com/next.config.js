@@ -6,7 +6,6 @@ const plugins = [];
 const config = {
   reactStrictMode: true,
   output: "standalone",
-  transpilePackages: ["@trpkit/config"],
   async headers() {
     return [
       {
