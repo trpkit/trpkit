@@ -8,6 +8,11 @@ export default config({
       name: "materials",
     },
   },
+  ui: {
+    brand: {
+      name: "Trpkit",
+    },
+  },
   collections: {
     author: collection({
       label: "Blog authors",
