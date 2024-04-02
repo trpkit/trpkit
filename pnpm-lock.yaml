@@ -30,11 +30,11 @@ importers:
   apps/cms.trpkit.net:
     dependencies:
       '@keystatic/core':
-        specifier: ^0.5.9
-        version: 0.5.9(next@14.1.4)(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^0.5.10
+        version: 0.5.10(next@14.1.4)(react-dom@18.2.0)(react@18.2.0)
       '@keystatic/next':
         specifier: ^5.0.0
-        version: 5.0.0(@keystatic/core@0.5.9)(next@14.1.4)(react-dom@18.2.0)(react@18.2.0)
+        version: 5.0.0(@keystatic/core@0.5.10)(next@14.1.4)(react-dom@18.2.0)(react@18.2.0)
       next:
         specifier: ^14.1.4
         version: 14.1.4(react-dom@18.2.0)(react@18.2.0)
@@ -1732,8 +1732,8 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@keystatic/core@0.5.9(next@14.1.4)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-YR7QUkPmgnQNfc5SrnksEVAlmoWh6cXC9Re+B9dAUrzpQtxiC96yEHCS/5mNvrBvmBhN4XCcnoKhBjHfInsgjg==}
+  /@keystatic/core@0.5.10(next@14.1.4)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-TaeqvsiJepkC+FRilOgjuGdNZCw9+2w8cC0hYdcwxjrwjr2vCKXO5usxZnY6/B+bS1m+4jWwCJbhTXjtOws45Q==}
     peerDependencies:
       react: ^18.2.0
       react-dom: ^18.2.0
@@ -1821,7 +1821,7 @@ packages:
       - supports-color
     dev: false
 
-  /@keystatic/next@5.0.0(@keystatic/core@0.5.9)(next@14.1.4)(react-dom@18.2.0)(react@18.2.0):
+  /@keystatic/next@5.0.0(@keystatic/core@0.5.10)(next@14.1.4)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-aacEMkrSbXrhC/obKTPEbcVa1yC9POmpd8lfXNGVadSRUsoG5O+brULc1NeVeHe7MMS/PkhNzhIpWkApCf5Qhw==}
     peerDependencies:
       '@keystatic/core': '*'
@@ -1830,7 +1830,7 @@ packages:
       react-dom: ^18.2.0
     dependencies:
       '@babel/runtime': 7.24.1
-      '@keystatic/core': 0.5.9(next@14.1.4)(react-dom@18.2.0)(react@18.2.0)
+      '@keystatic/core': 0.5.10(next@14.1.4)(react-dom@18.2.0)(react@18.2.0)
       '@types/react': 18.2.73
       chokidar: 3.5.3
       next: 14.1.4(react-dom@18.2.0)(react@18.2.0)

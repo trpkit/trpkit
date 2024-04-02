@@ -1,5 +1,11 @@
 import KeystaticApp from "./keystatic";
 
 export default function Layout() {
-  return <KeystaticApp />;
+  return (
+    <html>
+      <body>
+        <KeystaticApp />
+      </body>
+    </html>
+  );
 }
