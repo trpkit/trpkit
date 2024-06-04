@@ -1,6 +1,6 @@
 {
   "name": "@trpkit/root",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "private": true,
   "scripts": {
     "build": "turbo build",
@@ -15,16 +15,16 @@
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
-    "glob": "^10.3.12",
+    "glob": "^10.4.1",
     "husky": "^9.0.11",
-    "lint-staged": "^15.2.2",
-    "prettier": "^3.2.5",
-    "turbo": "^1.13.2"
+    "lint-staged": "^15.2.5",
+    "prettier": "^3.3.0",
+    "turbo": "^1.13.3"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx,mdx}": [
       "prettier --write"
     ]
   },
-  "packageManager": "pnpm@8.6.12"
+  "packageManager": "pnpm@9.1.4"
 }

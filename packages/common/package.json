@@ -1,6 +1,6 @@
 {
   "name": "@trpkit/common",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "private": true,
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -13,11 +13,11 @@
   },
   "dependencies": {
     "@scure/base": "^1.1.6",
-    "jose": "^5.2.3",
-    "zod": "^3.22.4"
+    "jose": "^5.3.0",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@types/node": "^20.12.3",
-    "typescript": "^5.4.3"
+    "@types/node": "^20.14.0",
+    "typescript": "^5.4.5"
   }
 }

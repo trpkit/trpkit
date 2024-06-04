@@ -1,6 +1,6 @@
 {
   "name": "@trpkit/storage",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "private": true,
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -12,11 +12,11 @@
     "dev": "tsc -w"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.540.0",
-    "mongodb": "^6.5.0"
+    "@aws-sdk/client-s3": "^3.588.0",
+    "mongodb": "^6.7.0"
   },
   "devDependencies": {
-    "@types/node": "^20.12.3",
-    "typescript": "^5.4.3"
+    "@types/node": "^20.14.0",
+    "typescript": "^5.4.5"
   }
 }
