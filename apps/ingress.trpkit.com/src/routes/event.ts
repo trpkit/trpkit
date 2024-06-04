@@ -23,7 +23,6 @@ router.post("/:siteId", async (req: Request, res: Response) => {
   const siteId = req.params.siteId;
   const country = req.headers["cf-ipcountry"] as string | undefined;
 
-  // Verify payload is in our format, we can change this to our regex in the future
   const payloadResult = payloadSchema.safeParse(req.body);
 
   if (!payloadResult.success) {
