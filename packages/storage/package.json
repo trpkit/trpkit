@@ -16,7 +16,7 @@
     "mongodb": "^6.7.0"
   },
   "devDependencies": {
-    "@types/node": "^20.14.0",
+    "@types/node": "^20.14.1",
     "typescript": "^5.4.5"
   }
 }
