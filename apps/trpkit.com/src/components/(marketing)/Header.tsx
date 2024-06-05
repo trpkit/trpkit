@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import GitHubStars from "@/components/GitHubStars";
+import GitHubStars from "@/components/(marketing)/GitHubStars";
 import { cn } from "@/lib/cn";
 
 export default function Header() {

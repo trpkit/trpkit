@@ -1,8 +1,8 @@
 import React from "react";
 import { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
+import Footer from "@/components/(marketing)/Footer";
+import Header from "@/components/(marketing)/Header";
 import "@/styles/globals.css";
 
 const inter = Inter({
