@@ -12,7 +12,7 @@
     "dev": "tsc -w"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.588.0",
+    "@aws-sdk/client-s3": "^3.590.0",
     "mongodb": "^6.7.0"
   },
   "devDependencies": {
