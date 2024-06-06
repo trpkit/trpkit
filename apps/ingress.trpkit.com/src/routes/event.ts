@@ -28,8 +28,8 @@ async function insertIncomingPayload(siteId: string, payload: string, country: s
     siteId,
     payload,
     received: new Date(),
-    // unknown if cf doesn't report country, or self-hosted
-    // and not routing traffic through cloudflare
+    // "unknown" if IP is not in Cloudflare dataset or
+    // application is being self-hosted
     country: country || "unknown",
   };
 
@@ -99,7 +99,7 @@ router.get("/:siteId", async (req: Request, res: Response) => {
 
   await insertIncomingPayload(siteId, payload, country);
 
-  // We don't want to catch this response
+  // We don't want the user catching the response
   res.set("Cache-Control", "private, no-cache, proxy-revalidate");
   res.sendStatus(204);
 });
