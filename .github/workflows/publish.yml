@@ -5,7 +5,7 @@ on:
     tags: [ "*.*.*" ]
 
 env:
-  HUSKY: 0
+  SKIP_INSTALL_SIMPLE_GIT_HOOKS: 1
 
 jobs:
   publish:
