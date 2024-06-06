@@ -19,6 +19,27 @@ const payloadSchema = z.object({
     ),
 });
 
+function isOriginLocalhost(origin: string | undefined): boolean {
+  return !!(origin && origin.match(/^http(s)?:\/\/(localhost|127\.0\.0\.1)/));
+}
+
+async function insertIncomingPayload(siteId: string, payload: string, country: string | undefined) {
+  const event: IncomingEvent = {
+    siteId,
+    payload,
+    received: new Date(),
+    // unknown if cf doesn't report country, or self-hosted
+    // and not routing traffic through cloudflare
+    country: country || "unknown",
+  };
+
+  const client = await mongo();
+  const db = client.db(process.env.MONGO_DATABASE);
+
+  // insert incoming event
+  await db.collection("events").insertOne(event);
+}
+
 router.post("/:siteId", async (req: Request, res: Response) => {
   const siteId = req.params.siteId;
   const country = req.headers["cf-ipcountry"] as string | undefined;
@@ -34,38 +55,51 @@ router.post("/:siteId", async (req: Request, res: Response) => {
 
   // Check the origin and drop any localhost requests
   const origin = req.headers["origin"];
-  if (origin && origin.match(/^http(s)?:\/\/(localhost|127\.0\.0\.1)/)) {
+  if (isOriginLocalhost(origin)) {
     res.sendStatus(204);
     return;
   }
 
-  // TODO validation if siteId exists in our system
+  // TODO validate if siteId exists in our system
 
-  const event: IncomingEvent = {
-    siteId,
-    payload,
-    received: new Date(),
-    // unknown if cf doesn't report country, or self-hosted
-    // and not routing traffic through cloudflare
-    country: country || "unknown",
-  };
+  // TODO validate if site origins match incoming origin
 
-  const client = await mongo();
-  const db = client.db(process.env.MONGO_DATABASE);
+  // TODO validate if site is over payload threshold
 
-  // insert incoming event
-  await db.collection("events").insertOne(event);
+  await insertIncomingPayload(siteId, payload, country);
 
   res.sendStatus(204);
 });
 
-router.get("/:siteId", (req: Request, res: Response) => {
+router.get("/:siteId", async (req: Request, res: Response) => {
   const siteId = req.params.siteId;
-  const payload = req.query.payload as string;
-  const country = req.headers["cf-ipcountry"];
+  const country = req.headers["cf-ipcountry"] as string | undefined;
 
-  console.log(siteId, payload, country);
+  const payloadResult = payloadSchema.safeParse(req.body);
 
+  if (!payloadResult.success) {
+    res.sendStatus(204);
+    return;
+  }
+
+  const { payload } = payloadResult.data;
+
+  // Check the origin and drop any localhost requests
+  const origin = req.headers["origin"];
+  if (isOriginLocalhost(origin)) {
+    res.sendStatus(204);
+    return;
+  }
+
+  // TODO validate if siteId exists in our system
+
+  // TODO validate if site origins match incoming origin
+
+  // TODO validate if site is over payload threshold
+
+  await insertIncomingPayload(siteId, payload, country);
+
+  // We don't want to catch this response
   res.set("Cache-Control", "private, no-cache, proxy-revalidate");
   res.sendStatus(204);
 });

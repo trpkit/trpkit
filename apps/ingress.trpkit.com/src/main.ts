@@ -21,6 +21,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
   }
 });
 
+// TODO consider versioning the routes, aka /v1/[ROUTE]
 // Routes
 app.use("/event", eventRoutes);
 
