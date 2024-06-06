@@ -9,8 +9,9 @@
     "clean": "git clean -xdf node_modules",
     "clone:trpkit-materials": "node ./scripts/clone-trpkit-materials.js",
     "dev": "turbo run dev --parallel",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,mdx}\"",
+    "format": "prettier --cache --check --write \"**/*.{js,jsx,ts,tsx,mdx}\"",
     "lint-staged": "lint-staged",
+    "preinstall": "npx only-allow pnpm",
     "prepare": "simple-git-hooks"
   },
   "devDependencies": {
@@ -26,7 +27,7 @@
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx,mdx}": [
-      "prettier --write"
+      "prettier --cache --write"
     ]
   },
   "packageManager": "pnpm@9.1.4"
