@@ -3,6 +3,7 @@
   "globalDependencies": [
     "**/*.env.*local"
   ],
+  "ui": "stream",
   "tasks": {
     "build": {
       "dependsOn": ["^build"]
