@@ -52,7 +52,9 @@ export function useCopyToClipboard(): [CopiedValue, CopyFn] {
   async function clipboardWrite(value: string, blobType = "text/plain") {
     try {
       await navigator.clipboard.write([new ClipboardItem({ [blobType]: value })]);
-    } catch {}
+    } catch {
+      await clipboardWriteText(value)
+    }
   }
 
   /**
