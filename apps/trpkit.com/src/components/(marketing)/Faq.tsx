@@ -40,11 +40,11 @@ export default function Faq() {
   return (
     <section>
       <div className="mx-auto w-full max-w-screen-2xl px-5 py-24 sm:py-32">
-        <div className="mx-auto divide-y divide-slate-800">
+        <div className="mx-auto divide-y divide-zinc-800">
           <h2 className="text-3xl font-bold leading-10 tracking-tight text-white sm:text-4xl">
             Frequently asked questions
           </h2>
-          <dl className="mt-10 space-y-6 divide-y divide-slate-800">
+          <dl className="mt-10 space-y-6 divide-y divide-zinc-800">
             {faqs.map((faq) => (
               <Disclosure as="div" key={faq.question} className="pt-6">
                 {({ open }) => (

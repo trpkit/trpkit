@@ -6,7 +6,7 @@ export default function Features() {
       <div className="mx-auto w-full max-w-screen-2xl px-5 py-24 sm:py-32">
         <div className="grid grid-cols-1 items-center gap-x-8 gap-y-16 lg:grid-cols-2">
           <div>
-            <div className="border-b border-slate-800 pb-10">
+            <div className="border-b border-zinc-800 pb-10">
               <h2 className="font-medium text-gray-300">Privacy for everyone</h2>
               <p className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">
                 Why choose Trpkit?

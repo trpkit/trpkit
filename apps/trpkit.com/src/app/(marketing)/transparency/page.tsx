@@ -26,7 +26,7 @@ export default function Page() {
     <>
       <section>
         <div className="mx-auto max-w-3xl px-4 py-24 sm:py-32">
-          <div className="mx-auto divide-y divide-slate-800">
+          <div className="mx-auto divide-y divide-zinc-800">
             <div className="space-y-16 pb-12">
               <div>
                 <h2 className="text-3xl font-semibold text-white">Transparency</h2>
@@ -57,7 +57,7 @@ export default function Page() {
                   We are planning to undergo independent security audits regularly. See a
                   comprehensive list below of the audits we have completed.
                 </p>
-                <table className="w-full divide-y divide-slate-800">
+                <table className="w-full divide-y divide-zinc-800">
                   <thead>
                     <tr>
                       <th
@@ -72,7 +72,7 @@ export default function Page() {
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-700">
+                  <tbody className="divide-y divide-zinc-700">
                     <tr>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">TBD</td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">

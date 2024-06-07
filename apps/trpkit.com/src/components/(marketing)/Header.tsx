@@ -24,7 +24,7 @@ export default function Header() {
     <>
       <header
         className={cn(
-          sticky ? "bg-slate-900 border-b border-slate-800 z-50" : "bg-transparent",
+          sticky ? "bg-zinc-900 border-b border-zinc-800 z-50" : "bg-transparent",
           "w-full fixed"
         )}>
         <nav className="mx-auto flex max-w-screen-2xl items-center justify-between px-5 py-6">

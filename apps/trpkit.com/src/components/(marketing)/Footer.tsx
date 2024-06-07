@@ -92,7 +92,7 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="mt-10 border-t border-slate-800 pb-16 pt-6">
+        <div className="mt-10 border-t border-zinc-800 pb-16 pt-6">
           <div className="text-xs text-gray-400">&copy; 2023 Trpkit LLC</div>
         </div>
       </div>
