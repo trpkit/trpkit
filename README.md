@@ -32,7 +32,7 @@ End-to-end encryption (E2EE) in Trpkit ensures that data transmitted from the us
 1. **Account Registration:** When a website owner registers for an account, a master encryption key is derived from their password and other factors. This key is never stored on our servers.
 2. **Keychain Creation:** A keychain is created and encrypted with the master key, which is then stored securely. Within this keychain, additional keys are generated.
 3. **Site-Specific Key:** One of the keys from the keychain is a public/private key pair associated with the website.
-4. **User Data Encryption:** When a user visits a website using Trpkit, their browser data is encrypted on their end using the site-specific public key before being sent to our servers.
+4. **User Data Encryption:** When a user visits a website, the browser data we collect is encrypted on their end using the site-specific public key before being sent to our servers.
 5. **Secure Storage:** The encrypted data is stored securely on our servers, associated with the website owner's account.
 6. **Decryption by Website Owner:** Only the website owner, with access to their master key, can decrypt this data using the corresponding private key.
 
