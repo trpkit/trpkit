@@ -15,5 +15,12 @@ export const markdocConfig: Config = {
       ...Markdoc.nodes.link,
       render: "Link",
     },
+    heading: {
+      children: ["inline"],
+      render: "Heading",
+      attributes: {
+        level: { type: Number, required: true },
+      },
+    },
   },
 };
