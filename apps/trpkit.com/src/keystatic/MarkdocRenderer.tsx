@@ -1,5 +1,6 @@
 import React, { Fragment, ReactNode } from "react";
 import { Node, renderers } from "@markdoc/markdoc";
+import { Divider } from "@/components/ui/Divider";
 import { Heading } from "@/components/ui/Heading";
 import { Link } from "@/components/ui/Link";
 import { markdocTransform } from "@/keystatic/markdoc-transform";
@@ -24,5 +25,6 @@ function getRenderers() {
     Heading: ({ level, children }: { level: 1 | 2 | 3 | 4 | 5 | 6; children: ReactNode }) => (
       <Heading level={level}>{children}</Heading>
     ),
+    Divider: () => <Divider />,
   };
 }
