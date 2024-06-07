@@ -68,7 +68,7 @@ export default function Waitlist() {
             }}
           />
         </div>
-        <div className="mx-auto grid w-full max-w-screen-2xl grid-cols-1 gap-10 px-5 lg:grid-cols-12 lg:gap-8">
+        <div className="grid container grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-8">
           <div className="max-w-xl lg:col-span-7">
             <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
               Do you want to be kept in the loop with Trpkit?

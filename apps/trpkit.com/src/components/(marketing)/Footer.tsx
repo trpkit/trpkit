@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer className="relative pt-12">
-      <div className="mx-auto w-full max-w-screen-2xl px-5">
+      <div className="container">
         <div>
           <Link href="/" className="inline-flex">
             <Image src="/branding/icon.svg" alt="Trpkit" width={64} height={64} />

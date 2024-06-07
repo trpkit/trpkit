@@ -27,7 +27,7 @@ export default function Header() {
           sticky ? "bg-zinc-900 border-b border-zinc-800 z-50" : "bg-transparent",
           "w-full fixed"
         )}>
-        <nav className="mx-auto flex max-w-screen-2xl items-center justify-between px-5 py-6">
+        <nav className="flex items-center justify-between container py-6">
           <div className="flex items-center gap-x-12">
             <Link href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Trpkit</span>

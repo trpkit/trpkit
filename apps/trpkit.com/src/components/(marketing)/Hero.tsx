@@ -42,7 +42,7 @@ export default function Hero() {
         </div>
         <div className="overflow-hidden">
           <div className="py-24 sm:py-32 lg:pb-40">
-            <div className="mx-auto w-full max-w-screen-2xl px-5">
+            <div className="container">
               <div className="mx-auto max-w-2xl text-center">
                 <h1 className="text-3xl font-bold tracking-tight text-white sm:text-5xl">
                   Privacy-first <span className="text-blue-400">end-to-end encrypted</span> web
