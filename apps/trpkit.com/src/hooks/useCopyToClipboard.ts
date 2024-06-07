@@ -53,7 +53,7 @@ export function useCopyToClipboard(): [CopiedValue, CopyFn] {
     try {
       await navigator.clipboard.write([new ClipboardItem({ [blobType]: value })]);
     } catch {
-      await clipboardWriteText(value)
+      await clipboardWriteText(value);
     }
   }
 
