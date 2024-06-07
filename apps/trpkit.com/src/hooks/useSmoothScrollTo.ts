@@ -1,5 +1,11 @@
 import { useEffect, useRef } from "react";
 
+/**
+ * A hook to enable smooth scrolling to an element when the URL hash matches the element ID
+ *
+ * @param {string} id - The ID to match against the URL hash
+ * @returns {object} Props to be spread onto the target element, including the ref and a data attribute
+ */
 export default function useSmoothScrollTo(id: string) {
   const ref = useRef(null);
 
@@ -11,11 +17,9 @@ export default function useSmoothScrollTo(id: string) {
     }
 
     window.addEventListener("hashchange", handler, true);
-    // Cleanup to avoid memory leaks
     return () => window.removeEventListener("hashchange", handler);
-  });
+  }, [id]);
 
-  // Props to be passed to the element
   return {
     "data-anchor-id": id,
     ref,
