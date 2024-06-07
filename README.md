@@ -1,3 +1,8 @@
+<p align="center" style="margin-top: 48px">
+    <a href="https://trpkit.com">
+        <img width="200px" src="/apps/trpkit.com/public/branding/logo.svg" alt="Trpkit Logo">
+    </a>
+</p>
 <p align="center">
     The open-source web insights platform.
     <br />
