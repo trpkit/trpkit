@@ -15,6 +15,7 @@
 - [Contributing](#contributing)
   - [Prerequisites](#prerequisites)
   - [Getting Started](#getting-started)
+- [Community](#community)
 - [License](#license)
 
 ## Introduction
