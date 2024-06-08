@@ -22,6 +22,10 @@ export const markdocConfig: Config = {
         level: { type: Number, required: true },
       },
     },
+    paragraph: {
+      ...Markdoc.nodes.paragraph,
+      render: "Paragraph",
+    },
     hr: {
       ...Markdoc.nodes.hr,
       render: "Divider",
