@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
-import { base64url, utf8 } from "@scure/base";
 import useSmoothScrollTo from "@/hooks/useSmoothScrollTo";
+import { base64url, utf8 } from "@scure/base";
+import type React from "react";
+import { useState } from "react";
 
 export default function Waitlist() {
   const [submitted, setSubmitted] = useState<boolean>(false);
@@ -32,7 +33,8 @@ export default function Waitlist() {
       <div className="relative isolate px-6 py-32 sm:py-40 lg:px-8">
         <svg
           className="absolute inset-0 -z-10 size-full stroke-white/10 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
-          aria-hidden="true">
+          aria-hidden="true"
+        >
           <defs>
             <pattern
               id="1d4240dd-898f-445f-932d-e2872fd12de3"
@@ -40,7 +42,8 @@ export default function Waitlist() {
               height={200}
               x="50%"
               y={0}
-              patternUnits="userSpaceOnUse">
+              patternUnits="userSpaceOnUse"
+            >
               <path d="M.5 200V.5H200" fill="none" />
             </pattern>
           </defs>
@@ -59,7 +62,8 @@ export default function Waitlist() {
         </svg>
         <div
           className="absolute inset-x-0 top-10 -z-10 flex transform-gpu justify-center overflow-hidden blur-3xl"
-          aria-hidden="true">
+          aria-hidden="true"
+        >
           <div
             className="aspect-[1108/632] w-[69.25rem] flex-none bg-gradient-to-r from-[#3474ba] to-[#2c66b1] opacity-20"
             style={{
@@ -89,7 +93,9 @@ export default function Waitlist() {
                 <a
                   href="https://twitter.com/Trpkit"
                   target="_blank"
-                  className="font-semibold text-blue-300 underline decoration-dotted underline-offset-2">
+                  className="font-semibold text-blue-300 underline decoration-dotted underline-offset-2"
+                  rel="noreferrer"
+                >
                   Twitter
                 </a>{" "}
                 for updates!
@@ -98,7 +104,8 @@ export default function Waitlist() {
           ) : (
             <form
               onSubmit={handleSubmit}
-              className="w-full max-w-md lg:col-span-5 lg:ml-auto lg:pt-2">
+              className="w-full max-w-md lg:col-span-5 lg:ml-auto lg:pt-2"
+            >
               <div className="flex gap-x-4">
                 <label htmlFor="email" className="sr-only">
                   Email address
@@ -116,7 +123,8 @@ export default function Waitlist() {
                 />
                 <button
                   type="submit"
-                  className="flex-none rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
+                  className="flex-none rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+                >
                   Notify me
                 </button>
               </div>

@@ -62,12 +62,14 @@ export default function Page() {
                     <tr>
                       <th
                         scope="col"
-                        className="px-3 py-3.5 text-left text-sm font-semibold text-white">
+                        className="px-3 py-3.5 text-left text-sm font-semibold text-white"
+                      >
                         Auditor
                       </th>
                       <th
                         scope="col"
-                        className="px-3 py-3.5 text-left text-sm font-semibold text-white">
+                        className="px-3 py-3.5 text-left text-sm font-semibold text-white"
+                      >
                         Date
                       </th>
                     </tr>

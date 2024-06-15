@@ -1,6 +1,6 @@
 import { base64url, utf8 } from "@scure/base";
 import { sign } from "tweetnacl";
-import { NaclSignatureKey, parse } from "./common";
+import { type NaclSignatureKey, parse } from "./common";
 
 /**
  * Formatted key with the public base64 encoded from the key pair.

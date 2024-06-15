@@ -1,5 +1,5 @@
 import { fields } from "@keystatic/core";
-import Markdoc, { Config } from "@markdoc/markdoc";
+import Markdoc, { type Config } from "@markdoc/markdoc";
 
 /**
  * Configuration object for Markdoc, integrating with Keystatic

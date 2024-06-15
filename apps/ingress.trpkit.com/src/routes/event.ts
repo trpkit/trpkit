@@ -1,5 +1,5 @@
 import { mongo } from "@trpkit/storage";
-import { Request, Response, Router } from "express";
+import { type Request, type Response, Router } from "express";
 import { z } from "zod";
 
 const router = Router();

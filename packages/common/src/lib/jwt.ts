@@ -1,5 +1,5 @@
 import { utf8 } from "@scure/base";
-import { JWTPayload, SignJWT } from "jose";
+import { type JWTPayload, SignJWT } from "jose";
 
 export async function sign(payload: JWTPayload): Promise<string> {
   return (

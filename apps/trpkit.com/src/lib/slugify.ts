@@ -1,5 +1,5 @@
-import React from "react";
 import slugify from "@sindresorhus/slugify";
+import type React from "react";
 
 /**
  * Convert a given string into a URL-friendly slug

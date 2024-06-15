@@ -1,7 +1,7 @@
 import { readConfig } from "./config";
-import { ClientHints, Session, createEvent, sendEvent } from "./event";
+import { type ClientHints, type Session, createEvent, sendEvent } from "./event";
 
-(function () {
+(() => {
   const config = readConfig();
   if (!config) return;
 

@@ -1,6 +1,6 @@
 import { dump as keyDump, parse as keyParse, serialize as keySerialize } from "./key";
 import { decrypt as messageDecrypt, encrypt as messageEncrypt } from "./message";
-import {
+import type {
   KMSKey,
   KMSKeychain,
   KMSKeychainEntry,

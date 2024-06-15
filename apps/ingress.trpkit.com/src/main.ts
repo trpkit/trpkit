@@ -1,7 +1,7 @@
 import bodyParser from "body-parser";
 import cors from "cors";
 import "dotenv/config";
-import express, { NextFunction, Request, Response } from "express";
+import express, { type NextFunction, type Request, type Response } from "express";
 import { isBadActor, loadBadActors } from "./lib/bad-actors";
 import eventRoutes from "./routes/event";
 

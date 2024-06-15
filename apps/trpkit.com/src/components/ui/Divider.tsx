@@ -1,5 +1,5 @@
-import React from "react";
 import { cn } from "@/lib/cn";
+import type React from "react";
 
 export function Divider({
   soft = false,

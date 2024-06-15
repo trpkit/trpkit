@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { Octokit } from "octokit";
+import { useEffect, useState } from "react";
 
 export default function GitHubStars() {
   const [stars, setStars] = useState(0);
@@ -23,7 +23,8 @@ export default function GitHubStars() {
       href="https://github.com/trpkit/trpkit"
       target="_blank"
       rel="noopener noreferrer"
-      className="text-sm font-semibold leading-6 text-gray-300 hover:text-white">
+      className="text-sm font-semibold leading-6 text-gray-300 hover:text-white"
+    >
       <span className="flex items-center gap-1">
         <svg className="size-6" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path

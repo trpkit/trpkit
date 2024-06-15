@@ -1,5 +1,5 @@
-import Markdoc, { Node } from "@markdoc/markdoc";
 import { markdocConfig } from "@/keystatic/markdoc-config";
+import Markdoc, { type Node } from "@markdoc/markdoc";
 
 /**
  * Transforms a Markdoc node using a specified configuration

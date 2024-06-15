@@ -1,5 +1,5 @@
 import { base64url } from "@scure/base";
-import { BoxKeyPair, SignKeyPair } from "tweetnacl";
+import type { BoxKeyPair, SignKeyPair } from "tweetnacl";
 
 /**
  * @param public - Formatted key with the public base64 encoded from the key pair.

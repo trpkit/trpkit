@@ -1,13 +1,13 @@
-import { base64, hex, utf8 } from "@scure/base";
 import { createHash, randomBytes } from "crypto";
+import { base64, hex, utf8 } from "@scure/base";
 import {
-  KMSAlgorithmKey,
-  KMSKey,
+  type KMSAlgorithmKey,
+  type KMSKey,
   KMSKeyFingerprintLength,
   KMSKeyLength,
   KMSKeyRegex,
-  KMSKeyUsage,
-  KMSParsedKey,
+  type KMSKeyUsage,
+  type KMSParsedKey,
 } from "./types";
 
 /**

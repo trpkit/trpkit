@@ -1,6 +1,6 @@
 import { base64url, utf8 } from "@scure/base";
 import { box, randomBytes } from "tweetnacl";
-import { NaclBoxKey, parse } from "./common";
+import { type NaclBoxKey, parse } from "./common";
 
 /**
  * Formatted key with the public base64 encoded from the key pair.

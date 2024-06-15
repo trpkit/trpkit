@@ -1,7 +1,13 @@
 import { base64 } from "@scure/base";
 import { decrypt as aesDecrypt, encrypt as aesEncrypt } from "./algorithm";
 import { inject as keyInject, parse as keyParse } from "./key";
-import { KMSAlgorithmKey, KMSKey, KMSMessage, KMSMessageRegex, KMSParsedKey } from "./types";
+import {
+  type KMSAlgorithmKey,
+  type KMSKey,
+  type KMSMessage,
+  KMSMessageRegex,
+  type KMSParsedKey,
+} from "./types";
 
 /**
  * Serializes a KMS message

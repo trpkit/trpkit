@@ -1,6 +1,6 @@
-import { utf8 } from "@scure/base";
 import { createCipheriv, createDecipheriv, randomBytes } from "crypto";
-import { KMSAlgorithmCipher, KMSAlgorithmKey } from "./types";
+import { utf8 } from "@scure/base";
+import type { KMSAlgorithmCipher, KMSAlgorithmKey } from "./types";
 
 /**
  * Encrypts a message with AES-256-GCM

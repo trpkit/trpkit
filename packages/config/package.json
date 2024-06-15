@@ -2,9 +2,7 @@
   "name": "@trpkit/config",
   "version": "0.5.0",
   "private": true,
-  "files": [
-    "tailwind-default.js"
-  ],
+  "files": ["tailwind-default.js"],
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.7",
     "@tailwindcss/typography": "^0.5.13",

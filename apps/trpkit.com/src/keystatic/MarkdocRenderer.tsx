@@ -1,10 +1,10 @@
-import React, { Fragment, ReactNode } from "react";
-import { Node, renderers } from "@markdoc/markdoc";
 import { Divider } from "@/components/ui/Divider";
 import { Heading } from "@/components/ui/Heading";
 import { Link } from "@/components/ui/Link";
 import { Text } from "@/components/ui/Text";
 import { markdocTransform } from "@/keystatic/markdoc-transform";
+import { type Node, renderers } from "@markdoc/markdoc";
+import React, { Fragment, type ReactNode } from "react";
 
 export async function MarkdocRenderer({ node }: { node: Node }): Promise<ReactNode> {
   const root = markdocTransform(node);
