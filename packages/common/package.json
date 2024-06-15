@@ -10,12 +10,12 @@
     "dev": "tsc -w"
   },
   "dependencies": {
-    "@scure/base": "^1.1.6",
+    "@scure/base": "^1.1.7",
     "jose": "^5.4.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@types/node": "^20.14.1",
+    "@types/node": "^20.14.2",
     "typescript": "^5.4.5"
   }
 }
