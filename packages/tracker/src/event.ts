@@ -1,4 +1,4 @@
-import { boxEncrypt } from "@trpkit/tracker-crypto";
+import { encrypt } from "@trpkit/crypto";
 import type { Config } from "./config";
 import { handleRequest } from "./request";
 
@@ -51,6 +51,6 @@ export function createEvent(t: Event["t"], d: Event["d"]): Event {
 export function sendEvent(event: Event, config: Config) {
   if (/^(localhost|127\.0\.0\.1|\[::1?])$/.test(window.location.hostname)) return;
 
-  const payload = boxEncrypt(JSON.stringify(event), config.publicKey);
+  const payload = encrypt(JSON.stringify(event), config.publicKey);
   handleRequest(config.siteId, payload);
 }

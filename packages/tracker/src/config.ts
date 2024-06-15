@@ -1,4 +1,4 @@
-import { boxPublicKeyRegex, parse } from "@trpkit/tracker-crypto";
+import { parse, publicKeyRegex } from "@trpkit/crypto";
 
 export const baseUrl = "https://api.trpkit.com/v1/analytics/";
 
@@ -16,7 +16,7 @@ export function readConfig(): Config | null {
     const siteId = config.dataset.siteId;
 
     return {
-      publicKey: parse(publicKey!, boxPublicKeyRegex),
+      publicKey: parse(publicKey!, publicKeyRegex),
       siteId: siteId!,
     };
   } catch (err) {
