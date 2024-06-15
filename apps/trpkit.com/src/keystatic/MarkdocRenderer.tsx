@@ -6,10 +6,10 @@ import { markdocTransform } from "@/keystatic/markdoc-transform";
 import { type Node, renderers } from "@markdoc/markdoc";
 import React, { Fragment, type ReactNode } from "react";
 
-export async function MarkdocRenderer({ node }: { node: Node }): Promise<ReactNode> {
+export function MarkdocRenderer({ node }: { node: Node }): ReactNode {
   const root = markdocTransform(node);
 
-  return renderers.react(root, React) as any;
+  return renderers.react(root, React);
 }
 
 /**
