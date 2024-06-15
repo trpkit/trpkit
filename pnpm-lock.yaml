@@ -182,17 +182,16 @@ importers:
         version: 5.4.5
 
   packages/storage:
-    dependencies:
+    devDependencies:
       '@aws-sdk/client-s3':
         specifier: ^3.598.0
         version: 3.598.0
-      mongodb:
-        specifier: ^6.7.0
-        version: 6.7.0
-    devDependencies:
       '@types/node':
         specifier: ^20.14.2
         version: 20.14.2
+      mongodb:
+        specifier: ^6.7.0
+        version: 6.7.0
       typescript:
         specifier: ^5.4.5
         version: 5.4.5
