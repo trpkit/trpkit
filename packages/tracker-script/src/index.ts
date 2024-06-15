@@ -12,7 +12,7 @@ import { type ClientHints, type Session, createEvent, sendEvent } from "./event"
   }
 
   const sid = [...window.crypto.getRandomValues(new Uint8Array(20))]
-    .map((m) => ("0" + m.toString(16)).slice(-2))
+    .map((m) => `0${m.toString(16)}`.slice(-2))
     .join("");
 
   let ref = document.referrer;

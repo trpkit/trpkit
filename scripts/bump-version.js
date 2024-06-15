@@ -1,6 +1,6 @@
 const pkg = require("../package.json");
 const glob = require("glob");
-const fs = require("fs");
+const fs = require("node:fs");
 
 ["./apps/**/package.json", "./packages/**/package.json"].forEach((dir) =>
   glob.sync(dir).forEach(

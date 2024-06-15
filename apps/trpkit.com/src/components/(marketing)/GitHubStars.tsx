@@ -26,7 +26,13 @@ export default function GitHubStars() {
       className="text-sm font-semibold leading-6 text-gray-300 hover:text-white"
     >
       <span className="flex items-center gap-1">
-        <svg className="size-6" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          className="size-6"
+          viewBox="0 0 17 16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden={true}
+        >
           <path
             fillRule="evenodd"
             clipRule="evenodd"

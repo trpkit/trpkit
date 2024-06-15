@@ -20,7 +20,7 @@ const payloadSchema = z.object({
 });
 
 function isOriginLocalhost(origin: string | undefined): boolean {
-  return !!(origin && origin.match(/^http(s)?:\/\/(localhost|127\.0\.0\.1)/));
+  return !!origin?.match(/^http(s)?:\/\/(localhost|127\.0\.0\.1)/);
 }
 
 async function insertIncomingPayload(siteId: string, payload: string, country: string | undefined) {
@@ -54,7 +54,7 @@ router.post("/:siteId", async (req: Request, res: Response) => {
   const { payload } = payloadResult.data;
 
   // Check the origin and drop any localhost requests
-  const origin = req.headers["origin"];
+  const origin = req.headers.origin;
   if (isOriginLocalhost(origin)) {
     res.sendStatus(204);
     return;
@@ -85,7 +85,7 @@ router.get("/:siteId", async (req: Request, res: Response) => {
   const { payload } = payloadResult.data;
 
   // Check the origin and drop any localhost requests
-  const origin = req.headers["origin"];
+  const origin = req.headers.origin;
   if (isOriginLocalhost(origin)) {
     res.sendStatus(204);
     return;

@@ -1,6 +1,6 @@
-const { exec } = require("child_process");
-const fs = require("fs");
-const path = require("path");
+const { exec } = require("node:child_process");
+const fs = require("node:fs");
+const path = require("node:path");
 
 const projectDir = path.resolve(__dirname, "..");
 const cloneDir = path.join(projectDir, "tmp/materials");

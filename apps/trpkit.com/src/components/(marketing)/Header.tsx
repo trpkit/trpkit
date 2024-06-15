@@ -11,11 +11,11 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
 
-  function scrollEvent() {
-    setSticky(window.scrollY > 10);
-  }
-
   useEffect(() => {
+    function scrollEvent() {
+      setSticky(window.scrollY > 10);
+    }
+
     window.addEventListener("scroll", scrollEvent);
     return () => window.removeEventListener("scroll", scrollEvent);
   }, []);

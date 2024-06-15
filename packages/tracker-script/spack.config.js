@@ -3,10 +3,10 @@ const { config } = require("@swc/core/spack");
 module.exports = config({
   mode: "production",
   entry: {
-    web: __dirname + "/src/index.ts",
+    web: `${__dirname}/src/index.ts`,
   },
   output: {
-    path: __dirname + "/dist",
+    path: `${__dirname}/dist`,
     name: "analytics.js",
   },
   externalModules: ["tweetnacl", "@scure/base", "@trpkit/tracker-crypto"],

@@ -1,4 +1,4 @@
-import { createHash, randomBytes } from "crypto";
+import { createHash, randomBytes } from "node:crypto";
 import { base64, hex, utf8 } from "@scure/base";
 import {
   type KMSAlgorithmKey,
@@ -39,10 +39,10 @@ export function generate(): KMSKey {
   if (typeof window !== "undefined") {
     const key = window.crypto.getRandomValues(new Uint8Array(KMSKeyLength));
     return serialize(key);
-  } else {
-    const key = randomBytes(KMSKeyLength);
-    return serialize(key);
   }
+
+  const key = randomBytes(KMSKeyLength);
+  return serialize(key);
 }
 
 /**
@@ -67,9 +67,9 @@ export async function inject(key: KMSKey, usage?: KMSKeyUsage): Promise<KMSAlgor
       true,
       usage ? [usage] : ["encrypt", "decrypt"]
     );
-  } else {
-    return raw;
   }
+
+  return raw;
 }
 
 /**
@@ -93,9 +93,9 @@ export async function fingerprint(key: KMSKey): Promise<string> {
   if (typeof window !== "undefined") {
     const hash = -(await window.crypto.subtle.digest("SHA-256", data));
     return hex.encode(new Uint8Array(hash)).slice(0, KMSKeyFingerprintLength);
-  } else {
-    const hash = createHash("sha256");
-    hash.update(data);
-    return hash.digest("hex").slice(0, KMSKeyFingerprintLength);
   }
+
+  const hash = createHash("sha256");
+  hash.update(data);
+  return hash.digest("hex").slice(0, KMSKeyFingerprintLength);
 }

@@ -1,4 +1,4 @@
-import { createCipheriv, createDecipheriv, randomBytes } from "crypto";
+import { createCipheriv, createDecipheriv, randomBytes } from "node:crypto";
 import { utf8 } from "@scure/base";
 import type { KMSAlgorithmCipher, KMSAlgorithmKey } from "./types";
 
@@ -24,18 +24,18 @@ export async function encrypt(key: KMSAlgorithmKey, message: string): Promise<KM
       nonce,
       text: new Uint8Array(instance),
     };
-  } else {
-    const nonce = randomBytes(12);
-    const instance = createCipheriv("aes-256-gcm", key as Uint8Array, nonce);
-    const encryptedText = instance.update(message, "utf8");
-    instance.final();
-    const tag = instance.getAuthTag();
-
-    return {
-      nonce,
-      text: Buffer.concat([encryptedText, tag]),
-    };
   }
+
+  const nonce = randomBytes(12);
+  const instance = createCipheriv("aes-256-gcm", key as Uint8Array, nonce);
+  const encryptedText = instance.update(message, "utf8");
+  instance.final();
+  const tag = instance.getAuthTag();
+
+  return {
+    nonce,
+    text: Buffer.concat([encryptedText, tag]),
+  };
 }
 
 /**
@@ -56,12 +56,12 @@ export async function decrypt(key: KMSAlgorithmKey, cipher: KMSAlgorithmCipher):
     );
 
     return utf8.encode(new Uint8Array(instance));
-  } else {
-    const instance = createDecipheriv("aes-256-gcm", key as Uint8Array, cipher.nonce);
-    const tag = cipher.text.slice(-16);
-    const encryptedText = cipher.text.slice(0, -16);
-    instance.setAuthTag(tag);
-
-    return instance.update(encryptedText, undefined, "utf8") + instance.final("utf8");
   }
+
+  const instance = createDecipheriv("aes-256-gcm", key as Uint8Array, cipher.nonce);
+  const tag = cipher.text.slice(-16);
+  const encryptedText = cipher.text.slice(0, -16);
+  instance.setAuthTag(tag);
+
+  return instance.update(encryptedText, undefined, "utf8") + instance.final("utf8");
 }
