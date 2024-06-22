@@ -16,10 +16,12 @@
     "@scure/base": "^1.1.7",
     "@sindresorhus/slugify": "^2.2.1",
     "clsx": "^2.1.1",
+    "jose": "^5.4.1",
     "next": "^14.2.4",
     "octokit": "^4.0.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "secure-remote-password": "^0.3.1",
     "sharp": "^0.33.4",
     "zod": "^3.23.8"
   },
