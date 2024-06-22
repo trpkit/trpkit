@@ -14,9 +14,7 @@ type IncomingEvent = {
 const payloadSchema = z.object({
   payload: z
     .string()
-    .regex(
-      /^trpkit\.naclbox\.([a-zA-Z0-9-_]{43}=?)\.([a-zA-Z0-9-_]{32})\.([a-zA-Z0-9-_]{22,}={0,2})$/
-    ),
+    .regex(/^trpkit\.box\.([a-zA-Z0-9-_]{43}=?)\.([a-zA-Z0-9-_]{32})\.([a-zA-Z0-9-_]{22,}={0,2})$/),
 });
 
 function isOriginLocalhost(origin: string | undefined): boolean {
