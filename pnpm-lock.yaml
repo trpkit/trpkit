@@ -152,25 +152,6 @@ importers:
         specifier: ^5.5.2
         version: 5.5.2
 
-  packages/common:
-    dependencies:
-      '@scure/base':
-        specifier: ^1.1.7
-        version: 1.1.7
-      jose:
-        specifier: ^5.4.1
-        version: 5.4.1
-      zod:
-        specifier: ^3.23.8
-        version: 3.23.8
-    devDependencies:
-      '@types/node':
-        specifier: ^20.14.8
-        version: 20.14.8
-      typescript:
-        specifier: ^5.5.2
-        version: 5.5.2
-
   packages/crypto:
     dependencies:
       '@noble/ciphers':
