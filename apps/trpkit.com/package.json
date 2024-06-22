@@ -8,6 +8,7 @@
     "dev": "next dev"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.600.0",
     "@headlessui/react": "^2.1.0",
     "@heroicons/react": "^2.1.4",
     "@keystatic/core": "^0.5.22",
@@ -15,8 +16,10 @@
     "@markdoc/markdoc": "^0.4.0",
     "@scure/base": "^1.1.7",
     "@sindresorhus/slugify": "^2.2.1",
+    "@trpkit/storage": "workspace:*",
     "clsx": "^2.1.1",
     "jose": "^5.4.1",
+    "mongodb": "^6.7.0",
     "next": "^14.2.4",
     "octokit": "^4.0.2",
     "react": "^18.3.1",
