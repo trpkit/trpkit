@@ -34,7 +34,7 @@ export default function Hero() {
                       Get started
                     </div>
                   </a>
-                  <span className="text-sm text-zinc-500">Enjoy a generous free plan</span>
+                  <span className="text-sm text-zinc-500">Enjoy our generous free plan</span>
                 </div>
               </div>
             </div>
