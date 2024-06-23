@@ -1,6 +1,6 @@
 "use client";
 
-import GitHubStars from "@/components/(marketing)/GitHubStars";
+import GitHubStars from "@/components/marketing/GitHubStars";
 import { cn } from "@/lib/cn";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";

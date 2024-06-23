@@ -1,5 +1,5 @@
-import Footer from "@/components/(marketing)/Footer";
-import Header from "@/components/(marketing)/Header";
+import Footer from "@/components/marketing/Footer";
+import Header from "@/components/marketing/Header";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import type React from "react";
