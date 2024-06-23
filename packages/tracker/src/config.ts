@@ -15,9 +15,11 @@ export function readConfig(): Config | null {
     const publicKey = config.dataset.publicKey;
     const siteId = config.dataset.siteId;
 
+    if (!publicKey || !siteId) return null;
+
     return {
-      publicKey: parse(publicKey!, publicKeyRegex),
-      siteId: siteId!,
+      publicKey: parse(publicKey, publicKeyRegex),
+      siteId: siteId,
     };
   } catch (err) {
     console.error("unable to read config");

@@ -6,33 +6,67 @@ import { MinusSmallIcon, PlusSmallIcon } from "@heroicons/react/24/outline";
 const faqs = [
   {
     question: "What is Trpkit?",
-    answer:
-      "Trpkit is a secure web analytics solution with zero-knowledge end-to-end encryption. End-to-end encryption means that no intermediary, not even Trpkit, has access to the user's encryption keys and therefore the stored data.",
+    answer: (
+      <>
+        Trpkit is a secure web analytics solution with zero-knowledge end-to-end encryption.
+        End-to-end encryption means that no intermediary, not even Trpkit, has access to the user's
+        encryption keys and therefore the stored data.
+      </>
+    ),
   },
   {
     question: "Will Trpkit be open source?",
-    answer:
-      "Yes, Trpkit is completely open source and can be found on <a href='https://github.com/trpkit/trpkit' target='_blank' class='text-blue-500 hover:text-blue-400'>GitHub</a>! Additionally, we will be publishing Trpkit's design and security processes in a whitepaper.",
+    answer: (
+      <>
+        Yes, Trpkit is completely open source and can be found on{" "}
+        <a
+          href="https://github.com/trpkit/trpkit"
+          target="_blank"
+          className="text-blue-500 hover:text-blue-400"
+          rel="noreferrer"
+        >
+          GitHub
+        </a>
+        ! Additionally, we will be publishing Trpkit's design and security processes in a
+        whitepaper.
+      </>
+    ),
   },
   {
     question: "How much will Trpkit cost at market release?",
-    answer:
-      "Trpkit will cost $11 USD monthly per 100,000 events. You can switch to our yearly pricing and receive two months free.",
+    answer: (
+      <>
+        Trpkit will cost $11 USD monthly per 100,000 events. You can switch to our yearly pricing
+        and receive two months free.
+      </>
+    ),
   },
   {
     question: "What is an event?",
-    answer:
-      "Trpkit tracks sessions and page views to provide accurate and insightful metrics, and each session or page view is considered an event.",
+    answer: (
+      <>
+        Trpkit tracks sessions and page views to provide accurate and insightful metrics, and each
+        session or page view is considered an event.
+      </>
+    ),
   },
   {
     question: "How long is analytics data retained for?",
-    answer:
-      "As long as you are an active customer, we'll keep your data forever by default. You can go into your site settings and modify this to be as short as 30 days.",
+    answer: (
+      <>
+        As long as you are an active customer, we'll keep your data forever by default. You can go
+        into your site settings and modify this to be as short as 30 days.
+      </>
+    ),
   },
   {
     question: "What happens if I go over my quota?",
-    answer:
-      "We'll continue to track events for the occasional spikes that may happen. If you go over your quota two months in a row, we will automatically upgrade your plan.",
+    answer: (
+      <>
+        We'll continue to track events for the occasional spikes that may happen. If you go over
+        your quota two months in a row, we will automatically upgrade your plan.
+      </>
+    ),
   },
 ];
 
@@ -62,10 +96,7 @@ export default function Faq() {
                       </Disclosure.Button>
                     </dt>
                     <Disclosure.Panel as="dd" className="mt-2 pr-12">
-                      <p
-                        className="text-base leading-7 text-gray-300"
-                        dangerouslySetInnerHTML={{ __html: faq.answer }}
-                      />
+                      <p className="text-base leading-7 text-gray-300">{faq.answer}</p>
                     </Disclosure.Panel>
                   </>
                 )}

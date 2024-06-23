@@ -57,6 +57,7 @@ export async function inject(key: KMSKey, usage?: KMSKeyUsage): Promise<KMSAlgor
     throw new Error("Invalid KMS key");
   }
 
+  // biome-ignore lint/style/noNonNullAssertion: this will be changed soon
   const raw = base64.decode(match.groups!.key);
 
   if (typeof window !== "undefined") {

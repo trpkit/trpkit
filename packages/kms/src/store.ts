@@ -24,6 +24,7 @@ function getWindowName() {
 function saveWindowName(name: string, data: string) {
   const current = getWindowName();
   current[name] = data;
+  // biome-ignore lint/style/noNonNullAssertion: n/c
   window.top!.name = JSON.stringify(current);
 }
 
@@ -41,6 +42,7 @@ function findWindowName(name: string) {
 
   const { [name]: data, ...rest } = current;
   const json = JSON.stringify(rest);
+  // biome-ignore lint/style/noNonNullAssertion: n/c
   window.top!.name = json === "{}" ? "" : json;
 
   return data || null;

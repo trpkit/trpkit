@@ -28,6 +28,7 @@ export function serialize(fingerprint: string, nonce: Uint8Array, text: Uint8Arr
  */
 export async function encrypt(message: string, key: KMSKey | KMSParsedKey): Promise<KMSMessage> {
   if (typeof key === "string") {
+    // biome-ignore lint/style/noParameterAssign: this will be changed soon
     key = await keyParse(key, "encrypt");
   }
 
@@ -47,7 +48,9 @@ export async function decrypt(message: KMSMessage, key: KMSKey | KMSParsedKey): 
     throw new Error("Invalid KMS message");
   }
 
+  // biome-ignore lint/style/noNonNullAssertion: n/c
   const nonce = match.groups!.nonce;
+  // biome-ignore lint/style/noNonNullAssertion: n/c
   const text = match.groups!.text;
 
   let finalKey: KMSAlgorithmKey;
@@ -74,5 +77,6 @@ export function fingerprint(message: KMSMessage) {
     throw new Error("Invalid KMS message");
   }
 
+  // biome-ignore lint/style/noNonNullAssertion: this will be changed soon
   return match.groups!.fingerprint;
 }

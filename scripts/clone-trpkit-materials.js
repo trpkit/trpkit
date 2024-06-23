@@ -53,7 +53,7 @@ function copyFiles(source, destination) {
         return;
       }
 
-      files.forEach((file) => {
+      for (const file of files) {
         const sourcePath = path.join(source, file);
         const destPath = path.join(destination, file);
 
@@ -62,7 +62,7 @@ function copyFiles(source, destination) {
             reject(err);
           }
         });
-      });
+      }
 
       resolve();
     });
