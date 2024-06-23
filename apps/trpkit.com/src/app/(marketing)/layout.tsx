@@ -39,10 +39,10 @@ export const metadata: Metadata = {
 
 export default function MarketingLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="bg-zinc-900">
+    <>
       <Header />
-      {children}
+      <main className="-mt-16">{children}</main>
       <Footer />
-    </div>
+    </>
   );
 }
