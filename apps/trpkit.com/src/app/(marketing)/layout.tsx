@@ -1,15 +1,7 @@
 import Footer from "@/components/marketing/Footer";
 import Header from "@/components/marketing/Header";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import type React from "react";
-import "@/styles/globals.css";
-
-const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-inter",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "https://trpkit.com"),
@@ -45,14 +37,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function MarketingLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={inter.variable} suppressHydrationWarning>
-      <body className="bg-zinc-900">
-        <Header />
-        {children}
-        <Footer />
-      </body>
-    </html>
+    <div className="bg-zinc-900">
+      <Header />
+      {children}
+      <Footer />
+    </div>
   );
 }

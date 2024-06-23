@@ -5,11 +5,5 @@ import { notFound } from "next/navigation";
 export default function Layout() {
   if (!showAdminUI) notFound();
 
-  return (
-    <html lang="en">
-      <body>
-        <KeystaticApp />
-      </body>
-    </html>
-  );
+  return <KeystaticApp />;
 }
