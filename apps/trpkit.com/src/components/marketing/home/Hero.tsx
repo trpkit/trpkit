@@ -1,7 +1,7 @@
 export default function Hero() {
   return (
-    <section className="overflow-hidden bg-zinc-100 pb-20">
-      <div className="space-y-8 md:!space-y-16 container px-16">
+    <section className="overflow-hidden bg-zinc-200 pb-20">
+      <div className="space-y-8 md:!space-y-16 container">
         <div className="space-y-10 lg:space-y-20 pt-24 lg:pt-36">
           <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-center">
             <h1 className="w-full text-center lg:max-w-2xl lg:text-left">
@@ -39,7 +39,7 @@ export default function Hero() {
               </div>
             </div>
           </div>
-          <div className="relative w-full h-[725px] rounded-2xl bg-stone-900" />
+          <div className="relative w-full h-[720px] rounded-2xl bg-zinc-800" />
         </div>
       </div>
     </section>
