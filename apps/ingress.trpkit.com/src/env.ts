@@ -8,7 +8,7 @@ const envSchema = z.object({
   MONGO_DATABASE: z.string(),
 
   // Port
-  PORT: z.number().default(4000),
+  PORT: z.number().int().default(4000),
 });
 
 const parsed = envSchema.safeParse(process.env);
