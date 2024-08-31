@@ -14,9 +14,9 @@
     "mongodb": "^6.7.0"
   },
   "devDependencies": {
-    "@aws-sdk/client-s3": "^3.600.0",
-    "@types/node": "^20.14.8",
-    "mongodb": "^6.7.0",
-    "typescript": "^5.5.2"
+    "@aws-sdk/client-s3": "^3.637.0",
+    "@types/node": "^20.16.2",
+    "mongodb": "^6.8.0",
+    "typescript": "^5.5.4"
   }
 }

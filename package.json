@@ -8,17 +8,17 @@
     "clean": "git clean -xdf node_modules",
     "clone:trpkit-materials": "node ./scripts/clone-trpkit-materials.js",
     "dev": "turbo run dev --parallel",
-    "check": "biome check --write .",
+    "format": "biome check --write .",
     "lint-staged": "lint-staged",
     "preinstall": "npx only-allow pnpm",
     "prepare": "simple-git-hooks"
   },
   "devDependencies": {
     "@biomejs/biome": "1.8.1",
-    "glob": "^10.4.2",
-    "lint-staged": "^15.2.7",
+    "glob": "^10.4.5",
+    "lint-staged": "^15.2.9",
     "simple-git-hooks": "^2.11.1",
-    "turbo": "^2.0.4"
+    "turbo": "^2.1.1"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm exec lint-staged"
