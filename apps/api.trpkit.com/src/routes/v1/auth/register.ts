@@ -2,6 +2,13 @@ import { Router } from "express";
 
 const router = Router();
 
+/**
+ * Registers a new account
+ *
+ * 201 - Successful registration
+ * 400 - Required fields are missing or invalid
+ * 409 - Email already registered
+ */
 router.post("/register", (_req, res) => {
   // validate request
   // validate srp (verifier len 344, salt len 44)

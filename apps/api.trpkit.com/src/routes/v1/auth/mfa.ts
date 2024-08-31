@@ -2,19 +2,14 @@ import { Router } from "express";
 
 const router = Router();
 
-router.post("/mfa/disable", (_req, res) => {
-  // validate user is logged in
-  // validate user exists
-  // validate user has 2fa enabled
-  // verify 2fa code
-  // disable 2fa
-  // create new token with updated 2fa status
-
-  // set cookie header for token
-  res.status(200);
-});
-
-router.post("/mfa/enable", (_req, res) => {
+/**
+ * Enable 2FA
+ *
+ * 200 - 2FA enabled
+ * 400 - 2FA already enabled
+ * 401 - User not logged in
+ */
+router.post("/mfa", (_req, res) => {
   // validate user is logged in
   // validate user exists
   // validate user has 2fa disabled
@@ -27,6 +22,32 @@ router.post("/mfa/enable", (_req, res) => {
   res.status(200);
 });
 
+/**
+ * Disable 2FA
+ *
+ * 200 - 2FA disabled
+ * 400 - 2FA not enabled
+ * 401 - User not logged in
+ */
+router.delete("/mfa", (_req, res) => {
+  // validate user is logged in
+  // validate user exists
+  // validate user has 2fa enabled
+  // verify 2fa code
+  // disable 2fa
+  // create new token with updated 2fa status
+
+  // set cookie header for token
+  res.status(200);
+});
+
+/**
+ * Verify 2FA setup process
+ *
+ * 200 - 2FA setup successful
+ * 400 - 2FA code invalid
+ * 403 - 2FA code incorrect
+ */
 router.post("/mfa/verify", (_req, res) => {
   // validate user is logged in
   // validate user exists
