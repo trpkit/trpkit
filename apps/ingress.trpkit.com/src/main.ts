@@ -2,6 +2,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import "dotenv/config";
 import express, { type NextFunction, type Request, type Response } from "express";
+import { env } from "./env";
 import { isBadActor, loadBadActors } from "./lib/bad-actors";
 import eventRoutes from "./routes/event";
 
@@ -25,7 +26,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 // Routes
 app.use("/event", eventRoutes);
 
-const PORT = process.env.PORT || 4000;
+const PORT = env.PORT;
 
 const server = app.listen(PORT, async () => {
   console.info(`Listening on port ${PORT}`);

@@ -1,6 +1,7 @@
 import { mongo } from "@trpkit/storage";
 import { type Request, type Response, Router } from "express";
 import { z } from "zod";
+import { env } from "../env";
 
 const router = Router();
 
@@ -32,7 +33,7 @@ async function insertIncomingPayload(siteId: string, payload: string, country: s
   };
 
   const client = await mongo();
-  const db = client.db(process.env.MONGO_DATABASE);
+  const db = client.db(env.MONGO_DATABASE);
 
   // insert incoming event
   await db.collection("events").insertOne(event);

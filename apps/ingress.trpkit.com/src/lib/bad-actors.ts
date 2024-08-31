@@ -1,4 +1,5 @@
 import { mongo } from "@trpkit/storage";
+import { env } from "../env";
 
 let badActors: Set<string> = new Set<string>();
 
@@ -9,7 +10,7 @@ type BadActor = {
 
 export async function loadBadActors() {
   const client = await mongo();
-  const db = client.db(process.env.MONGO_DATABASE);
+  const db = client.db(env.MONGO_DATABASE);
 
   const ba = await db.collection<BadActor>("badActors").find({}).toArray();
   badActors = new Set(ba.map((item) => item.userAgent));
