@@ -35,6 +35,15 @@ importers:
       express:
         specifier: ^4.19.2
         version: 4.19.2
+      jose:
+        specifier: ^5.8.0
+        version: 5.8.0
+      mongodb:
+        specifier: ^6.8.0
+        version: 6.8.0
+      secure-remote-password:
+        specifier: ^0.3.1
+        version: 0.3.1
       zod:
         specifier: ^3.23.8
         version: 3.23.8
