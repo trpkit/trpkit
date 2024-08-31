@@ -2,17 +2,24 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import express from "express";
 import { env } from "./env";
+import { errorHandler } from "./middlewares/errorHandler";
+import auth from "./routes/v1/auth";
 
 const app = express();
 
+// Middlewares
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const PORT = env.PORT;
+// Routes
+app.use("/v1/auth", auth);
 
-const server = app.listen(PORT, async () => {
-  console.info(`Listening on port ${PORT}`);
+// Error-handling middleware
+app.use(errorHandler);
+
+const server = app.listen(env.PORT, async () => {
+  console.info(`Listening on port ${env.PORT}`);
 });
 
 function shutdown(signal: "SIGTERM" | "SIGINT") {
