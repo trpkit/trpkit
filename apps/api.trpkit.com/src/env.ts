@@ -4,7 +4,10 @@ const envSchema = z.object({
   NODE_ENV: z.enum(["development", "production", "test"]).default("production"),
 
   // Port
-  PORT: z.number().default(3500),
+  PORT: z.number().int().default(3500),
+
+  // Allowed Origins (CORS)
+  ALLOWED_ORIGINS: z.string().transform((val) => val.split(",")),
 });
 
 const parsed = envSchema.safeParse(process.env);
