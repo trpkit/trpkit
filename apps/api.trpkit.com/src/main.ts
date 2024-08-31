@@ -11,7 +11,7 @@ const app = express();
 app.use(
   cors({
     origin: (origin, callback) => {
-      if (!origin || env.ALLOWED_ORIGINS.includes(origin)) {
+      if (!origin || env.EXPRESS_ALLOWED_ORIGINS.includes(origin)) {
         callback(null, true);
       } else {
         callback(new Error("Not allowed by CORS"));
@@ -29,8 +29,8 @@ app.use("/v1/auth", auth);
 // Error-handling middleware
 app.use(errorHandler);
 
-const server = app.listen(env.PORT, async () => {
-  console.info(`Listening on port ${env.PORT}`);
+const server = app.listen(env.EXPRESS_PORT, async () => {
+  console.info(`Listening on port ${env.EXPRESS_PORT}`);
 });
 
 function shutdown(signal: "SIGTERM" | "SIGINT") {

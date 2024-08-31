@@ -1,13 +1,16 @@
+import { readFileSync } from "node:fs";
 import { z } from "zod";
 
 const envSchema = z.object({
   NODE_ENV: z.enum(["development", "production", "test"]).default("production"),
 
-  // Port
-  PORT: z.number().int().default(3500),
+  // Express
+  EXPRESS_ALLOWED_ORIGINS: z.string().transform((val) => val.split(",")),
+  EXPRESS_PORT: z.number().int().default(3500),
 
-  // Allowed Origins (CORS)
-  ALLOWED_ORIGINS: z.string().transform((val) => val.split(",")),
+  // JWT
+  JWT_PRIVATE_KEY: z.string(),
+  JWT_PUBLIC_KEY: z.string(),
 });
 
 const parsed = envSchema.safeParse(process.env);
@@ -20,10 +23,21 @@ ${parsed.error.errors.map((error) => `  ${error.path}: ${error.message}`).join("
   process.exit(1);
 }
 
+const jwtPrivateKey = parsed.data.JWT_PRIVATE_KEY
+  ? readFileSync(parsed.data.JWT_PRIVATE_KEY, "utf8")
+  : undefined;
+const jwtPublicKey = parsed.data.JWT_PUBLIC_KEY
+  ? readFileSync(parsed.data.JWT_PUBLIC_KEY, "utf8")
+  : undefined;
+
 const secretEnvs: Array<keyof typeof envSchema.shape> = [];
 
 for (const secretEnv of secretEnvs) {
   delete process.env[secretEnv];
 }
 
-export const env = Object.freeze(parsed.data);
+export const env = Object.freeze({
+  ...parsed.data,
+  jwtPrivateKey,
+  jwtPublicKey,
+});
