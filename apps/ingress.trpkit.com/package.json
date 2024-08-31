@@ -4,15 +4,14 @@
   "private": true,
   "scripts": {
     "build": "tsc",
-    "dev": "tsc && node dist/main.js",
-    "start": "node dist/main.js"
+    "dev": "tsc && node --env-file=.env dist/main.js",
+    "start": "node --env-file=.env dist/main.js"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.637.0",
     "@trpkit/storage": "workspace:*",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
-    "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "mongodb": "^6.8.0",
     "zod": "^3.23.8"
