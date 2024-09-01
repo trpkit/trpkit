@@ -9,4 +9,5 @@ dist
 !.env.example
 target
 apps/trpkit.com/src/content/**
+apps/api.trpkit.com/keys
 tmp
