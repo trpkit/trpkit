@@ -1,5 +1,5 @@
-import { SignJWT, jwtVerify } from "jose";
 import { env } from "@/env";
+import { SignJWT, jwtVerify } from "jose";
 
 if (!env.jwtPrivateKey || !env.jwtPublicKey) {
   throw new Error("Missing JWT private or public key.");
