@@ -1,22 +1,23 @@
-import { type JWTPayload, SignJWT, jwtVerify } from "jose";
+import { SignJWT, jwtVerify } from "jose";
 import { env } from "../env";
 
 if (!env.jwtPrivateKey || !env.jwtPublicKey) {
   throw new Error("Missing JWT private or public key.");
 }
 
-export async function signToken(payload: JWTPayload, expiresIn = "7d"): Promise<string> {
+export async function signToken(userId: string, expiresIn = "7d"): Promise<string> {
   const privateKey = new TextEncoder().encode(env.jwtPrivateKey);
 
-  return await new SignJWT(payload)
+  return await new SignJWT()
     .setProtectedHeader({ alg: "RS256", typ: "JWT" })
     .setIssuedAt()
     .setExpirationTime(expiresIn)
     .setNotBefore("0s")
+    .setSubject(userId)
     .sign(privateKey);
 }
 
-export async function verifyToken(token: string): Promise<JWTPayload> {
+export async function verifyToken(token: string): Promise<string> {
   const publicKey = new TextEncoder().encode(env.jwtPublicKey);
 
   const { payload, protectedHeader } = await jwtVerify(token, publicKey, {
@@ -27,5 +28,11 @@ export async function verifyToken(token: string): Promise<JWTPayload> {
     throw new Error("JWT protected headers do not match");
   }
 
-  return payload;
+  const userId = payload.sub;
+
+  if (!userId) {
+    throw new Error("JWT missing subject");
+  }
+
+  return userId;
 }
