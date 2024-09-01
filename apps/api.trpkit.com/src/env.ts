@@ -11,6 +11,10 @@ const envSchema = z.object({
   // JWT
   JWT_PRIVATE_KEY: z.string(),
   JWT_PUBLIC_KEY: z.string(),
+
+  // Mongo
+  MONGO_URI: z.string(),
+  MONGO_DB: z.string(),
 });
 
 const parsed = envSchema.safeParse(process.env);
