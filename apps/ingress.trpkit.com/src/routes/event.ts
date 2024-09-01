@@ -1,7 +1,7 @@
+import { env } from "@/env";
 import { mongo } from "@trpkit/storage";
 import { type Request, type Response, Router } from "express";
 import { z } from "zod";
-import { env } from "../env";
 
 const router = Router();
 

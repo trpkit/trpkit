@@ -1,9 +1,9 @@
+import { env } from "@/env";
+import { isBadActor, loadBadActors } from "@/lib/bad-actors";
+import eventRoutes from "@/routes/event";
 import bodyParser from "body-parser";
 import cors from "cors";
 import express, { type NextFunction, type Request, type Response } from "express";
-import { env } from "./env";
-import { isBadActor, loadBadActors } from "./lib/bad-actors";
-import eventRoutes from "./routes/event";
 
 const app = express();
 

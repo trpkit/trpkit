@@ -3,8 +3,8 @@
   "version": "0.5.0",
   "private": true,
   "scripts": {
-    "build": "tsc",
-    "dev": "tsc && node --env-file=.env dist/main.js",
+    "build": "tsc && tsc-alias",
+    "dev": "tsc && tsc-alias && node --env-file=.env dist/main.js",
     "start": "node --env-file=.env dist/main.js"
   },
   "dependencies": {
@@ -21,6 +21,7 @@
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
     "@types/node": "^20.16.2",
+    "tsc-alias": "^1.8.10",
     "typescript": "^5.5.4"
   }
 }

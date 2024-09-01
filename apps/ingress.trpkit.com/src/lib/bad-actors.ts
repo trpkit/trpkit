@@ -1,5 +1,5 @@
+import { env } from "@/env";
 import { mongo } from "@trpkit/storage";
-import { env } from "../env";
 
 let badActors: Set<string> = new Set<string>();
 
