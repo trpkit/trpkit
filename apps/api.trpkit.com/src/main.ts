@@ -1,9 +1,9 @@
 import bodyParser from "body-parser";
 import cors from "cors";
 import express from "express";
-import { env } from "./env";
-import { errorHandler } from "./middlewares/errorHandler";
-import auth from "./routes/v1/auth";
+import { env } from "@/env";
+import { errorHandler } from "@/middlewares/errorHandler";
+import auth from "@/routes/v1/auth";
 
 const app = express();
 

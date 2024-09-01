@@ -60,6 +60,9 @@ importers:
       '@types/node':
         specifier: ^22.5.1
         version: 22.5.1
+      tsc-alias:
+        specifier: ^1.8.10
+        version: 1.8.10
       typescript:
         specifier: ^5.5.4
         version: 5.5.4
