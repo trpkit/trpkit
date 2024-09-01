@@ -24,7 +24,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Routes
-app.use("/v1/auth", auth);
+app.use("/v1", auth);
 
 // Error-handling middleware
 app.use(errorHandler);
