@@ -15,6 +15,9 @@ const envSchema = z.object({
   // Mongo
   MONGO_URI: z.string(),
   MONGO_DB: z.string(),
+
+  // Cookies
+  COOKIE_DOMAIN: z.string().optional(),
 });
 
 const parsed = envSchema.safeParse(process.env);
