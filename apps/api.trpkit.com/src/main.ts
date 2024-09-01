@@ -1,6 +1,7 @@
 import { env } from "@/env";
 import { errorHandler } from "@/middlewares/errorHandler";
 import auth from "@/routes/v1/auth";
+import orgs from "@/routes/v1/orgs";
 import bodyParser from "body-parser";
 import cors from "cors";
 import express from "express";
@@ -25,6 +26,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Routes
 app.use("/v1", auth);
+app.use("/v1", orgs);
 
 // Error-handling middleware
 app.use(errorHandler);
