@@ -5,6 +5,7 @@ import orgs from "@/routes/v1/orgs";
 import bodyParser from "body-parser";
 import cors from "cors";
 import express from "express";
+import rateLimit from "express-rate-limit";
 
 const app = express();
 
@@ -23,6 +24,15 @@ app.use(
 );
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// Rate limiting
+const limiter = rateLimit({
+  windowMs: 5 * 60 * 1000,
+  limit: 100,
+  standardHeaders: "draft-7",
+});
+
+app.use(limiter);
 
 // Routes
 app.use("/v1", auth);
