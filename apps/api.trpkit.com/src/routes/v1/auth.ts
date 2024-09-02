@@ -2,6 +2,7 @@ import { env } from "@/env";
 import { ConflictError, ForbiddenError, NotFoundError, ValidationError } from "@/errors";
 import { signToken } from "@/lib/jwt";
 import { mongo } from "@/lib/mongo";
+import type { User, UserSession } from "@/types/user";
 import { Router } from "express";
 import { deriveSession, generateEphemeral } from "secure-remote-password/server";
 import { z } from "zod";
@@ -39,7 +40,7 @@ router.post("/auth/register", async (req, res, next) => {
     const db = client.db(env.MONGO_DB);
 
     // Check to see if email exists
-    const emailExists = (await db.collection("users").countDocuments({ email })) > 0;
+    const emailExists = (await db.collection<User>("users").countDocuments({ email })) > 0;
     if (emailExists) {
       throw new ConflictError("Email already registered.");
     }
@@ -47,7 +48,7 @@ router.post("/auth/register", async (req, res, next) => {
     const createdAt = new Date();
 
     // Store user record
-    const result = await db.collection("users").insertOne({
+    const result = await db.collection<User>("users").insertOne({
       email,
       verifier,
       salt,
@@ -86,7 +87,7 @@ router.post("/auth/login/challenge", async (req, res, next) => {
     const client = await mongo();
     const db = client.db(env.MONGO_DB);
 
-    const user = await db.collection("users").findOne({ email });
+    const user = await db.collection<User>("users").findOne({ email });
 
     // Check to see if user exists
     if (!user) {
@@ -97,7 +98,7 @@ router.post("/auth/login/challenge", async (req, res, next) => {
     const { secret, public: serverEphemeral } = generateEphemeral(user.verifier);
 
     // Store user session
-    await db.collection("user-sessions").insertOne({
+    await db.collection<UserSession>("user-sessions").insertOne({
       email,
       clientEphemeral,
       serverEphemeralSecret: secret,
@@ -128,13 +129,15 @@ router.post("/auth/login/response", async (req, res, next) => {
     const db = client.db(env.MONGO_DB);
 
     // Check to see if session exists
-    const userSession = await db.collection("user-sessions").findOne({ email, clientEphemeral });
+    const userSession = await db
+      .collection<UserSession>("user-sessions")
+      .findOne({ email, clientEphemeral });
     if (!userSession) {
       throw new ForbiddenError("Invalid SRP challenge");
     }
 
     // Check to see if user exists
-    const user = await db.collection("users").findOne({ email });
+    const user = await db.collection<User>("users").findOne({ email });
     if (!user) {
       throw new ForbiddenError("Invalid SRP challenge");
     }
