@@ -70,7 +70,7 @@ router.post("/auth/register", async (req, res, next) => {
     const userId = result.insertedId.toString();
     const token = await signToken(userId);
 
-    res.cookie("token", token, {
+    res.cookie(env.COOKIE_NAME, token, {
       httpOnly: true,
       secure: env.NODE_ENV === "production",
       domain: env.COOKIE_DOMAIN,
@@ -165,7 +165,7 @@ router.post("/auth/login/response", async (req, res, next) => {
     // Create token to log in user
     const token = await signToken(user._id.toString());
 
-    res.cookie("token", token, {
+    res.cookie(env.COOKIE_NAME, token, {
       httpOnly: true,
       secure: env.NODE_ENV === "production",
       domain: env.COOKIE_DOMAIN,
@@ -205,7 +205,7 @@ router.post("/auth/login/checkpoint", (_req, res) => {
 router.delete("/auth/logout", (_req, res) => {
   // TODO probably wanna blacklist the token from being used until it expires
 
-  res.clearCookie("token", {
+  res.clearCookie(env.COOKIE_NAME, {
     httpOnly: true,
     secure: env.NODE_ENV === "production",
     domain: env.COOKIE_DOMAIN,

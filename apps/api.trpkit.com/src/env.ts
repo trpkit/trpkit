@@ -17,6 +17,7 @@ const envSchema = z.object({
   MONGO_DB: z.string(),
 
   // Cookies
+  COOKIE_NAME: z.string().default("token"),
   COOKIE_DOMAIN: z.string().optional(),
 });
 
