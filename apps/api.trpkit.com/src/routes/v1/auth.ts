@@ -13,6 +13,8 @@ const registerSchema = z.object({
   email: z.string().email(),
   verifier: z.string().length(344, "Invalid SRP verifier length"),
   salt: z.string().length(44, "Invalid SRP salt length"),
+  masterSalt: z.string(),
+  keychain: z.string(),
 });
 
 const loginChallengeSchema = z.object({
@@ -34,7 +36,7 @@ router.post("/auth/register", async (req, res, next) => {
       throw new ValidationError(parsed.error.errors.map((error) => error.message).join(", "));
     }
 
-    const { email, verifier, salt } = parsed.data;
+    const { email, verifier, salt, masterSalt, keychain } = parsed.data;
 
     const client = await mongo();
     const db = client.db(env.MONGO_DB);
@@ -53,6 +55,10 @@ router.post("/auth/register", async (req, res, next) => {
       credentials: {
         verifier,
         salt,
+      },
+      kms: {
+        masterSalt,
+        keychain,
       },
       createdAt,
       updatedAt: createdAt,
@@ -168,6 +174,8 @@ router.post("/auth/login/response", async (req, res, next) => {
 
     res.status(200).json({
       serverSession: serverSession.proof,
+      masterSalt: user.kms.masterSalt,
+      keychain: user.kms.keychain,
     });
   } catch (err) {
     next(err);
