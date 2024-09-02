@@ -50,8 +50,10 @@ router.post("/auth/register", async (req, res, next) => {
     // Store user record
     const result = await db.collection<User>("users").insertOne({
       email,
-      verifier,
-      salt,
+      credentials: {
+        verifier,
+        salt,
+      },
       createdAt,
       updatedAt: createdAt,
     });
@@ -95,7 +97,7 @@ router.post("/auth/login/challenge", async (req, res, next) => {
       throw new NotFoundError("User");
     }
 
-    const { secret, public: serverEphemeral } = generateEphemeral(user.verifier);
+    const { secret, public: serverEphemeral } = generateEphemeral(user.credentials.verifier);
 
     // Store user session
     await db.collection<UserSession>("user-sessions").insertOne({
@@ -107,7 +109,7 @@ router.post("/auth/login/challenge", async (req, res, next) => {
 
     res.status(200).json({
       email,
-      salt: user.salt,
+      salt: user.credentials.salt,
       serverEphemeral,
     });
   } catch (err) {
@@ -145,9 +147,9 @@ router.post("/auth/login/response", async (req, res, next) => {
     const serverSession = deriveSession(
       userSession.serverEphemeralSecret,
       clientEphemeral,
-      user.salt,
+      user.credentials.salt,
       email,
-      user.verifier,
+      user.credentials.verifier,
       clientProof
     );
 

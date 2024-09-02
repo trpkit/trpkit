@@ -1,9 +1,14 @@
 export type User = {
   email: string;
-  verifier: string;
-  salt: string;
+  credentials: UserCredential;
   createdAt: Date;
   updatedAt: Date;
+};
+
+export type UserCredential = {
+  verifier: string;
+  salt: string;
+  // 2FA
 };
 
 export type UserSession = {
