@@ -68,7 +68,7 @@ router.post("/auth/register", async (req, res, next) => {
       domain: env.COOKIE_DOMAIN,
       sameSite: env.COOKIE_DOMAIN ? "lax" : undefined,
     });
-    res.status(201);
+    res.status(201).end();
   } catch (err) {
     next(err);
   }
