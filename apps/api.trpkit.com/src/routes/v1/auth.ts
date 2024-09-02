@@ -202,20 +202,16 @@ router.post("/auth/login/checkpoint", (_req, res) => {
   res.status(200);
 });
 
-/**
- * Log user out
- *
- * 202 - Successfully processed logout request
- * 401 - User not logged in (ideally should just return 202 with expired cookie)
- */
 router.delete("/auth/logout", (_req, res) => {
-  // validate user is logged in
-  // create ttl from current token
-  // store token in blacklist collection with ttl (using mongodb ttl index)
-  // store logout event in audit logs for user
+  // TODO probably wanna blacklist the token from being used until it expires
 
-  // create set-cookie header for clearing token
-  res.status(202);
+  res.clearCookie("token", {
+    httpOnly: true,
+    secure: env.NODE_ENV === "production",
+    domain: env.COOKIE_DOMAIN,
+    sameSite: env.COOKIE_DOMAIN ? "lax" : undefined,
+  });
+  res.status(202).end();
 });
 
 /**
