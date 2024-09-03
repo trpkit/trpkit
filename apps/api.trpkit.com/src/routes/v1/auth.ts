@@ -1,3 +1,4 @@
+import { randomBytes } from "node:crypto";
 import { env } from "@/env";
 import { ConflictError, ForbiddenError, NotFoundError, ValidationError } from "@/errors";
 import { signToken } from "@/lib/jwt";
@@ -7,7 +8,6 @@ import { type User, UserMFAStatus, type UserSession } from "@/types/user";
 import { base32 } from "@scure/base";
 import { Router } from "express";
 import { buildURL, totp } from "micro-key-producer/lib/otp";
-import { randomBytes } from "micro-key-producer/lib/utils";
 import { ObjectId } from "mongodb";
 import { deriveSession, generateEphemeral } from "secure-remote-password/server";
 import { z } from "zod";
