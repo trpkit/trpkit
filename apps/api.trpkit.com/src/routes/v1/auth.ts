@@ -2,8 +2,13 @@ import { env } from "@/env";
 import { ConflictError, ForbiddenError, NotFoundError, ValidationError } from "@/errors";
 import { signToken } from "@/lib/jwt";
 import { mongo } from "@/lib/mongo";
-import type { User, UserSession } from "@/types/user";
+import { type AuthenticatedRequest, authHandler } from "@/middlewares/authHandler";
+import { type User, UserMFAStatus, type UserSession } from "@/types/user";
+import { base32 } from "@scure/base";
 import { Router } from "express";
+import { buildURL, totp } from "micro-key-producer/lib/otp";
+import { randomBytes } from "micro-key-producer/lib/utils";
+import { ObjectId } from "mongodb";
 import { deriveSession, generateEphemeral } from "secure-remote-password/server";
 import { z } from "zod";
 
@@ -26,6 +31,10 @@ const loginResponseSchema = z.object({
   email: z.string().email(),
   clientProof: z.string(), // Client proof (M)
   clientEphemeral: z.string(), // Client ephemeral public (A)
+});
+
+const mfaVerifySchema = z.object({
+  code: z.string().length(6, "Invalid code length"),
 });
 
 router.post("/auth/register", async (req, res, next) => {
@@ -55,6 +64,7 @@ router.post("/auth/register", async (req, res, next) => {
       credentials: {
         verifier,
         salt,
+        mfaStatus: UserMFAStatus.NeverSetup,
       },
       kms: {
         masterSalt,
@@ -214,24 +224,35 @@ router.delete("/auth/logout", (_req, res) => {
   res.status(202).end();
 });
 
-/**
- * Enable 2FA
- *
- * 200 - 2FA enabled
- * 400 - 2FA already enabled
- * 401 - User not logged in
- */
-router.post("/auth/mfa", (_req, res) => {
-  // validate user is logged in
-  // validate user exists
-  // validate user has 2fa disabled
-  // create 2fa secret and pass into body
-  // store 2fa status as pending
-  // create new token with 2fa enabled (indicates 2fa is pending)
-  // store 2fa status change event in audit logs for user
+router.post("/auth/mfa", authHandler, async (req: AuthenticatedRequest, res, next) => {
+  try {
+    const secretBytes = randomBytes(20);
+    const secret = base32.encode(secretBytes).replace(/=/g, "");
 
-  // set cookie header for token
-  res.status(200);
+    const otpUrl = buildURL({
+      secret: secretBytes,
+      algorithm: "sha256",
+      digits: 6,
+      interval: 30,
+    });
+
+    const client = await mongo();
+    const db = client.db(env.MONGO_DB);
+
+    await db.collection<User>("users").updateOne(
+      { _id: new ObjectId(req.user?.id) },
+      {
+        $set: {
+          "credentials.mfa": secret,
+          "credentials.mfaStatus": UserMFAStatus.SetupStarted,
+        },
+      }
+    );
+
+    res.status(200).json({ otpUrl });
+  } catch (err) {
+    next(err);
+  }
 });
 
 /**
@@ -253,26 +274,58 @@ router.delete("/auth/mfa", (_req, res) => {
   res.status(200);
 });
 
-/**
- * Verify 2FA setup process
- *
- * 200 - 2FA setup successful
- * 400 - 2FA code invalid
- * 403 - 2FA code incorrect
- */
-router.post("/auth/mfa/verify", (_req, res) => {
-  // validate user is logged in
-  // validate user exists
-  // validate user has 2fa not disabled
-  // validate user has 2fa not enabled
-  // verify code user input
-  // generate backup codes (8 codes) and pass into body
-  // store 2fa status as enabled
-  // create new token with 2fa enabled
-  // store 2fa status change event in audit logs for user
+router.post("/auth/mfa/verify", authHandler, async (req: AuthenticatedRequest, res, next) => {
+  try {
+    const parsed = mfaVerifySchema.safeParse(req.body);
+    if (!parsed.success) {
+      throw new ValidationError(parsed.error.errors.map((error) => error.message).join(", "));
+    }
 
-  res.status(200);
-  // set cookie header for token
+    const { code } = parsed.data;
+
+    const client = await mongo();
+    const db = client.db(env.MONGO_DB);
+
+    const user = await db.collection<User>("users").findOne({ _id: new ObjectId(req.user?.id) });
+
+    if (!user) {
+      throw new NotFoundError("User");
+    }
+
+    if (!user.credentials?.mfa || user.credentials.mfaStatus !== UserMFAStatus.SetupStarted) {
+      throw new ValidationError("MFA is not configured");
+    }
+
+    const secret = base32.decode(user.credentials.mfa);
+
+    const isValid =
+      totp(
+        {
+          secret,
+          algorithm: "sha256",
+          digits: 6,
+          interval: 30,
+        },
+        0
+      ) === code;
+
+    if (!isValid) {
+      throw new ForbiddenError("Invalid TOTP token");
+    }
+
+    // TODO generate backup codes
+
+    await db
+      .collection<User>("users")
+      .updateOne(
+        { _id: new ObjectId(req.user?.id) },
+        { $set: { "credentials.mfaSetup": UserMFAStatus.Enabled } }
+      );
+
+    res.status(200).end();
+  } catch (err) {
+    next(err);
+  }
 });
 
 export default router;

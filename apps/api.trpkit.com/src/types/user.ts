@@ -9,13 +9,22 @@ export type User = {
 export type UserCredential = {
   verifier: string;
   salt: string;
-  // 2FA
+  mfa?: string;
+  mfaStatus: UserMFAStatus;
+  mfaBackupCodes?: string[];
 };
 
 export type UserKMS = {
   masterSalt: string;
   keychain: string;
 };
+
+export enum UserMFAStatus {
+  NeverSetup = "neverSetup",
+  SetupStarted = "setupInProgress",
+  Enabled = "enabled",
+  Disabled = "disabled",
+}
 
 export type UserSession = {
   email: string;
