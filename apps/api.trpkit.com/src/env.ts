@@ -6,7 +6,11 @@ const envSchema = z.object({
 
   // Express
   EXPRESS_ALLOWED_ORIGINS: z.string().transform((val) => val.split(",")),
-  EXPRESS_PORT: z.number().int().default(3500),
+  EXPRESS_PORT: z
+    .string()
+    .default("3500")
+    .transform((val) => Number.parseInt(val, 10))
+    .refine((val) => !Number.isNaN(val), { message: "Expected number" }),
 
   // JWT
   JWT_PRIVATE_KEY: z.string(),

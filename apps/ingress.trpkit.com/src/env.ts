@@ -8,7 +8,11 @@ const envSchema = z.object({
   MONGO_DATABASE: z.string(),
 
   // Port
-  PORT: z.number().int().default(4000),
+  PORT: z
+    .string()
+    .default("4000")
+    .transform((val) => Number.parseInt(val, 10))
+    .refine((val) => !Number.isNaN(val), { message: "Expected number" }),
 });
 
 const parsed = envSchema.safeParse(process.env);
