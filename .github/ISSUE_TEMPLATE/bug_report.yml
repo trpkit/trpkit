@@ -1,0 +1,12 @@
+name: 'Bug Report'
+description: 'Create a bug report for Trpkit products'
+body:
+  - type: markdown
+    attributes:
+      value: "Please read our [contribution guide](https://github.com/trpkit/trpkit/blob/main/.github/CONTRIBUTING.md#submitting-a-bug-report) before submitting a bug report."
+  - type: textarea
+    attributes:
+      label: "Description"
+      description: "Provide a detailed description of the issue you are facing."
+    validations:
+      required: true

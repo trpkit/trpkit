@@ -1,0 +1,12 @@
+name: 'Feature request'
+description: 'Create a feature request for Trpkit products'
+body:
+  - type: markdown
+    attributes:
+      value: "Please read our [contribution guide](https://github.com/trpkit/trpkit/blob/main/.github/CONTRIBUTING.md#suggesting-enhancements-and-features) before submitting a feature request."
+  - type: textarea
+    attributes:
+      label: "Description"
+      description: "Provide a detailed description of the idea or feature."
+    validations:
+      required: true
