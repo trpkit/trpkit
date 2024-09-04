@@ -1,6 +1,10 @@
-const pkg = require("../package.json");
 const glob = require("glob");
 const fs = require("node:fs");
+const { execSync } = require("node:child_process");
+
+execSync("pnpm exec standard-version --release-as minor", { stdio: "inherit" });
+
+const pkg = require("../package.json");
 
 for (const dir of ["./apps/**/package.json", "./packages/**/package.json"]) {
   for (const loc of glob.sync(dir)) {

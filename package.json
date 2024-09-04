@@ -28,14 +28,10 @@
     "commit-msg": "pnpm exec commitlint --edit $1"
   },
   "lint-staged": {
-    "*": [
-      "biome check --no-errors-on-unmatched --files-ignore-unknown=true"
-    ]
+    "*": ["biome check --no-errors-on-unmatched --files-ignore-unknown=true"]
   },
   "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
+    "extends": ["@commitlint/config-conventional"]
   },
   "packageManager": "pnpm@9.1.4"
 }
