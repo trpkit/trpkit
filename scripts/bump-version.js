@@ -2,7 +2,9 @@ const glob = require("glob");
 const fs = require("node:fs");
 const { execSync } = require("node:child_process");
 
-execSync("pnpm exec standard-version --release-as minor", { stdio: "inherit" });
+execSync("pnpm exec standard-version --release-as minor --skip.commit --skip.tag", {
+  stdio: "inherit",
+});
 
 const pkg = require("../package.json");
 
@@ -23,3 +25,7 @@ for (const dir of ["./apps/**/package.json", "./packages/**/package.json"]) {
     }
   }
 }
+
+execSync("git add .", { stdio: "inherit" });
+execSync(`git commit -m "chore(release): ${pkg.version}"`, { stdio: "inherit" });
+execSync(`git tag v${pkg.version}`, { stdio: "inherit" });
