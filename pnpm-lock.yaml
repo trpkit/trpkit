@@ -26,9 +26,6 @@ importers:
 
   apps/api.trpkit.com:
     dependencies:
-      '@scure/base':
-        specifier: ^1.1.7
-        version: 1.1.7
       body-parser:
         specifier: ^1.20.2
         version: 1.20.2
@@ -44,12 +41,12 @@ importers:
       jose:
         specifier: ^5.8.0
         version: 5.8.0
-      micro-key-producer:
-        specifier: ^0.7.0
-        version: 0.7.0
       mongodb:
         specifier: ^6.8.0
         version: 6.8.0
+      otpauth:
+        specifier: ^9.3.2
+        version: 9.3.2
       secure-remote-password:
         specifier: ^0.3.1
         version: 0.3.1
@@ -1040,9 +1037,6 @@ packages:
 
   '@noble/ciphers@0.5.3':
     resolution: {integrity: sha512-B0+6IIHiqEs3BPMT0hcRmHvEj2QHOLu+uwt+tqDDeVd0oyVzh7BPrDcPjRnV1PV/5LaknXJJQvOuRGR0zQJz+w==}
-
-  '@noble/curves@1.4.2':
-    resolution: {integrity: sha512-TavHr8qycMChk8UwMld0ZDRvatedkzWfH8IiaeGCfymOP5i0hSCozz9vHOL0nkwk7HRMlFnAiKpS2jrUmSybcw==}
 
   '@noble/curves@1.5.0':
     resolution: {integrity: sha512-J5EKamIHnKPyClwVrzmaf5wSdQXgdHcPZIZLu3bwnbeCx8/7NPK5q2ZBWF+5FvYGByjiQQsJYX6jfgB2wDPn3A==}
@@ -2962,12 +2956,6 @@ packages:
     resolution: {integrity: sha512-iclAHeNqNm68zFtnZ0e+1L2yUIdvzNoauKU4WBA3VvH/vPFieF7qfRlwUZU+DA9P9bPXIS90ulxoUoCH23sV2w==}
     engines: {node: '>= 0.6'}
 
-  micro-key-producer@0.7.0:
-    resolution: {integrity: sha512-laS4Kl5gJmm9CLMIOvimAX4b2lv/R4PP033f9M7lBtCcLFcY8mLobAYVZbk7zIennJypl7BBwtatSCamu4X+mQ==}
-
-  micro-packed@0.6.3:
-    resolution: {integrity: sha512-VmVkyc7lIzAq/XCPFuLc/CwQ7Ehs5XDK3IwqsZHiBIDttAI9Gs7go6Lv4lNRuAIKrGKcRTtthFKUNyHS0S4wJQ==}
-
   micromark-core-commonmark@2.0.1:
     resolution: {integrity: sha512-CUQyKr1e///ZODyD1U3xit6zXwy1a8q2a1S1HKtIlmgvurrEpaw/Y9y6KSIbF8P59cn/NjzHyO+Q2fAyYLQrAA==}
 
@@ -3233,6 +3221,9 @@ packages:
 
   orderedmap@2.1.1:
     resolution: {integrity: sha512-TvAWxi0nDe1j/rtMcWcIj94+Ffe6n7zhow33h40SKxmsmozs6dz/e+EajymfoFcHd7sxNn8yHM8839uixMOV6g==}
+
+  otpauth@9.3.2:
+    resolution: {integrity: sha512-KixtXWN9RGdS8WHPfDo7qsOYiivCbl+VeLBT+7HBTtJebBO6aXr/bpZXr+TwY2COecdY82VeBghm31mLYQVZlQ==}
 
   package-json-from-dist@1.0.0:
     resolution: {integrity: sha512-dATvCeZN/8wQsGywez1mzHtTlP22H8OEfPrVMLNr4/eGa+ijtLn/6M5f0dY8UKNrC2O9UCU6SSoG3qRKnt7STw==}
@@ -5036,10 +5027,6 @@ snapshots:
     optional: true
 
   '@noble/ciphers@0.5.3': {}
-
-  '@noble/curves@1.4.2':
-    dependencies:
-      '@noble/hashes': 1.4.0
 
   '@noble/curves@1.5.0':
     dependencies:
@@ -7588,18 +7575,6 @@ snapshots:
 
   methods@1.1.2: {}
 
-  micro-key-producer@0.7.0:
-    dependencies:
-      '@noble/ciphers': 0.5.3
-      '@noble/curves': 1.4.2
-      '@noble/hashes': 1.4.0
-      '@scure/base': 1.1.7
-      micro-packed: 0.6.3
-
-  micro-packed@0.6.3:
-    dependencies:
-      '@scure/base': 1.1.7
-
   micromark-core-commonmark@2.0.1:
     dependencies:
       decode-named-character-reference: 1.0.2
@@ -7987,6 +7962,10 @@ snapshots:
       mimic-function: 5.0.1
 
   orderedmap@2.1.1: {}
+
+  otpauth@9.3.2:
+    dependencies:
+      '@noble/hashes': 1.4.0
 
   package-json-from-dist@1.0.0: {}
 

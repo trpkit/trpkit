@@ -1,14 +1,12 @@
-import { randomBytes } from "node:crypto";
 import { env } from "@/env";
 import { ConflictError, ForbiddenError, NotFoundError, ValidationError } from "@/errors";
 import { signToken } from "@/lib/jwt";
 import { mongo } from "@/lib/mongo";
 import { type AuthenticatedRequest, authHandler } from "@/middlewares/authHandler";
 import { type User, UserMFAStatus, type UserSession } from "@/types/user";
-import { base32 } from "@scure/base";
 import { Router } from "express";
-import { buildURL, totp } from "micro-key-producer/lib/otp";
 import { ObjectId } from "mongodb";
+import * as OTPAuth from "otpauth";
 import { deriveSession, generateEphemeral } from "secure-remote-password/server";
 import { z } from "zod";
 
@@ -226,15 +224,17 @@ router.delete("/auth/logout", (_req, res) => {
 
 router.post("/auth/mfa", authHandler, async (req: AuthenticatedRequest, res, next) => {
   try {
-    const secretBytes = randomBytes(20);
-    const secret = base32.encode(secretBytes).replace(/=/g, "");
-
-    const otpUrl = buildURL({
-      secret: secretBytes,
-      algorithm: "sha256",
+    const totp = new OTPAuth.TOTP({
+      issuer: "Trpkit",
+      issuerInLabel: true,
+      // label: '', TODO user email
+      algorithm: "SHA256",
       digits: 6,
-      interval: 30,
+      period: 30,
     });
+
+    const secret = totp.secret.base32;
+    const otpUrl = totp.toString();
 
     const client = await mongo();
     const db = client.db(env.MONGO_DB);
@@ -296,18 +296,14 @@ router.post("/auth/mfa/verify", authHandler, async (req: AuthenticatedRequest, r
       throw new ValidationError("MFA is not configured");
     }
 
-    const secret = base32.decode(user.credentials.mfa);
+    const totp = new OTPAuth.TOTP({
+      secret: OTPAuth.Secret.fromBase32(user.credentials.mfa),
+      algorithm: "SHA256",
+      digits: 6,
+      period: 30,
+    });
 
-    const isValid =
-      totp(
-        {
-          secret,
-          algorithm: "sha256",
-          digits: 6,
-          interval: 30,
-        },
-        0
-      ) === code;
+    const isValid = totp.validate({ token: code, window: 1 }) !== null;
 
     if (!isValid) {
       throw new ForbiddenError("Invalid TOTP token");

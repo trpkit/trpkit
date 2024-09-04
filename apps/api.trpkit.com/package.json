@@ -8,14 +8,13 @@
     "start": "node --env-file=.env dist/main.js"
   },
   "dependencies": {
-    "@scure/base": "^1.1.7",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "express-rate-limit": "^7.4.0",
     "jose": "^5.8.0",
-    "micro-key-producer": "^0.7.0",
     "mongodb": "^6.8.0",
+    "otpauth": "^9.3.2",
     "secure-remote-password": "^0.3.1",
     "zod": "^3.23.8"
   },
