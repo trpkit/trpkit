@@ -11,10 +11,10 @@
   },
   "dependencies": {
     "@noble/ciphers": "^0.5.3",
-    "@scure/base": "^1.1.7"
+    "@scure/base": "^1.1.8"
   },
   "devDependencies": {
-    "@types/node": "^20.16.2",
+    "@types/node": "^20.16.5",
     "typescript": "^5.5.4"
   }
 }

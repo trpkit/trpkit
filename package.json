@@ -18,7 +18,7 @@
     "@commitlint/cli": "^19.4.1",
     "@commitlint/config-conventional": "^19.4.1",
     "glob": "^10.4.5",
-    "lint-staged": "^15.2.9",
+    "lint-staged": "^15.2.10",
     "simple-git-hooks": "^2.11.1",
     "standard-version": "^9.5.0",
     "turbo": "^2.1.1"
