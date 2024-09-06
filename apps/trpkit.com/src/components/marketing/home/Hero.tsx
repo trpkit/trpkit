@@ -39,7 +39,7 @@ export default function Hero() {
               </div>
             </div>
           </div>
-          <div className="relative w-full h-[720px] rounded-2xl bg-zinc-800" />
+          <div className="relative w-full h-[540px] rounded-2xl bg-zinc-800" />
         </div>
       </div>
     </section>
