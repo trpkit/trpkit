@@ -7,6 +7,7 @@
     "clean": "git clean -xdf node_modules",
     "clone:trpkit-materials": "node ./scripts/clone-trpkit-materials.js",
     "dev": "turbo run dev --parallel",
+    "dev:marketing": "turbo run dev -F=@trpkit/trpkit.com... --parallel",
     "format": "biome check --write .",
     "lint-staged": "lint-staged",
     "preinstall": "npx only-allow pnpm",
