@@ -4,10 +4,8 @@ dist
 .turbo
 .idea
 *.iml
-.contentlayer
 .env*
 !.env.example
-target
 apps/trpkit.com/src/content/**
 apps/api.trpkit.com/keys
 tmp
