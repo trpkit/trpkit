@@ -9,7 +9,9 @@ import React, { Fragment, type ReactNode } from "react";
 export function MarkdocRenderer({ node }: { node: Node }): ReactNode {
   const root = markdocTransform(node);
 
-  return renderers.react(root, React);
+  return renderers.react(root, React, {
+    components: getRenderers(),
+  });
 }
 
 /**
