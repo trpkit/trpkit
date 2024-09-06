@@ -1,7 +1,7 @@
 import { Divider } from "@/components/ui/Divider";
 import { Heading } from "@/components/ui/Heading";
 import { Link } from "@/components/ui/Link";
-import { Text } from "@/components/ui/Text";
+import { Strong, Text } from "@/components/ui/Text";
 import { markdocTransform } from "@/keystatic/markdoc-transform";
 import { type Node, renderers } from "@markdoc/markdoc";
 import React, { Fragment, type ReactNode } from "react";
@@ -30,5 +30,6 @@ function getRenderers() {
     ),
     Paragraph: ({ children }: { children: ReactNode }) => <Text>{children}</Text>,
     Divider: () => <Divider />,
+    Strong: ({ children }: { children: ReactNode }) => <Strong>{children}</Strong>,
   };
 }

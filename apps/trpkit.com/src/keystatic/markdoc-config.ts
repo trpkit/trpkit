@@ -30,5 +30,9 @@ export const markdocConfig: Config = {
       ...Markdoc.nodes.hr,
       render: "Divider",
     },
+    strong: {
+      ...Markdoc.nodes.strong,
+      render: "Strong",
+    },
   },
 };
