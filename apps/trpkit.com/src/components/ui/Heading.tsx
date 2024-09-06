@@ -8,5 +8,5 @@ type Props = { level?: 1 | 2 | 3 | 4 | 5 | 6 } & React.ComponentPropsWithoutRef<
 export function Heading({ className, level = 1, ...props }: Props) {
   const Element: `h${typeof level}` = `h${level}`;
 
-  return <Element {...props} className={cn("text-2xl/8 font-semibold text-white sm:text-xl/8")} />;
+  return <Element {...props} className={cn("text-2xl/8 font-semibold text-zinc-900 sm:text-xl/8")} />;
 }
