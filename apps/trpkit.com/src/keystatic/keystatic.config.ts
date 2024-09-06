@@ -15,6 +15,7 @@ export default config({
       path: "src/keystatic/content/legal-resources/**",
       schema: {
         title: fields.slug({ name: { label: "Title" } }),
+        lastUpdated: fields.date({ label: "Last updated", defaultValue: { kind: 'today' }, validation: { isRequired: true } }),
         summary: fields.text({
           label: "Summary",
           description:
