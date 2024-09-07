@@ -90,7 +90,7 @@ export default config({
           validation: { isRequired: true },
         }),
         children: fields.markdoc({
-          label: "Page content",
+          label: "Legal content",
           components: components,
         }),
       },
