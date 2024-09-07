@@ -1,0 +1,17 @@
+groups:
+  - groupName: Product
+    items: []
+  - groupName: Resources
+    items: []
+  - groupName: Help & Support
+    items: []
+  - groupName: Legal
+    items:
+      - label: Terms of Service
+        link:
+          discriminant: url
+          value: /legal/terms
+      - label: Privacy Policy
+        link:
+          discriminant: url
+          value: /legal/privacy

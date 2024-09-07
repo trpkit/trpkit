@@ -72,5 +72,45 @@ export default config({
         ),
       },
     }),
+    footerNavigation: singleton({
+      label: "Footer Navigation",
+      path: "src/keystatic/content/footer-navigation",
+      schema: {
+        groups: fields.array(
+          fields.object({
+            groupName: fields.text({ label: "Group name" }),
+            items: fields.array(
+              fields.object({
+                label: fields.text({
+                  label: "Label",
+                }),
+                link: fields.conditional(
+                  fields.select({
+                    label: "Link type",
+                    options: [
+                      { label: "URL", value: "url" },
+                      { label: "Coming soon (no URL)", value: "coming-soon" },
+                    ],
+                    defaultValue: "url",
+                  }),
+                  {
+                    url: fields.text({ label: "URL" }),
+                    "coming-soon": fields.empty(),
+                  }
+                ),
+              }),
+              {
+                label: "Navigation items",
+                itemLabel: (props) => props.fields.label.value,
+              }
+            ),
+          }),
+          {
+            label: "Navigation groups",
+            itemLabel: (props) => props.fields.groupName.value,
+          }
+        ),
+      },
+    }),
   },
 });
