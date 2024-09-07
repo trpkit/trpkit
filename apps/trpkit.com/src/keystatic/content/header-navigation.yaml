@@ -1,0 +1,7 @@
+items:
+  - label: Blog
+    link:
+      discriminant: coming-soon
+  - label: Pricing
+    link:
+      discriminant: coming-soon

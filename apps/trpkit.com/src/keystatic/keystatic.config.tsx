@@ -1,4 +1,4 @@
-import { collection, config, fields } from "@keystatic/core";
+import { collection, config, fields, singleton } from "@keystatic/core";
 
 export const showAdminUI = process.env.NODE_ENV !== "production";
 
@@ -40,5 +40,37 @@ export default config({
       },
     }),
   },
-  singletons: {},
+  singletons: {
+    headerNavigation: singleton({
+      label: "Header Navigation",
+      path: "src/keystatic/content/header-navigation",
+      schema: {
+        items: fields.array(
+          fields.object({
+            label: fields.text({
+              label: "Label",
+            }),
+            link: fields.conditional(
+              fields.select({
+                label: "Link type",
+                options: [
+                  { label: "URL", value: "url" },
+                  { label: "Coming soon (no URL)", value: "coming-soon" },
+                ],
+                defaultValue: "url",
+              }),
+              {
+                url: fields.text({ label: "URL" }),
+                "coming-soon": fields.empty(),
+              }
+            ),
+          }),
+          {
+            label: "Navigation items",
+            itemLabel: (props) => props.fields.label.value,
+          }
+        ),
+      },
+    }),
+  },
 });
