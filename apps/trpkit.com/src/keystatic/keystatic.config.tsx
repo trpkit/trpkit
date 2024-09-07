@@ -1,3 +1,4 @@
+import { components } from "@/keystatic/markdoc-components";
 import { collection, config, fields, singleton } from "@keystatic/core";
 
 export const showAdminUI = process.env.NODE_ENV !== "production";
@@ -30,7 +31,7 @@ export default config({
         }),
         children: fields.markdoc({
           label: "Page content",
-          components: {},
+          components: components,
         }),
       },
     }),
@@ -56,7 +57,7 @@ export default config({
         }),
         children: fields.markdoc({
           label: "Page content",
-          components: {},
+          components: components,
         }),
       },
     }),

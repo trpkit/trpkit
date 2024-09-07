@@ -1,11 +1,9 @@
+import { components } from "@/keystatic/markdoc-components";
 import { fields } from "@keystatic/core";
 import Markdoc, { type Config } from "@markdoc/markdoc";
 
-/**
- * Configuration object for Markdoc, integrating with Keystatic
- */
 export const markdocConfig: Config = {
-  tags: fields.markdoc.createMarkdocConfig({}).tags,
+  tags: fields.markdoc.createMarkdocConfig({ components, render: {} }).tags,
   nodes: {
     document: {
       ...Markdoc.nodes.document,
