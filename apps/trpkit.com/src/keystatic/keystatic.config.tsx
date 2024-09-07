@@ -52,6 +52,11 @@ export default config({
           defaultValue: { kind: "today" },
           validation: { isRequired: true },
         }),
+        category: fields.relationship({
+          label: "Category",
+          collection: "blogCategories",
+          validation: { isRequired: true },
+        }),
         authors: fields.multiRelationship({
           label: "Authors",
           collection: "blogAuthors",
@@ -60,6 +65,17 @@ export default config({
         children: fields.markdoc({
           label: "Post content",
           components,
+        }),
+      },
+    }),
+    blogCategories: collection({
+      label: "Blog Categories",
+      slugField: "name",
+      path: "src/keystatic/content/blog-resources/categories/*",
+      columns: ["name"],
+      schema: {
+        name: fields.slug({
+          name: { label: "Category name" },
         }),
       },
     }),
