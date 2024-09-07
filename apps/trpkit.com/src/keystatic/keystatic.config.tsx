@@ -31,7 +31,7 @@ export default config({
         }),
         children: fields.markdoc({
           label: "Page content",
-          components: components,
+          components,
         }),
       },
     }),
@@ -59,7 +59,7 @@ export default config({
         }),
         children: fields.markdoc({
           label: "Post content",
-          components: components,
+          components,
         }),
       },
     }),
@@ -91,7 +91,7 @@ export default config({
         }),
         children: fields.markdoc({
           label: "Legal content",
-          components: components,
+          components,
         }),
       },
     }),
