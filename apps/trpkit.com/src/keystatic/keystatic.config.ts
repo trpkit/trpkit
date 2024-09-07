@@ -13,6 +13,7 @@ export default config({
       entryLayout: "content",
       format: { contentField: "children" },
       path: "src/keystatic/content/legal-resources/**",
+      previewUrl: "/legal/{slug}",
       schema: {
         title: fields.slug({ name: { label: "Title" } }),
         lastUpdated: fields.date({
