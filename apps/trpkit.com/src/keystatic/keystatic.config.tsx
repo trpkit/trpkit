@@ -40,7 +40,7 @@ export default config({
       slugField: "title",
       entryLayout: "content",
       format: { contentField: "children" },
-      path: "src/keystatic/content/legal-resources/**",
+      path: "src/keystatic/content/legal-resources/*",
       previewUrl: "/legal/{slug}",
       columns: ["title", "lastUpdated"],
       schema: {
@@ -49,11 +49,6 @@ export default config({
           label: "Last updated",
           defaultValue: { kind: "today" },
           validation: { isRequired: true },
-        }),
-        summary: fields.text({
-          label: "Summary",
-          description: "The summary is used for the meta description.",
-          multiline: true,
         }),
         children: fields.markdoc({
           label: "Page content",
