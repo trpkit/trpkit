@@ -1,20 +1,35 @@
 import { markdocConfig } from "@/keystatic/markdoc-config";
-import Markdoc, { type Node } from "@markdoc/markdoc";
+import Markdoc, { type Node, type ValidateError } from "@markdoc/markdoc";
 
-/**
- * Transforms a Markdoc node using a specified configuration
- *
- * @param {Node} node - The Markdoc node to be transformed
- * @returns {any} The transformed node
- * @throws Will throw an error if the content is invalid according to the Markdoc configuration
- */
+// Source https://github.com/Thinkmill/keystatic/blob/main/docs/keystatic.config.tsx
+class MarkdocError extends Error {
+  constructor(errors: ValidateError[]) {
+    super();
+    this.name = "MarkdocError";
+    this.message = `Errors in ${errors[0].location?.file}:\n${errors
+      .map((error) => {
+        const location = error.error.location || error.location;
+        return `${errors[0].location?.file}:${location?.start.line ? location.start.line + 1 : "(unknown line)"}${location?.start.character ? `:${location.start.character}` : ""}: ${error.error.message}`;
+      })
+      .join("\n")}`;
+  }
+}
+
+function assert(condition: boolean, message = "Assert failed"): asserts condition {
+  if (!condition) {
+    throw new TypeError(message);
+  }
+}
+
 export function markdocTransform(node: Node) {
   const errors = Markdoc.validate(node, markdocConfig);
 
-  if (errors.length) {
-    console.error(errors);
-    throw new Error("Invalid content");
+  if (errors.length > 0) {
+    throw new MarkdocError(errors);
   }
 
-  return Markdoc.transform(node, markdocConfig);
+  const renderableNode = Markdoc.transform(node, markdocConfig);
+  assert(renderableNode !== null && typeof renderableNode !== "string");
+
+  return renderableNode;
 }
