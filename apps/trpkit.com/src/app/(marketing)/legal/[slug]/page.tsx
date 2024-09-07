@@ -23,7 +23,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
           </div>
         </div>
       </section>
-      <section className="overflow-hidden pt-32">
+      <section className="overflow-hidden pt-20">
         <div className="container">
           <MarkdocRenderer node={(await legalResource.children()).node} />
         </div>
