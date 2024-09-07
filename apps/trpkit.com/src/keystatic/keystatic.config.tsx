@@ -35,6 +35,45 @@ export default config({
         }),
       },
     }),
+    blogPosts: collection({
+      label: "Blog Posts",
+      slugField: "title",
+      entryLayout: "content",
+      format: { contentField: "children" },
+      path: "src/keystatic/content/blog-resources/posts/*",
+      previewUrl: "/blog/{slug}",
+      columns: ["title", "publishedAt"],
+      schema: {
+        title: fields.slug({
+          name: { label: "Title" },
+        }),
+        publishedAt: fields.date({
+          label: "Published at",
+          defaultValue: { kind: "today" },
+          validation: { isRequired: true },
+        }),
+        authors: fields.multiRelationship({
+          label: "Authors",
+          collection: "blogAuthors",
+          validation: { length: { min: 1 } },
+        }),
+        children: fields.markdoc({
+          label: "Post content",
+          components: components,
+        }),
+      },
+    }),
+    blogAuthors: collection({
+      label: "Blog Authors",
+      slugField: "name",
+      path: "src/keystatic/content/blog-resources/authors/*",
+      columns: ["name"],
+      schema: {
+        name: fields.slug({
+          name: { label: "Name" },
+        }),
+      },
+    }),
     legalResources: collection({
       label: "Legal Resources",
       slugField: "title",
