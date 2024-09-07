@@ -75,12 +75,17 @@ export default config({
               fields.select({
                 label: "Link type",
                 options: [
+                  { label: "Page", value: "page" },
                   { label: "URL", value: "url" },
                   { label: "Coming soon (no URL)", value: "coming-soon" },
                 ],
                 defaultValue: "url",
               }),
               {
+                page: fields.relationship({
+                  label: "Page",
+                  collection: "pages",
+                }),
                 url: fields.text({ label: "URL" }),
                 "coming-soon": fields.empty(),
               }
@@ -109,12 +114,17 @@ export default config({
                   fields.select({
                     label: "Link type",
                     options: [
+                      { label: "Page", value: "page" },
                       { label: "URL", value: "url" },
                       { label: "Coming soon (no URL)", value: "coming-soon" },
                     ],
                     defaultValue: "url",
                   }),
                   {
+                    page: fields.relationship({
+                      label: "Page",
+                      collection: "pages",
+                    }),
                     url: fields.text({ label: "URL" }),
                     "coming-soon": fields.empty(),
                   }
