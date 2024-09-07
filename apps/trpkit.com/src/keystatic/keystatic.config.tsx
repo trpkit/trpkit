@@ -13,6 +13,27 @@ export default config({
     },
   },
   collections: {
+    pages: collection({
+      label: "Pages",
+      slugField: "title",
+      entryLayout: "content",
+      format: { contentField: "children" },
+      path: "src/keystatic/content/pages/**",
+      previewUrl: "/{slug}",
+      columns: ["title"],
+      schema: {
+        title: fields.slug({ name: { label: "Title" } }),
+        summary: fields.text({
+          label: "Summary",
+          description: "The summary is used for the meta description.",
+          multiline: true,
+        }),
+        children: fields.markdoc({
+          label: "Page content",
+          components: {},
+        }),
+      },
+    }),
     legalResources: collection({
       label: "Legal Resources",
       slugField: "title",
@@ -20,6 +41,7 @@ export default config({
       format: { contentField: "children" },
       path: "src/keystatic/content/legal-resources/**",
       previewUrl: "/legal/{slug}",
+      columns: ["title", "lastUpdated"],
       schema: {
         title: fields.slug({ name: { label: "Title" } }),
         lastUpdated: fields.date({
@@ -29,8 +51,7 @@ export default config({
         }),
         summary: fields.text({
           label: "Summary",
-          description:
-            "The summary is used in the legal center for a short description and metadata description.",
+          description: "The summary is used for the meta description.",
           multiline: true,
         }),
         children: fields.markdoc({
