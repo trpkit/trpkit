@@ -6,6 +6,12 @@ export default config({
   storage: {
     kind: "local",
   },
+  ui: {
+    brand: {
+      name: "Trpkit",
+      mark: () => <img src="/branding/icon.svg" alt="Trpkit Icon" height={24} />,
+    },
+  },
   collections: {
     legalResources: collection({
       label: "Legal Resources",
