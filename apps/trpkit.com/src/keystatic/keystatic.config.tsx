@@ -108,6 +108,7 @@ export default config({
           {
             label: "Navigation groups",
             itemLabel: (props) => props.fields.groupName.value,
+            validation: { length: { max: 4 } },
           }
         ),
       },
