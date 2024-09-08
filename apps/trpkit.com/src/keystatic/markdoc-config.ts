@@ -32,5 +32,18 @@ export const markdocConfig: Config = {
       ...Markdoc.nodes.strong,
       render: "Strong",
     },
+    list: {
+      children: ["item"],
+      render: "List",
+      attributes: {
+        ordered: { type: Boolean, render: false, required: true },
+        start: { type: Number },
+        marker: { type: String, render: false },
+      },
+    },
+    item: {
+      ...Markdoc.nodes.item,
+      render: "ListItem",
+    },
   },
 };
