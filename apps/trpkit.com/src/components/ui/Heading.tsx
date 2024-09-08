@@ -11,7 +11,13 @@ export function Heading({ className, level = 1, ...props }: Props) {
   return (
     <Element
       {...props}
-      className={cn(className, "text-2xl/8 font-semibold text-zinc-900 sm:text-xl/8")}
+      className={cn(
+        className,
+        level === 1 ? "text-2xl sm:text-xl" : "",
+        level === 2 ? "text-xl mt-6" : "",
+        level === 3 ? "text-base mt-2" : "",
+        "font-semibold text-zinc-900"
+      )}
     />
   );
 }
