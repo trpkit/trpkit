@@ -6,6 +6,8 @@ export default function Header() {
   const [sticky, setSticky] = useState(false);
 
   useEffect(() => {
+    setSticky(window.scrollY > 10);
+
     function scrollEvent() {
       setSticky(window.scrollY > 10);
     }
