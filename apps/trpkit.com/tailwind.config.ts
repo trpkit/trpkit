@@ -10,7 +10,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["var(--font-inter)"],
+        sans: ["var(--font-inter), sans-serif", { fontFeatureSettings: '"cv11"' }],
       },
     },
   },
