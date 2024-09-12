@@ -1,6 +1,5 @@
 import { Divider } from "@/components/ui/Divider";
 import { Heading } from "@/components/ui/Heading";
-import { List, ListItem } from "@/components/ui/List";
 import { Strong, Text, TextLink } from "@/components/ui/Text";
 import { markdocTransform } from "@/keystatic/markdoc-transform";
 import { type Node, renderers } from "@markdoc/markdoc";
@@ -26,9 +25,5 @@ function getRenderers() {
     Paragraph: ({ children }: { children: ReactNode }) => <Text>{children}</Text>,
     Divider: () => <Divider />,
     Strong: ({ children }: { children: ReactNode }) => <Strong>{children}</Strong>,
-    List: ({ ordered, children }: { ordered: boolean; children: ReactNode }) => (
-      <List tag={ordered ? "ol" : "ul"}>{children}</List>
-    ),
-    ListItem: ({ children }: { children: ReactNode }) => <ListItem>{children}</ListItem>,
   };
 }
