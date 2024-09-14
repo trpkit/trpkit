@@ -227,6 +227,12 @@ importers:
       '@noble/curves':
         specifier: ^1.6.0
         version: 1.6.0
+      '@noble/hashes':
+        specifier: ^1.5.0
+        version: 1.5.0
+      '@noble/post-quantum':
+        specifier: ^0.2.0
+        version: 0.2.0
       '@scure/base':
         specifier: ^1.1.8
         version: 1.1.8
@@ -1131,6 +1137,9 @@ packages:
   '@noble/hashes@1.5.0':
     resolution: {integrity: sha512-1j6kQFb7QRru7eKN3ZDvRcP13rugwdxZqCjbiAVZfIJwgj2A65UmT4TgARXGlXgnRkORLTDTrO19ZErt7+QXgA==}
     engines: {node: ^14.21.3 || >=16}
+
+  '@noble/post-quantum@0.2.0':
+    resolution: {integrity: sha512-6dXxLXv9qCdj22zTBIRN1J8RrF+OUWQD1vJHNcqCu4JAlSo7KnaRVc+ikDPqvgky43Rn7NGQoWqeo4wv8TAJ/g==}
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -5931,6 +5940,10 @@ snapshots:
   '@noble/hashes@1.4.0': {}
 
   '@noble/hashes@1.5.0': {}
+
+  '@noble/post-quantum@0.2.0':
+    dependencies:
+      '@noble/hashes': 1.4.0
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
