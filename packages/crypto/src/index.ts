@@ -38,7 +38,7 @@ export function generateKeyPair(): ReturnedKeyPair {
 export const secretKeyRegex = /^trpkit\.box\.sk\.([a-zA-Z0-9-_]{43})$/;
 export const publicKeyRegex = /^trpkit\.box\.pk\.([a-zA-Z0-9-_]{43})$/;
 const messageRegex =
-  /^trpkit\.box\.([a-zA-Z0-9-_]{43}=?)\.([a-zA-Z0-9-_]{32})\.([a-zA-Z0-9-_]{22,}={0,2})$/;
+  /^trpkit\.pq\.([a-zA-Z0-9-_]{43})\.([a-zA-Z0-9-_]{1088})\.([a-zA-Z0-9-_]{43})\.([a-zA-Z0-9-_]{22,}={0,2})$/;
 
 export function importKeyPair(secretKey: string): ReturnedKeyPair {
   const privateKey = parse(secretKey, secretKeyRegex);
@@ -90,7 +90,7 @@ export function encrypt(input: string, publicKey: Uint8Array, pqPublicKey: Uint8
   const cipher = xsalsa20poly1305(finalKey, nonce);
   const cipherText = cipher.encrypt(utf8.decode(input));
 
-  return `trpkit.box.${base64url.encode(keyPair.keyPair.publicKey)}.${base64url.encode(pqCipherText)}.${base64url.encode(nonce)}.${base64url.encode(cipherText)}`;
+  return `trpkit.pq.${base64url.encode(keyPair.keyPair.publicKey)}.${base64url.encode(pqCipherText)}.${base64url.encode(nonce)}.${base64url.encode(cipherText)}`;
 }
 
 export function decrypt(input: string, secretKey: Uint8Array, pqSecretKey: Uint8Array): string {
