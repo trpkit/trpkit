@@ -12,6 +12,8 @@
   "dependencies": {
     "@noble/ciphers": "^0.5.3",
     "@noble/curves": "^1.6.0",
+    "@noble/hashes": "^1.5.0",
+    "@noble/post-quantum": "^0.2.0",
     "@scure/base": "^1.1.8"
   },
   "devDependencies": {
