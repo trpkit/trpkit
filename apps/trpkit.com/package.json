@@ -8,19 +8,19 @@
     "dev": "next dev"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.645.0",
-    "@headlessui/react": "^2.1.5",
+    "@aws-sdk/client-s3": "^3.651.1",
+    "@headlessui/react": "^2.1.8",
     "@heroicons/react": "^2.1.5",
-    "@keystatic/core": "^0.5.33",
+    "@keystatic/core": "^0.5.35",
     "@keystatic/next": "^5.0.1",
     "@markdoc/markdoc": "^0.4.0",
     "@scure/base": "^1.1.8",
     "@sindresorhus/slugify": "^2.2.1",
     "@trpkit/storage": "workspace:*",
     "clsx": "^2.1.1",
-    "jose": "^5.8.0",
-    "mongodb": "^6.8.0",
-    "next": "^14.2.8",
+    "jose": "^5.9.2",
+    "mongodb": "^6.9.0",
+    "next": "^14.2.11",
     "octokit": "^4.0.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -36,9 +36,9 @@
     "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
     "autoprefixer": "^10.4.20",
-    "postcss": "^8.4.45",
+    "postcss": "^8.4.47",
     "tailwind-merge": "^2.5.2",
-    "tailwindcss": "^3.4.10",
-    "typescript": "^5.5.4"
+    "tailwindcss": "^3.4.11",
+    "typescript": "^5.6.2"
   }
 }
