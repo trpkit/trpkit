@@ -1,6 +1,6 @@
 import { env } from "@/env";
 import { isBadActor, loadBadActors } from "@/lib/bad-actors";
-import eventRoutes from "@/routes/event";
+import eventRoutes from "@/routes/v1/event";
 import bodyParser from "body-parser";
 import cors from "cors";
 import express, { type NextFunction, type Request, type Response } from "express";
@@ -21,9 +21,8 @@ app.use((req: Request, res: Response, next: NextFunction) => {
   }
 });
 
-// TODO consider versioning the routes, aka /v1/[ROUTE]
 // Routes
-app.use("/event", eventRoutes);
+app.use("/v1/event", eventRoutes);
 
 const PORT = env.PORT;
 
