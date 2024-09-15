@@ -1,6 +1,6 @@
 import { parse, publicKeyRegex } from "@trpkit/crypto";
 
-export const baseUrl = "https://api.trpkit.com/v1/analytics/";
+export const baseUrl = "https://ingress.trpkit.com/v1/event/";
 
 export type Config = {
   publicKey: Uint8Array;
