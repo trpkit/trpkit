@@ -38,7 +38,7 @@ export function generateKeyPair(): ReturnedKeyPair {
 export const secretKeyRegex = /^trpkit\.box\.sk\.([a-zA-Z0-9-_]{43})$/;
 export const publicKeyRegex = /^trpkit\.box\.pk\.([a-zA-Z0-9-_]{43})$/;
 const messageRegex =
-  /^trpkit\.pq\.([a-zA-Z0-9-_]{43})\.([a-zA-Z0-9-_]{1088})\.([a-zA-Z0-9-_]{43})\.([a-zA-Z0-9-_]{22,}={0,2})$/;
+  /^trpkit\.pq\.([a-zA-Z0-9-_]+)\.([a-zA-Z0-9-_]+)\.([a-zA-Z0-9-_]+)\.([a-zA-Z0-9-_]+={0,2})$/;
 
 export function importKeyPair(secretKey: string): ReturnedKeyPair {
   const privateKey = parse(secretKey, secretKeyRegex);
@@ -69,6 +69,21 @@ export function parse(input: string, regex: RegExp) {
 }
 
 export function encrypt(input: string, publicKey: Uint8Array, pqPublicKey: Uint8Array): string {
+  // Validate x25519 public key length
+  if (publicKey.length !== 32) {
+    throw new Error("Invalid x25519 public key length");
+  }
+
+  // Validate ML-KEM public key length
+  if (pqPublicKey.length !== 1184) {
+    throw new Error("Invalid ML-KEM public key length");
+  }
+
+  // Ensure input is not empty
+  if (!input) {
+    throw new Error("Input must be a string");
+  }
+
   const nonce = randomBytes(xsalsa20poly1305.nonceLength);
 
   // Generate x25519 ephemeral key pair
@@ -96,8 +111,7 @@ export function encrypt(input: string, publicKey: Uint8Array, pqPublicKey: Uint8
 export function decrypt(input: string, secretKey: Uint8Array, pqSecretKey: Uint8Array): string {
   const match = input.match(messageRegex);
   if (!match) {
-    // TODO better error message
-    throw new Error("Invalid input");
+    throw new Error("Invalid input format");
   }
 
   const [publicKeyEncoded, pqCipherTextEncoded, nonceEncoded, cipherTextEncoded] = match.slice(1);
@@ -105,6 +119,20 @@ export function decrypt(input: string, secretKey: Uint8Array, pqSecretKey: Uint8
   const pqCipherText = base64url.decode(pqCipherTextEncoded); // ML-KEM 768 cipher text
   const nonce = base64url.decode(nonceEncoded);
   const cipherText = base64url.decode(cipherTextEncoded);
+
+  // Validate x25519 public key length
+  if (publicKey.length !== 32) {
+    throw new Error("Invalid x25519 public key length");
+  }
+
+  // Validate ML-KEM cipher text length
+  if (pqCipherText.length !== 1088) {
+    throw new Error("Invalid ML-KEM cipher text length");
+  }
+
+  if (nonce.length !== xsalsa20poly1305.nonceLength) {
+    throw new Error("Invalid nonce length");
+  }
 
   // x25519 shared secret
   const sharedSecret = x25519.getSharedSecret(secretKey, publicKey);
