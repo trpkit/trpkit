@@ -277,9 +277,21 @@ importers:
 
   packages/tracker:
     dependencies:
-      '@trpkit/crypto':
-        specifier: workspace:*
-        version: link:../crypto
+      '@noble/ciphers':
+        specifier: ^0.5.3
+        version: 0.5.3
+      '@noble/curves':
+        specifier: ^1.6.0
+        version: 1.6.0
+      '@noble/hashes':
+        specifier: ^1.5.0
+        version: 1.5.0
+      '@noble/post-quantum':
+        specifier: ^0.2.0
+        version: 0.2.0
+      '@scure/base':
+        specifier: ^1.1.8
+        version: 1.1.8
     devDependencies:
       '@types/node':
         specifier: ^20.16.5

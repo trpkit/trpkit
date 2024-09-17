@@ -1,5 +1,5 @@
-import { encrypt } from "@trpkit/crypto";
 import type { Config } from "./config";
+import { encrypt } from "./crypto";
 import { handleRequest } from "./request";
 
 export type BasePayload = {
@@ -51,6 +51,6 @@ export function createEvent(t: Event["t"], d: Event["d"]): Event {
 export function sendEvent(event: Event, config: Config) {
   if (/^(localhost|127\.0\.0\.1|\[::1?])$/.test(window.location.hostname)) return;
 
-  const payload = encrypt(JSON.stringify(event), config.publicKey);
+  const payload = encrypt(JSON.stringify(event), config.publicKey, config.pqPublicKey);
   handleRequest(config.siteId, payload);
 }

@@ -6,8 +6,11 @@ const options: BuildOptions = {
   outfile: resolve(__dirname, "../dist/analytics.js"),
   bundle: true,
   minify: true,
-  sourcemap: true,
+  sourcemap: false,
   format: "iife",
+  platform: "browser",
+  legalComments: "linked",
+  charset: "utf8",
   target: ["chrome58", "firefox57", "safari11", "edge18"],
 };
 
