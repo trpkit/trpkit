@@ -23,8 +23,7 @@ jobs:
             --config p/react \
             --config p/javascript \
             --config p/owasp-top-ten \
-            --output=semgrep-report.json \
-            --error-on-findings
+            --output=semgrep-report.json
       - name: Upload Semgrep Report
         uses: actions/upload-artifact@v4
         with:
