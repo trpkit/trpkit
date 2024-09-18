@@ -16,13 +16,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: |
-          semgrep scan --config p/security-audit \
-            --config p/jwt-best-practices \
-            --config p/nodejs \
-            --config p/typescript \
-            --config p/react \
-            --config p/javascript \
-            --config p/owasp-top-ten \
+          semgrep scan --config=p/security-audit \
+            --config=p/jwt-best-practices \
+            --config=p/nodejs \
+            --config=p/typescript \
+            --config=p/react \
+            --config=p/javascript \
+            --config=p/owasp-top-ten \
             --output=semgrep-report.json
       - name: Upload Semgrep Report
         uses: actions/upload-artifact@v4
