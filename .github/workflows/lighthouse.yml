@@ -48,7 +48,7 @@ jobs:
       - name: Run Lighthouse CI
         run: lhci autorun
       - name: Upload LHCI Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: lighthouse-report
           path: ./lhci-report
