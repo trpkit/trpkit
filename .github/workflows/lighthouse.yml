@@ -48,8 +48,7 @@ jobs:
       - name: Install LHCI
         run: pnpm install -g @lhci/cli
       - name: Run Lighthouse CI
-        run: |
-          lhci autorun --url=http://localhost:3000 --upload.target=filesystem --upload.outputDir=./lhci-report
+        run: lhci autorun
       - name: Upload LHCI Artifact
         uses: actions/upload-artifact@v3
         with:
