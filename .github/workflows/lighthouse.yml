@@ -42,7 +42,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install
       - name: Build
-        run: pnpm run build
+        run: pnpm exec turbo run build -F=@trpkit/trpkit.com...
       - name: Install LHCI
         run: pnpm install -g @lhci/cli
       - name: Run Lighthouse CI
