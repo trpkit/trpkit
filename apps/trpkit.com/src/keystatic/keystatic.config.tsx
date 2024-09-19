@@ -10,7 +10,7 @@ export default config({
   ui: {
     brand: {
       name: "Trpkit",
-      mark: () => <img src="/branding/icon.svg" alt="Trpkit Icon" height={24} />,
+      mark: () => <img src="/branding/icon.svg" alt="Trpkit Icon" className="h-6" />,
     },
   },
   collections: {
