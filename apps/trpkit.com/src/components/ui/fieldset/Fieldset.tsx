@@ -8,7 +8,7 @@ export function Fieldset({ className, ...props }: Props) {
   return (
     <Headless.Fieldset
       {...props}
-      className={cn(className, "[&>*+[data-slot=control]]:mt-6 [&>[data-slot=text]]:mt-1")}
+      className={cn("[&>*+[data-slot=control]]:mt-6 [&>[data-slot=text]]:mt-1", className)}
     />
   );
 }
