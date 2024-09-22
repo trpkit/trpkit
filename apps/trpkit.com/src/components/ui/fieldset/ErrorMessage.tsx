@@ -10,8 +10,8 @@ export function ErrorMessage({ className, ...props }: Props) {
       data-slot="error"
       {...props}
       className={cn(
-        className,
-        "text-base/6 text-red-600 data-[disabled]:opacity-50 sm:text-sm/6 dark:text-red-500"
+        "text-base/6 text-red-600 data-[disabled]:opacity-50 sm:text-sm/6 dark:text-red-500",
+        className
       )}
     />
   );

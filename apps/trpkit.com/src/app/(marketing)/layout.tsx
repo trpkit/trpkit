@@ -1,23 +1,13 @@
 import Footer from "@/components/marketing/Footer";
 import Header from "@/components/marketing/Header";
-import { Inter } from "next/font/google";
-import type React from "react";
-import "@/styles/globals.css";
+import type { ReactNode } from "react";
 
-const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-inter",
-});
-
-export default function MarketingLayout({ children }: { children: React.ReactNode }) {
+export default function Layout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={inter.variable}>
-      <body>
-        <Header />
-        <main className="-mt-16">{children}</main>
-        <Footer />
-      </body>
-    </html>
+    <div className="relative isolate flex flex-col min-h-svh w-full bg-white lg:bg-zinc-100 dark:bg-zinc-900 dark:lg:bg-zinc-950">
+      <Header />
+      <main className="flex flex-1 flex-col lg:min-w-0">{children}</main>
+      <Footer />
+    </div>
   );
 }
