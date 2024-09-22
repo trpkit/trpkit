@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "build": "next build",
+    "start": "next start",
     "clean": "git clean -xdf node_modules .next",
     "dev": "next dev"
   },

@@ -1,0 +1,13 @@
+{
+  "ci": {
+    "collect": {
+      "staticDistDir": "",
+      "startServerCommand": "pnpm --filter @trpkit/trpkit.com run start",
+      "url": ["http://localhost:3000"]
+    },
+    "upload": {
+      "target": "filesystem",
+      "outputDir": "./lhci-report"
+    }
+  }
+}
