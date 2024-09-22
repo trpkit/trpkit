@@ -9,9 +9,26 @@ on:
 jobs:
   semgrep:
     name: semgrep-oss/scan
+    timeout-minutes: 15
     runs-on: ubuntu-latest
     container:
       image: semgrep/semgrep
     steps:
       - uses: actions/checkout@v4
-      - run: semgrep scan --config auto
+      - run: |
+          semgrep scan --config=p/security-audit \
+            --config=p/jwt \
+            --config=p/nodejs \
+            --config=p/typescript \
+            --config=p/react \
+            --config=p/react-best-practices \
+            --config=p/nextjs \
+            --config=p/javascript \
+            --config=p/owasp-top-ten \
+            --json \
+            --json-output=semgrep.json
+      - name: Upload semgrep artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: semgrep
+          path: semgrep.json
