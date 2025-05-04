@@ -1,0 +1,72 @@
+name: "Semgrep"
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  scan:
+    name: Scan
+    runs-on: ubuntu-latest
+    container:
+      image: semgrep/semgrep
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Perform Semgrep Scan
+        run: |
+          semgrep scan --config=p/security-audit \
+            --config=p/jwt \
+            --config=p/nodejs \
+            --config=p/typescript \
+            --config=p/react \
+            --config=p/react-best-practices \
+            --config=p/nextjs \
+            --config=p/javascript \
+            --config=p/owasp-top-ten \
+            --json \
+            --json-output=semgrep.json
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: semgrep
+          path: semgrep.json
+
+      - name: Find previous comment
+        if: github.event_name == 'pull_request'
+        uses: peter-evans/find-comment@v3
+        id: fc
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: Semgrep Results
+
+      - name: Generate Semgrep comment body
+        if: github.event_name == 'pull_request'
+        run: |
+          echo "### Semgrep Results" > semgrep-comment.md
+          if jq '.results | length == 0' semgrep.json; then
+            echo -e "\nNo issues found!" >> semgrep-comment.md
+          else
+            count=$(jq '.results | length' semgrep.json)
+            echo -e "\nFound $count issue(s):\n" >> semgrep-comment.md
+            jq -r '.results[:10][] | "- **\(.check_id)**: \(.extra.message) (Severity: \(.extra.severity))"' semgrep.json >> semgrep-comment.md
+            if [ "$count" -gt 10 ]; then
+              echo -e "\n...and more. See full report in the artifact." >> semgrep-comment.md
+            fi
+          fi
+
+      - name: Create or update PR comment
+        if: github.event_name == 'pull_request'
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          comment-id: ${{ steps.fc.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body-path: semgrep-comment.md
+          edit-mode: replace
