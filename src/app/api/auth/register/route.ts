@@ -3,19 +3,19 @@ import * as opaque from "@serenity-kit/opaque";
 import { type NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
-// Move to a separate file
+// TODO Move to a separate file
 enum OpCode {
   RegisterStart = 0,
   RegisterFinish = 1,
 }
 
-// Move to a separate file
+// TODO Move to a separate file
 const noProtoString = z
   .string()
   .min(1)
   .refine((s) => !s.includes("__proto__"), { message: "String must not include '__proto__'" });
 
-// Likely move two schemas below to a separate file
+// TODO Likely move two schemas below to a separate file
 const registerRequest = z.object({
   identifier: noProtoString,
   request: noProtoString,
@@ -37,7 +37,7 @@ export async function POST(req: NextRequest) {
   const parsedBody = registerSchema.safeParse(rawBody);
 
   if (!parsedBody.success) {
-    // Likely want to return the errors from zod
+    // TODO Likely want to return the errors from zod
     return new NextResponse("Invalid payload", { status: 400 });
   }
 
@@ -48,9 +48,9 @@ export async function POST(req: NextRequest) {
 
   switch (body.op) {
     case OpCode.RegisterStart: {
-      // TODO check if identifier is already taken
-      //  return 400 error if it is
-
+      // This step performs the server-side cryptographic handshake for OPAQUE registration
+      // Do not perform identity validation here to avoid leaking information, validation will
+      // be performed in the next operation (RegisterFinish).
       const { registrationResponse } = opaque.server.createRegistrationResponse({
         serverSetup: process.env.OPAQUE_SERVER_KEY,
         userIdentifier: body.d.identifier,
@@ -60,10 +60,19 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ res: registrationResponse });
     }
     case OpCode.RegisterFinish: {
-      // TODO check if identifier is already taken
-      //  return 200 even if taken to prevent leaking information
+      const user = await db.collection("users").findOne({ email: body.d.identifier });
 
-      return NextResponse.json({});
+      if (!user) {
+        await db.collection("users").insertOne({
+          email: body.d.identifier,
+          registrationRecord: body.d.request,
+          // TODO likely wanna add other fields here
+          createdAt: new Date(),
+          updatedAt: null,
+        });
+      }
+
+      return new NextResponse(null, { status: 200 });
     }
     default: {
       // This code should be unreachable
