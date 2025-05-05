@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --font-sans: var(--font-inter), system-ui;
+  --font-sans--font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+@theme {
+  --color-brand-graphite: oklch(25.2% 0 89.88);
+  --color-brand-gray: oklch(65.34% 0 89.88);
+  --color-brand-light-gray: oklch(76.36% 0 89.88);
+  --color-brand-pale-white: oklch(98.51% 0 89.88);
+  --color-brand-blue: oklch(49.8% 0.1519 268.02);
+  --color-brand-azure: oklch(55.39% 0.1667 263.37);
+}
