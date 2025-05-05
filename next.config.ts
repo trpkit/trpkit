@@ -8,6 +8,7 @@ const contentSecurityPolicy = {
   "default-src": [
     "'self'",
     "'unsafe-inline'", // NextJS requires 'unsafe-inline'
+    "'wasm-unsafe-eval'", // Opaque requires 'wasm-unsafe-eval'
     !isProdEnv ? "'unsafe-eval'" : "",
   ],
   "worker-src": ["'self'", "blob:"],
