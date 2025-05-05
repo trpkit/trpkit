@@ -1,25 +1,16 @@
-import { MongoClient, type MongoClientOptions } from "mongodb";
+import { MongoClient } from "mongodb";
 
-if (!process.env.MONGODB_URI) {
-  throw new Error("Missing environment variable: MONGODB_URI");
-}
+let _mongo: MongoClient;
 
-const uri = process.env.MONGODB_URI;
-const options: MongoClientOptions = { appName: "Trpkit" };
+export default async function mongo(): Promise<MongoClient> {
+  if (!_mongo) {
+    if (!process.env.MONGODB_URI) {
+      throw new Error("Missing required environment variable: MONGODB_URI");
+    }
 
-let client: MongoClient;
-
-if (process.env.NODE_ENV === "development") {
-  const globalWithMongo = global as typeof globalThis & {
-    _mongoClient?: MongoClient;
-  };
-
-  if (!globalWithMongo._mongoClient) {
-    globalWithMongo._mongoClient = new MongoClient(uri, options);
+    _mongo = new MongoClient(process.env.MONGODB_URI, { appName: "Trpkit" });
+    await _mongo.connect();
   }
-  client = globalWithMongo._mongoClient;
-} else {
-  client = new MongoClient(uri, options);
-}
 
-export default client;
+  return _mongo;
+}

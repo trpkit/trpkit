@@ -45,7 +45,7 @@ export async function POST(req: NextRequest) {
 
   const body = parsedBody.data;
 
-  const client = await mongo.connect();
+  const client = await mongo();
   const db = client.db();
 
   switch (body.op) {
