@@ -26,6 +26,9 @@ importers:
       react-dom:
         specifier: ^19.1.0
         version: 19.1.0(react@19.1.0)
+      shamir-secret-sharing:
+        specifier: ^0.0.4
+        version: 0.0.4
       tailwind-merge:
         specifier: ^3.2.0
         version: 3.2.0
@@ -1776,6 +1779,9 @@ packages:
     resolution: {integrity: sha512-hlq8tAfn0m/61p4BVRcPzIGr6LKiMwo4VM6dGi6pt4qcRkmNzTcWq6eCEjEh+qXjkMDvPlOFFSGwQjoEa6gyMA==}
     engines: {node: '>=10'}
     hasBin: true
+
+  shamir-secret-sharing@0.0.4:
+    resolution: {integrity: sha512-ui8u/cIg2j16b9on/LH3V/glL6wHdwiTo/Iajzqx0STniBvuOzl6VYUxhrow3waF0dggovJfYiBZSWfTAN4XLQ==}
 
   sharp@0.34.1:
     resolution: {integrity: sha512-1j0w61+eVxu7DawFJtnfYcvSv6qPFvfTaqzTQ2BLknVhHTwGS8sc63ZBF4rzkWMBVKybo4S5OBtDdZahh2A1xg==}
@@ -3620,6 +3626,8 @@ snapshots:
   semver@6.3.1: {}
 
   semver@7.7.1: {}
+
+  shamir-secret-sharing@0.0.4: {}
 
   sharp@0.34.1:
     dependencies:
