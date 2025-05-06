@@ -33,7 +33,7 @@ describe("authRequest schema", () => {
 
   it("invalidates request containing __proto__", () => {
     const result = authRequest.safeParse({
-      identifier: "test@example.com",
+      identifier: "test@trpkit.com",
       request: "__proto__",
     });
     expect(result.success).toBe(false);
