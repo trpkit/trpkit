@@ -1,36 +1,7 @@
 import mongo from "@/lib/mongo";
+import { RegisterOpCode, registerSchema } from "@/lib/types/auth";
 import * as opaque from "@serenity-kit/opaque";
 import { type NextRequest, NextResponse } from "next/server";
-import { z } from "zod";
-
-// TODO Move to a separate file
-enum OpCode {
-  RegisterStart = 0,
-  RegisterFinish = 1,
-}
-
-// TODO Move to a separate file
-const noProtoString = z
-  .string()
-  .min(1)
-  .refine((s) => !s.includes("__proto__"), { message: "String must not include '__proto__'" });
-
-// TODO Likely move two schemas below to a separate file
-const registerRequest = z.object({
-  identifier: noProtoString,
-  request: noProtoString,
-});
-
-const registerSchema = z.discriminatedUnion("op", [
-  z.object({
-    op: z.literal(OpCode.RegisterStart),
-    d: registerRequest,
-  }),
-  z.object({
-    op: z.literal(OpCode.RegisterFinish),
-    d: registerRequest,
-  }),
-]);
 
 export async function POST(req: NextRequest) {
   const rawBody = await req.json();
@@ -47,7 +18,7 @@ export async function POST(req: NextRequest) {
   const db = client.db();
 
   switch (body.op) {
-    case OpCode.RegisterStart: {
+    case RegisterOpCode.RegisterStart: {
       // This step performs the server-side cryptographic handshake for OPAQUE registration
       // Do not perform identity validation here to avoid leaking information, validation will
       // be performed in the next operation (RegisterFinish).
@@ -59,7 +30,7 @@ export async function POST(req: NextRequest) {
 
       return NextResponse.json({ res: registrationResponse });
     }
-    case OpCode.RegisterFinish: {
+    case RegisterOpCode.RegisterFinish: {
       const user = await db.collection("users").findOne({ email: body.d.identifier });
 
       if (!user) {

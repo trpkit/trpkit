@@ -1,39 +1,8 @@
 import { randomBytes } from "node:crypto";
 import mongo from "@/lib/mongo";
+import { LoginOpCode, loginSchema } from "@/lib/types/auth";
 import * as opaque from "@serenity-kit/opaque";
 import { type NextRequest, NextResponse } from "next/server";
-import { z } from "zod";
-
-// TODO Move to a separate file
-enum OpCode {
-  LoginStart = 0,
-  LoginFinish = 1,
-  // TODO 2fa op codes
-}
-
-// TODO duplicate code, thus can be removed and shared between the register and login (and others in future)
-//  Move to a separate file
-const noProtoString = z
-  .string()
-  .min(1)
-  .refine((s) => !s.includes("__proto__"), { message: "String must not include '__proto__'" });
-
-// TODO Likely move two schemas below to a separate file
-const loginRequest = z.object({
-  identifier: noProtoString,
-  request: noProtoString,
-});
-
-const loginSchema = z.discriminatedUnion("op", [
-  z.object({
-    op: z.literal(OpCode.LoginStart),
-    d: loginRequest,
-  }),
-  z.object({
-    op: z.literal(OpCode.LoginFinish),
-    d: loginRequest,
-  }),
-]);
 
 function generateSessionId() {
   return randomBytes(24).toString("hex");
@@ -54,7 +23,7 @@ export async function POST(req: NextRequest) {
   const db = client.db();
 
   switch (body.op) {
-    case OpCode.LoginStart: {
+    case LoginOpCode.LoginStart: {
       const user = await db.collection("users").findOne({ email: body.d.identifier });
       const registrationRecord = user ? user.registrationRecord : null;
 
@@ -80,7 +49,7 @@ export async function POST(req: NextRequest) {
 
       return NextResponse.json({ res: loginResponse });
     }
-    case OpCode.LoginFinish: {
+    case LoginOpCode.LoginFinish: {
       const userLogin = await db.collection("userLogins").findOne({ email: body.d.identifier });
 
       if (!userLogin) {
