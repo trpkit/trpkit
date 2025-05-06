@@ -23,7 +23,7 @@ const contentSecurityPolicy = {
 };
 
 const cspObjectToString = Object.entries(contentSecurityPolicy).reduce((acc, [key, value]) => {
-  return `${acc}${key} ${value.join(" ")};`;
+  return `${acc}${key} ${value.filter(Boolean).join(" ")};`;
 }, "");
 
 const config: NextConfig = {
