@@ -1,9 +1,10 @@
+import { randomBytes } from "node:crypto";
 import mongo from "@/lib/mongo";
 import * as opaque from "@serenity-kit/opaque";
 import { type NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
-// Move to a separate file
+// TODO Move to a separate file
 enum OpCode {
   LoginStart = 0,
   LoginFinish = 1,
@@ -11,13 +12,13 @@ enum OpCode {
 }
 
 // TODO duplicate code, thus can be removed and shared between the register and login (and others in future)
-// Move to a separate file
+//  Move to a separate file
 const noProtoString = z
   .string()
   .min(1)
   .refine((s) => !s.includes("__proto__"), { message: "String must not include '__proto__'" });
 
-// Likely move two schemas below to a separate file
+// TODO Likely move two schemas below to a separate file
 const loginRequest = z.object({
   identifier: noProtoString,
   request: noProtoString,
@@ -34,12 +35,16 @@ const loginSchema = z.discriminatedUnion("op", [
   }),
 ]);
 
+function generateSessionId() {
+  return randomBytes(24).toString("hex");
+}
+
 export async function POST(req: NextRequest) {
   const rawBody = await req.json();
   const parsedBody = loginSchema.safeParse(rawBody);
 
   if (!parsedBody.success) {
-    // Likely want to return the errors from zod
+    // TODO Likely want to return the errors from zod
     return new NextResponse("Invalid payload", { status: 400 });
   }
 
@@ -50,11 +55,8 @@ export async function POST(req: NextRequest) {
 
   switch (body.op) {
     case OpCode.LoginStart: {
-      // TODO check if user exists / registration record
-      // temporary
-      const registrationRecord = "";
-
-      // TODO check if user started login process (likely wanna have a TTL on it)
+      const user = await db.collection("users").findOne({ email: body.d.identifier });
+      const registrationRecord = user ? user.registrationRecord : null;
 
       const { serverLoginState, loginResponse } = opaque.server.startLogin({
         serverSetup: process.env.OPAQUE_SERVER_KEY,
@@ -63,28 +65,65 @@ export async function POST(req: NextRequest) {
         startLoginRequest: body.d.request,
       });
 
-      // TODO add login state to db
+      // We store the serverLoginState for every login attempt, even if the user doesn't
+      // exist, to prevent leaking user data
+      const expiration = new Date(Date.now() + 60 * 1000); // 1 minute
+
+      await db.collection("userLogins").insertOne({
+        email: body.d.identifier,
+        loginState: serverLoginState,
+        createdAt: new Date(),
+        // TTL index should be created on this field
+        //  db.collection('userLogins').createIndex({ expiresAt: 1, { expireAfterSeconds: 0 }});
+        expiresAt: expiration,
+      });
 
       return NextResponse.json({ res: loginResponse });
     }
     case OpCode.LoginFinish: {
-      // TODO check if user exists
-      // TODO check if user started login process
-      // temporary
-      const serverLoginState = "";
+      const userLogin = await db.collection("userLogins").findOne({ email: body.d.identifier });
 
-      const { sessionKey } = opaque.server.finishLogin({
-        finishLoginRequest: body.d.request,
-        serverLoginState,
+      if (!userLogin) {
+        return new NextResponse("Invalid email or password", { status: 400 });
+      }
+
+      let sessionKey: string;
+      try {
+        ({ sessionKey } = opaque.server.finishLogin({
+          finishLoginRequest: body.d.request,
+          serverLoginState: userLogin.loginState,
+        }));
+      } catch {
+        return new NextResponse("Invalid email or password", { status: 400 });
+      }
+
+      const sessionId = generateSessionId();
+
+      const expiration = new Date(Date.now() + 24 * 60 * 60 * 1000); // 1 day
+
+      await db.collection("userSessions").insertOne({
+        email: body.d.identifier,
+        sessionId,
+        sessionKey,
+        createdAt: new Date(),
+        // TTL index should be created on this field
+        //  db.collection('userSessions').createIndex({ expiresAt: 1, { expireAfterSeconds: 0 }});
+        expiresAt: expiration,
       });
 
-      // TODO generate session id
-      // TODO store session id and key in db
-      // TODO delete login state from db
+      // Delete the login state to prevent replay attacks
+      await db.collection("userLogins").deleteOne({ _id: userLogin._id });
 
-      // TODO set session id to a cookie
+      const response = new NextResponse(null, { status: 200 });
+      response.cookies.set(process.env.NEXT_PUBLIC_SESSION_COOKIE, sessionId, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "lax",
+        path: "/",
+        maxAge: 24 * 60 * 60,
+      });
 
-      return NextResponse.json({});
+      return response;
     }
     default: {
       // This code should be unreachable

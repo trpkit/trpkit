@@ -63,6 +63,7 @@ export async function POST(req: NextRequest) {
       const user = await db.collection("users").findOne({ email: body.d.identifier });
 
       if (!user) {
+        // We're only creating a user if they don't exist.
         await db.collection("users").insertOne({
           email: body.d.identifier,
           registrationRecord: body.d.request,
@@ -72,6 +73,7 @@ export async function POST(req: NextRequest) {
         });
       }
 
+      // Always return 200 to prevent leaking users data
       return new NextResponse(null, { status: 200 });
     }
     default: {
