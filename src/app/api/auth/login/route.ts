@@ -1,12 +1,8 @@
-import { randomBytes } from "node:crypto";
 import mongo from "@/lib/mongo";
+import { generateSessionId } from "@/lib/session";
 import { LoginOpCode, loginSchema } from "@/lib/types/auth";
 import * as opaque from "@serenity-kit/opaque";
 import { type NextRequest, NextResponse } from "next/server";
-
-function generateSessionId() {
-  return randomBytes(24).toString("hex");
-}
 
 export async function POST(req: NextRequest) {
   const rawBody = await req.json();
