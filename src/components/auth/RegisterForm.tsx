@@ -106,6 +106,7 @@ export default function RegisterForm() {
           id="password"
           autoComplete="new-password"
           required
+          minLength={8}
           disabled={isLoading}
         />
       </div>

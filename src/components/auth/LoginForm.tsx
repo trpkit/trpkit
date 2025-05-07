@@ -104,6 +104,7 @@ export default function LoginForm() {
           id="password"
           autoComplete="current-password"
           required
+          minLength={8}
           disabled={isLoading}
         />
       </div>
