@@ -82,7 +82,8 @@ export default function LoginForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="grid w-full max-w-sm grid-cols-1 gap-8">
+      <h1>Sign in to your account</h1>
       <div>
         <label htmlFor="email">Email</label>
         <input

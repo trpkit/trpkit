@@ -84,7 +84,8 @@ export default function RegisterForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="grid w-full max-w-sm grid-cols-1 gap-8">
+      <h1>Create your account</h1>
       <div>
         <label htmlFor="email">Email</label>
         <input
