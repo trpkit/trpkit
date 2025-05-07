@@ -8,6 +8,7 @@ const contentSecurityPolicy = {
   "default-src": [
     "'self'",
     "'unsafe-inline'", // NextJS requires 'unsafe-inline'
+    "'wasm-unsafe-eval'", // Opaque requires 'wasm-unsafe-eval'
     !isProdEnv ? "'unsafe-eval'" : "",
   ],
   "worker-src": ["'self'", "blob:"],
@@ -22,7 +23,7 @@ const contentSecurityPolicy = {
 };
 
 const cspObjectToString = Object.entries(contentSecurityPolicy).reduce((acc, [key, value]) => {
-  return `${acc}${key} ${value.join(" ")};`;
+  return `${acc}${key} ${value.filter(Boolean).join(" ")};`;
 }, "");
 
 const config: NextConfig = {
