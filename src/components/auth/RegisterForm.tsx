@@ -9,9 +9,10 @@ export default function RegisterForm() {
   const router = useRouter();
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [wasmLoaded, setWasmLoaded] = useState<boolean>(false);
 
   useEffect(() => {
-    opaque.ready;
+    opaque.ready.then(() => setWasmLoaded(true));
   }, []);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -108,7 +109,7 @@ export default function RegisterForm() {
           disabled={isLoading}
         />
       </div>
-      <button type="submit" disabled={isLoading}>
+      <button type="submit" disabled={!wasmLoaded || isLoading}>
         Register
       </button>
       {error && <p>{error}</p>}
